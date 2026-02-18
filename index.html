@@ -26,13 +26,34 @@
             <!-- SVG Logo -->
             <div class="mb-6 flex justify-center items-center">
                 <div class="inline-block">
-                    <svg viewBox="0 0 200 90" class="w-80 h-auto drop-shadow-2xl" style="display: block; margin: 0 auto;">
-                        <!-- Main J -->
-                        <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48" 
-                              fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        
-                        <!-- 'ellin' text close to J -->
-                        <text x="58" y="65" font-family="Inter, sans-serif" font-size="48" font-weight="800" fill="white">ellin</text>
+                    <svg viewBox="0 0 200 80" class="w-80 h-auto drop-shadow-2xl" style="display: block; margin: 0 auto; padding: 8px 0;">
+                        <g transform="translate(22, 0)">
+                            <!-- Main J -->
+                            <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48" 
+                                  fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <!-- Letter e -->
+                            <path d="M62 45 Q62 35 72 35 Q82 35 82 45 L82 47 L62 47 Q62 57 72 57 Q77 57 82 54" 
+                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M62 45 Q62 35 72 35 Q82 35 82 45 Z" fill="white" opacity="0.3"/>
+                            
+                            <!-- Letter l (first) -->
+                            <path d="M92 25 L92 57" 
+                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <!-- Letter l (second) -->
+                            <path d="M104 25 L104 57" 
+                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <!-- Letter i -->
+                            <path d="M116 37 L116 57" 
+                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="116" cy="30" r="3" fill="white"/>
+                            
+                            <!-- Letter n -->
+                            <path d="M128 57 L128 45 Q128 37 136 37 Q144 37 144 45 L144 57" 
+                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
                     </svg>
                 </div>
             </div>
@@ -54,7 +75,7 @@
             <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-purple-100 text-center feature-card">
                 <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 shadow-xl">1</div>
                 <h3 class="text-2xl font-bold mb-4 text-purple-900">Reach everyone - even with no app</h3>
-                <p class="text-slate-600 leading-relaxed">Let your customers choose betwen the no-download, SMS-only channel or the full experience of the app. Reach anyone with just a mobile number (no other data) and scale your campaigns across unlimited touchpoints.</p>
+                <p class="text-slate-600 leading-relaxed">Let your customers choose betwen the no-download, email / SMS-only channel or the full experience of the app. Reach anyone with just an email / mobile number (no other data) and scale your campaigns across unlimited touchpoints.</p>
             </div>
 
             <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-pink-100 text-center feature-card">
@@ -81,7 +102,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <span class="text-purple-300 font-bold uppercase text-sm tracking-wider">Multi-Channel Delivery</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">SMS or App—Your Customers Choose</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">A mobile seamless experience</h2>
                 <p class="text-slate-300 text-lg">Mobile-first coupon delivery that works for everyone</p>
             </div>
 
@@ -93,7 +114,7 @@
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
                             <path d="M12 18h.01"/>
                         </svg>
-                        SMS Experience (No App)
+                        A complete mobile operations dahsboard
                     </p>
                     <div class="flex gap-4">
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
@@ -110,14 +131,14 @@
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                         </svg>
-                        App Experience (Power Users)
+                        Seamless App Experience for all
                     </p>
                     <div class="flex gap-4">
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
                             <img src="assets/treat-app-coupons-list.jpg" alt="App Experience Screenshot 1" class="w-64 h-auto">
                         </div>
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/treat-app-management.jpg" alt="App Experience Screenshot 2" class="w-64 h-auto">
+                            <img src="assets/jellin-qr-ticket.jpg" alt="App Experience Screenshot 2" class="w-64 h-auto">
                         </div>
                     </div>
                 </div>
@@ -338,11 +359,11 @@
                     <div class="space-y-2 text-xs">
                         <div class="flex gap-2">
                             <span class="font-semibold text-blue-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600 italic">[Buying team jacket online] Entering phone number: 555-890-...</span>
+                            <span class="text-slate-600 italic">[Buying team jacket online] Entering customers email</span>
                         </div>
                         <div class="flex gap-2">
                             <span class="font-semibold text-indigo-700 min-w-[70px]">System:</span>
-                            <span class="text-slate-600">🎉 You've earned a FREE ticket for Sunday's match! Show this SMS at entry.</span>
+                            <span class="text-slate-600">🎉 You've earned a FREE ticket for Sunday's match! Show the QR code you just received in your email at entry.</span>
                         </div>
                         <div class="flex gap-2">
                             <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
@@ -350,11 +371,11 @@
                         </div>
                         <div class="flex gap-2">
                             <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
-                            <span class="text-slate-600">Great! What's your number?</span>
+                            <span class="text-slate-600">Great! Have you received the QR code?</span>
                         </div>
                         <div class="flex gap-2">
                             <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600">555-890-...</span>
+                            <span class="text-slate-600">Yes, here it is</span>
                         </div>
                         <div class="flex gap-2">
                             <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
@@ -373,7 +394,7 @@
                     </li>
                     <li class="flex items-center gap-3">
                         <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        SMS verification for easy redemption
+                        QR verification for easy redemption / no app needed for the customer.
                     </li>
                 </ul>
             </div>
