@@ -81,49 +81,261 @@
                             <path d="M128 57 L128 45 Q128 37 136 37 Q144 37 144 45 L144 57" 
                                   fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
-                    </svg>
-                </div>
+                        </svg>
+                    </div>
             </div>
             <p class="text-2xl md:text-3xl font-light mb-10 opacity-95">A marketing app that "jells" with your customers</p>
             <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button class="bg-white text-purple-600 px-10 py-4 rounded-full font-bold shadow-2xl hover:scale-105 transition-transform">Get Started Free</button>
+                <button id="hero-cta" class="bg-white text-purple-600 px-10 py-4 rounded-full font-bold shadow-2xl hover:scale-105 transition-transform">Get Started Free</button>
             </div>
         </div>
     </header>
 
-    <section class="max-w-6xl mx-auto py-20 px-6">
+    <!-- Replaced original features with comparison view (cloned, full-row features) -->
+    <section class="max-w-6xl mx-auto py-20 px-6" aria-label="Comparison - Large feature rows">
         <div class="text-center mb-16">
             <span class="text-purple-600 font-bold uppercase text-sm tracking-wider">For Marketing Professionals</span>
             <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Now, your marketing connects everyone</h2>
             <p class="text-slate-600 text-lg max-w-2xl mx-auto">Create powerful campaigns with loyalty and instant coupons in minutes</p>
         </div>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
+
+        <div class="grid md:grid-cols-1 gap-8 mb-16">
             <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-purple-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 shadow-xl">1</div>
-                <h3 class="text-2xl font-bold mb-4 text-purple-900">Reach everyone - even with no app</h3>
-                <p class="text-slate-600 leading-relaxed">Let your customers choose betwen the no-download, email / SMS-only channel or the full experience of the app. Reach anyone with just an email / mobile number (no other data) and scale your campaigns across unlimited touchpoints.</p>
+                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">1</div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-purple-900">Reach everyone - even with no app</h3>
+                <p class="text-slate-600 leading-relaxed mb-6">Let your customers choose betwen the no-download, email / SMS-only channel or the full experience of the app. Reach anyone with just an email / mobile number (no other data) and scale your campaigns across unlimited touchpoints.</p>
+                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="7" height="18" rx="1.5" />
+                                    <path d="M19 7v4" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">App</div>
+                                <div class="text-slate-600 text-sm">Full app experience for engaged users</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <path d="M7 7h0" />
+                                    <path d="M17 7h0" />
+                                    <path d="M7 17h0" />
+                                    <path d="M17 17h0" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">QR</div>
+                                <div class="text-slate-600 text-sm">QR links for quick access & check-ins</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16v12H4z" />
+                                    <path d="M4 8l8 4 8-4" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Email</div>
+                                <div class="text-slate-600 text-sm">Email-only delivery for no-download reach</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">SMS</div>
+                                <div class="text-slate-600 text-sm">SMS delivery via mobile number</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-pink-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 shadow-xl">2</div>
-                <h3 class="text-2xl font-bold mb-4 text-pink-900">Multiple Reward Methods</h3>
-                <p class="text-slate-600 leading-relaxed">Deploy instant coupons for immediate conversions, build loyalty programs with point accumulation, or create lottery-style campaigns for viral engagement. Mix and match to maximize results.</p>
+                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">2</div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-pink-900">Multiple Reward Methods</h3>
+                <p class="text-slate-600 leading-relaxed mb-6">Deploy instant coupons for immediate conversions, build loyalty programs with point accumulation, or create lottery-style campaigns for viral engagement. Mix and match to maximize results.</p>
+                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="6" width="20" height="12" rx="2" />
+                                    <path d="M2 10h20" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Coupon</div>
+                                <div class="text-slate-600 text-sm">Instant coupons for immediate conversions</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2v20" />
+                                    <circle cx="12" cy="7" r="3" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Member</div>
+                                <div class="text-slate-600 text-sm">Member tiers & exclusive rewards</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2l2 4 4 .5-3 2 1 4-4-2-4 2 1-4-3-2L10 6z" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Bonus</div>
+                                <div class="text-slate-600 text-sm">One-off bonuses to incentivize action</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12h16" />
+                                    <path d="M4 8h10" />
+                                    <path d="M4 16h6" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Points</div>
+                                <div class="text-slate-600 text-sm">Point accumulation for loyalty</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-cyan-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 shadow-xl">3</div>
-                <h3 class="text-2xl font-bold mb-4 text-cyan-900">Operate from a Single Shop to an Entire Network</h3>
-                <p class="text-slate-600 leading-relaxed">Whether you manage one location or coordinate multiple stores across multiple brands, Jellin scales effortlessly. Unified dashboard, flexible permissions, seamless partner integrations.</p>
+                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">3</div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-cyan-900">Operate from a Single Shop to an Entire Network</h3>
+                <p class="text-slate-600 leading-relaxed mb-6">Whether you manage one location or coordinate multiple stores across multiple brands, Jellin scales effortlessly. Unified dashboard, flexible permissions, seamless partner integrations.</p>
+                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="6" width="6" height="6" rx="1" />
+                                    <path d="M6 12v6" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Store A</div>
+                                <div class="text-slate-600 text-sm">Single location operations</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 12h18" />
+                                    <path d="M12 3v18" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Connect</div>
+                                <div class="text-slate-600 text-sm">Partner & system integrations</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="4" width="6" height="6" rx="1" />
+                                    <path d="M12 10v10" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Store B</div>
+                                <div class="text-slate-600 text-sm">Multi-location management</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="15" y="6" width="6" height="6" rx="1" />
+                                    <path d="M18 12v6" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Store C</div>
+                                <div class="text-slate-600 text-sm">Franchise / brand scale</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-amber-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 shadow-xl">4</div>
-                <h3 class="text-2xl font-bold mb-4 text-amber-900">Customer live Rating & Complete Operational Insights</h3>
-                <p class="text-slate-600 leading-relaxed">Real-time analytics on customer behavior, redemption rates, and campaign performance. Monitor ROI, identify trends, and optimize operations with comprehensive dashboards.</p>
+                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">4</div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-amber-900">Customer live Rating & Complete Operational Insights</h3>
+                <p class="text-slate-600 leading-relaxed mb-6">Real-time analytics on customer behavior, redemption rates, and campaign performance. Monitor ROI, identify trends, and optimize operations with comprehensive dashboards.</p>
+                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="6" width="4" height="10" rx="1" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Visits</div>
+                                <div class="text-slate-600 text-sm">Track visits and live visit trends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 14l6-4 4 6 6-8" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Trends</div>
+                                <div class="text-slate-600 text-sm">Trend analysis & performance metrics</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="4" height="10" rx="1" />
+                                    <rect x="9" y="7" width="4" height="14" rx="1" />
+                                    <rect x="15" y="3" width="4" height="18" rx="1" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Segmentation metrics</div>
+                                <div class="text-slate-600 text-sm">Group by salepoints, loyalty programs, etc.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-2">
+                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M12 3v9l7 3" />
+                                </svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold">Impact analysis</div>
+                                <div class="text-slate-600 text-sm">One glance statistics delivery for instant impact estimation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    
 
     <section class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-6 text-white overflow-hidden">
         <div class="max-w-6xl mx-auto">
@@ -145,10 +357,10 @@
                     </p>
                     <div class="flex gap-4">
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/Treat-app-loyalty-programs.jpg" alt="SMS Experience Screenshot 1" class="w-64 h-auto">
+                            <img src="assets/jellin-analytics-01.jpg" alt="SMS Experience Screenshot 1" class="w-64 h-auto">
                         </div>
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/Treat-app-check-in-arrow.jpg" alt="SMS Experience Screenshot 2" class="w-64 h-auto">
+                            <img src="assets/jellin-email-01.jpg" alt="SMS Experience Screenshot 2" class="w-64 h-auto">
                         </div>
                     </div>
                 </div>
@@ -162,10 +374,10 @@
                     </p>
                     <div class="flex gap-4">
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/treat-app-coupons-list.jpg" alt="App Experience Screenshot 1" class="w-64 h-auto">
+                            <img src="assets/jellin_customer_shos_01.jpg" alt="App Experience Screenshot 1" class="w-64 h-auto">
                         </div>
                         <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/jellin-qr-ticket.jpg" alt="App Experience Screenshot 2" class="w-64 h-auto">
+                            <img src="assets/jellin-qr-coupon-01.jpg" alt="App Experience Screenshot 2" class="w-64 h-auto">
                         </div>
                     </div>
                 </div>
@@ -631,7 +843,7 @@
 
     <footer class="bg-gradient-to-br from-slate-900 to-purple-900 py-16 px-6 text-white">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
+                <div id="contact-anchor" class="text-center mb-12">
                 <!-- SVG Logo -->
                 <div class="mb-4 flex justify-center items-center">
                     <div class="inline-block">
@@ -655,8 +867,107 @@
                     </div>
                 </div>
                 <p class="text-slate-300 text-lg mb-8">Ready to amplify your marketing campaigns? Start creating today.</p>
-                <button class="jell-gradient px-12 py-4 rounded-full font-bold text-white shadow-2xl hover:scale-105 transition-transform text-lg">Start Free Trial</button>
+                <button id="contact-open-btn" type="button" class="jell-gradient px-12 py-4 rounded-full font-bold text-white shadow-2xl hover:scale-105 transition-transform text-lg">ETA: May 2026. Contact us for a prelaunch demo</button>
             </div>
+            <!-- Contact modal (hidden by default) -->
+            <div id="contact-modal" class="hidden fixed inset-0 z-50 items-center justify-center">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div class="relative bg-white rounded-2xl p-6 w-[min(560px,92%)] mx-4 shadow-xl">
+                    <button id="contact-modal-close" class="absolute top-3 right-3 text-slate-500 hover:text-slate-800">✕</button>
+                    <h3 class="text-2xl font-bold mb-2 text-slate-900">Request a prelaunch demo</h3>
+                    <p class="text-slate-600 mb-4">Enter your email and we'll be in touch.</p>
+                    <!-- Set `data-endpoint` to your form endpoint (e.g. Formspree). -->
+                    <!-- Example: data-endpoint="https://formspree.io/f/your-form-id" -->
+                    <!-- Add data-cc to include a CC address for mailto fallback or backend handling. -->
+                    <form id="contact-form" data-endpoint="https://formspree.io/f/xdalrjdj" data-cc="jdarmen@gmail.com">
+                        <label class="block text-sm font-semibold mb-1 text-slate-700">Email</label>
+                        <input id="contact-email" name="email" type="email" required class="w-full border rounded-md p-3 mb-4" placeholder="you@example.com" />
+                        <div class="flex items-center justify-end gap-3">
+                            <button type="button" id="contact-cancel" class="px-4 py-2 rounded-md border">Cancel</button>
+                            <button type="submit" id="contact-submit" class="jell-gradient px-5 py-2 rounded-md font-bold text-white">Send</button>
+                        </div>
+                    </form>
+                    <div id="contact-thanks" class="hidden text-center p-4">
+                        <p class="font-bold text-lg text-slate-900">Thanks — your request has been sent!</p>
+                        <p class="text-slate-600 mt-2">We'll contact you at the email you provided.</p>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+            (function(){
+                const heroBtn = document.getElementById('hero-cta');
+                const contactAnchor = document.getElementById('contact-anchor');
+                const openBtn = document.getElementById('contact-open-btn');
+                const modal = document.getElementById('contact-modal');
+                const closeBtn = document.getElementById('contact-modal-close');
+                const cancelBtn = document.getElementById('contact-cancel');
+                const form = document.getElementById('contact-form');
+                const thanks = document.getElementById('contact-thanks');
+                const submitBtn = document.getElementById('contact-submit');
+
+                if(heroBtn && contactAnchor){
+                    heroBtn.addEventListener('click', function(e){
+                        e.preventDefault();
+                        contactAnchor.scrollIntoView({behavior:'smooth', block:'center'});
+                        setTimeout(()=> openBtn && openBtn.focus(), 600);
+                    });
+                }
+
+                function showModal(){ modal.classList.remove('hidden'); modal.classList.add('flex'); document.getElementById('contact-email').focus(); }
+                function hideModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); thanks.classList.add('hidden'); form.classList.remove('hidden'); form.reset(); submitBtn.disabled=false; }
+
+                openBtn && openBtn.addEventListener('click', function(e){ e.preventDefault(); showModal(); });
+                closeBtn && closeBtn.addEventListener('click', function(){ hideModal(); });
+                cancelBtn && cancelBtn.addEventListener('click', function(){ hideModal(); });
+                modal && modal.addEventListener('click', function(e){ if(e.target===modal) hideModal(); });
+
+                form && form.addEventListener('submit', async function(e){
+                    e.preventDefault();
+                    submitBtn.disabled = true;
+                    const email = document.getElementById('contact-email').value;
+                    const metadata = {
+                        url: window.location.href,
+                        ua: navigator.userAgent,
+                        ts: new Date().toISOString()
+                    };
+                    const payload = { email, metadata, cc: form.dataset.cc || '' };
+
+                    const endpoint = form.dataset.endpoint; // Formspree endpoint
+                    try{
+                        if(endpoint){
+                            const formData = new FormData();
+                            formData.append('email', email);
+                            formData.append('message', 'Requesting prelaunch demo');
+                            formData.append('metadata', JSON.stringify(metadata));
+                            if(form.dataset.cc) formData.append('cc', form.dataset.cc);
+
+                            const resp = await fetch(endpoint, {
+                                method: 'POST',
+                                body: formData,
+                                headers: { 'Accept': 'application/json' }
+                            });
+                            if(!resp.ok){
+                                const errBody = await resp.json().catch(()=>({error:'submission_failed'}));
+                                throw new Error(errBody.error || 'Submission failed');
+                            }
+                        } else {
+                            // fallback: open mail client prefilled to deliver details to nick.glezakos@gmail.com and CC jdarmen
+                            const cc = form.dataset.cc || '';
+                            const subject = encodeURIComponent('Jellin prelaunch demo request');
+                            const body = encodeURIComponent('Email: '+email+'\n\nMetadata:\n'+JSON.stringify(metadata,null,2));
+                            const ccParam = cc ? '&cc=' + encodeURIComponent(cc) : '';
+                            window.location.href = 'mailto:nick.glezakos@gmail.com?subject='+subject + ccParam + '&body='+body;
+                        }
+                        form.classList.add('hidden');
+                        thanks.classList.remove('hidden');
+                    }catch(err){
+                        alert('Failed to send. Please try again or email nick.glezakos@gmail.com directly.');
+                        submitBtn.disabled = false;
+                    }
+                });
+            })();
+            </script>
             
             <div class="grid md:grid-cols-4 gap-8 mb-12 text-sm">
                 <div>
