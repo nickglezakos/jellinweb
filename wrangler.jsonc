@@ -1,7 +1,8 @@
 {
   "name": "jellinweb",
   "compatibility_date": "2026-01-22",
+  "pages_build_output_dir": "business-overview",
   "assets": {
-    "directory": "."
+    "directory": "business-overview"
   }
 }
