@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jellin — Non-Disclosure & Business Development Agreement</title>
+    <link rel="icon" type="image/x-icon" href="assets/logos/icon/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logos/icon/mobile/jellin-j-gradient.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .jell-gradient { background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%); }
+
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%);
+            border: none;
+            border-radius: 2px;
+        }
+
+        .clause-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .signature-box {
+            border: 2px dashed #cbd5e1;
+            border-radius: 0.75rem;
+            min-height: 140px;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #334155;
+            width: 100%;
+            margin-top: 2.5rem;
+        }
+
+        /* Print styles */
+        @media print {
+            *, *::before, *::after { box-shadow: none !important; }
+            body { font-size: 10.5pt; color: #1e293b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+            @page :first { margin-top: 0; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; break-before: page; }
+            h2, h3 { page-break-after: avoid; break-after: avoid; }
+            .signature-box { page-break-inside: avoid; break-inside: avoid; }
+            header { padding: 2rem 1.5rem !important; }
+            .max-w-4xl { max-width: 100% !important; }
+            a[href] { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- HEADER -->
+    <header class="jell-gradient text-white py-14 px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white opacity-10"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="mb-4 flex justify-center">
+                <svg width="220" height="56" viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Jellin wordmark">
+                    <text x="0" y="44" font-family="Inter, sans-serif" font-weight="800" font-size="48" fill="white" opacity="0.95">jellin</text>
+                </svg>
+            </div>
+            <p class="text-xl md:text-2xl font-light mb-2 opacity-95">Non-Disclosure &amp; Business Development Agreement</p>
+            <p class="text-sm opacity-70 mt-3">Confidential &middot; <a href="https://jellinapp.com/" class="underline hover:opacity-100 transition-opacity">jellinapp.com</a></p>
+        </div>
+    </header>
+
+    <!-- DOCUMENT BODY -->
+    <main class="max-w-4xl mx-auto py-12 px-6">
+
+        <!-- Reference block -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 mb-10 shadow-sm">
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+                <div>
+                    <p class="text-slate-500 uppercase tracking-wider text-xs font-semibold mb-1">Document Reference</p>
+                    <p class="font-mono text-slate-700">JELLIN-NDA-BD-[<span class="text-purple-600">REF#</span>]</p>
+                </div>
+                <div>
+                    <p class="text-slate-500 uppercase tracking-wider text-xs font-semibold mb-1">Effective Date</p>
+                    <p class="text-slate-700">[_____ / _____ / _______]</p>
+                </div>
+                <div>
+                    <p class="text-slate-500 uppercase tracking-wider text-xs font-semibold mb-1">Governing Law</p>
+                    <p class="text-slate-700">Laws of [________________]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIES -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">The Parties</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Party A -->
+                <div class="bg-purple-50 border border-purple-100 rounded-2xl p-6">
+                    <p class="text-purple-700 font-bold uppercase text-xs tracking-wider mb-3">Party A — Disclosing Party &amp; Principal</p>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">The company that conceived, developed, and operates the Jellin loyalty and rewards platform.</p>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Legal Entity Name</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Registered Address</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 mt-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Registration / Tax Number</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Authorised Representative</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Title / Position</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party B -->
+                <div class="bg-pink-50 border border-pink-100 rounded-2xl p-6">
+                    <p class="text-pink-700 font-bold uppercase text-xs tracking-wider mb-3">Party B — Receiving Party &amp; Business Development Partner</p>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">The company engaged to actively promote and develop business opportunities for the Jellin platform.</p>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Legal Entity Name</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Registered Address</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 mt-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Registration / Tax Number</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Authorised Representative</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Title / Position</p>
+                            <p class="border-b border-slate-300 pb-1 text-slate-800 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider mb-10">
+
+        <!-- RECITALS / BACKGROUND -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Background &amp; Recitals</h2>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm text-slate-600 leading-relaxed space-y-4 text-sm">
+                <p>
+                    <strong class="text-slate-800">WHEREAS,</strong> Party A has conceived, developed, and operates <strong>Jellin</strong> — a loyalty and rewards platform that connects businesses with their customers through the simplest possible interaction: a phone number, an email, or a QR scan. No app download is required, no plastic cards, no lengthy registration — just instant, tangible rewards that make everyday transactions more meaningful.
+                </p>
+                <p>
+                    Jellin gives any business — from a single café to a hotel network to an entire shopping mall — the ability to run professional loyalty programmes, instant promotions, and cross-business reward ecosystems. Customers participate by sharing only a phone number or email. Rewards are delivered via SMS, email, or the optional Jellin app. For customers, loyalty becomes effortless; for businesses, repeat visits become measurable.
+                </p>
+                <p>
+                    The platform supports three distinct reward mechanisms: <em>counting coupons</em> (earned after a set number of check-ins), <em>instant coupons</em> (assigned on the spot by staff), and <em>sweepstake coupons</em> (awarded randomly within a date range). A cross-business group architecture allows Jells earned at one business to carry value at partner businesses, enabling mall ecosystems, hotel networks, and multi-location brands to share a single loyalty experience.
+                </p>
+                <p>
+                    Jellin is GDPR-compliant by design, requires only a phone number or email, and is built to serve independent shops and enterprise operators alike.
+                </p>
+                <p>
+                    <strong class="text-slate-800">WHEREAS,</strong> Party B is a business entity with relevant market reach, industry relationships, and commercial expertise capable of identifying, approaching, and converting prospective business clients for the Jellin platform.
+                </p>
+                <p>
+                    <strong class="text-slate-800">WHEREAS,</strong> in connection with evaluating and executing a mutual business development collaboration, Party A may disclose to Party B certain confidential, proprietary, and commercially sensitive information, and both Parties wish to define the terms governing such disclosure, their respective obligations, and the commercial arrangement for Party B's business development contributions.
+                </p>
+                <p>
+                    <strong>NOW, THEREFORE,</strong> in consideration of the mutual promises contained herein and for other good and valuable consideration, the receipt and sufficiency of which are acknowledged, the Parties agree as follows.
+                </p>
+            </div>
+        </section>
+
+        <hr class="section-divider mb-10">
+
+        <!-- CLAUSES -->
+        <section class="mb-10 space-y-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Terms &amp; Conditions</h2>
+
+            <!-- Clause 1 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">1</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Definitions</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">"Confidential Information"</strong> means any and all information disclosed by Party A to Party B, in any form or medium, that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure. This includes, without limitation: the Jellin platform's source code, architecture, product roadmap, pricing strategies, business plans, financial projections, customer data, marketing strategies, technical documentation, trade secrets, sales methodologies, partner agreements, and any other proprietary data.</p>
+                    <p><strong class="text-slate-700">"Business Development Activities"</strong> means the identification, introduction, solicitation, negotiation support, and conversion of prospective business clients on behalf of Party A for the purpose of subscribing to or contracting for the Jellin platform.</p>
+                    <p><strong class="text-slate-700">"Referred Client"</strong> means any business entity that (a) is first introduced to Party A by Party B, (b) enters into a paid subscription or contract with Party A for the Jellin platform, and (c) was not previously known to or in active discussions with Party A at the time of introduction.</p>
+                    <p><strong class="text-slate-700">"Project"</strong> means each individual Business Development Activity or group of related activities resulting in a confirmed Referred Client or a defined deliverable agreed upon in writing between the Parties.</p>
+                    <p><strong class="text-slate-700">"Remuneration"</strong> means the fee, commission, or other compensation payable by Party A to Party B in respect of a Project, as agreed in a Project Schedule.</p>
+                    <p><strong class="text-slate-700">"Project Schedule"</strong> means a written document executed by both Parties specifying the scope, deliverables, targets, and Remuneration for a particular Project.</p>
+                    <p><strong class="text-slate-700">"Term"</strong> means the period commencing on the Effective Date and continuing for [___] months / years, unless extended or terminated earlier in accordance with this Agreement.</p>
+                </div>
+            </div>
+
+            <!-- Clause 2 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">2</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Non-Disclosure Obligations</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">2.1 Obligation of Confidentiality.</strong> Party B agrees to hold all Confidential Information in strict confidence and not to disclose, reproduce, summarise, or otherwise communicate any Confidential Information to any third party without the prior written consent of Party A.</p>
+                    <p><strong class="text-slate-700">2.2 Permitted Use.</strong> Party B may use Confidential Information solely for the purpose of performing Business Development Activities under this Agreement. No other use is permitted.</p>
+                    <p><strong class="text-slate-700">2.3 Need-to-Know Basis.</strong> Party B shall restrict access to Confidential Information to its employees, officers, contractors, and agents who have a genuine need to know such information for the purposes of this Agreement and who are bound by confidentiality obligations no less restrictive than those set out herein.</p>
+                    <p><strong class="text-slate-700">2.4 Protection Standard.</strong> Party B shall protect Confidential Information using at least the same degree of care it applies to its own confidential information of comparable sensitivity, but in no event less than reasonable care.</p>
+                    <p><strong class="text-slate-700">2.5 Exclusions.</strong> The obligations of this clause shall not apply to information that: (a) is or becomes publicly available through no fault of Party B; (b) was rightfully in Party B's possession prior to disclosure by Party A; (c) is independently developed by Party B without reference to the Confidential Information; or (d) is required to be disclosed by applicable law or court order, provided Party B gives Party A prompt written notice and cooperates with any effort to seek a protective order.</p>
+                    <p><strong class="text-slate-700">2.6 Mutual Non-Disclosure.</strong> To the extent Party B discloses its own proprietary business information to Party A in the course of this Agreement, Party A shall observe equivalent confidentiality obligations with respect to such information.</p>
+                    <p><strong class="text-slate-700">2.7 Return of Information.</strong> Upon request or upon termination of this Agreement, Party B shall promptly return or, at Party A's election, certifiably destroy all materials containing Confidential Information and shall not retain any copies thereof.</p>
+                    <p><strong class="text-slate-700">2.8 Duration of Confidentiality.</strong> The obligations of this clause shall survive the expiry or termination of this Agreement and shall remain in effect for a period of [<em>three (3)</em>] years thereafter.</p>
+                </div>
+            </div>
+
+            <!-- Clause 3 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">3</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Business Development Engagement</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">3.1 Appointment.</strong> Party A hereby appoints Party B as a non-exclusive business development partner for the purpose of identifying and introducing prospective clients for the Jellin platform during the Term. This appointment does not grant Party B the right to enter into binding agreements on behalf of Party A.</p>
+                    <p><strong class="text-slate-700">3.2 Scope of Activities.</strong> Party B shall conduct Business Development Activities including but not limited to: identifying target businesses suited to the Jellin platform; initiating and managing introductory communications; presenting the Jellin value proposition to prospects; supporting qualification and initial negotiation; and facilitating the handover of prospects to Party A for contract execution.</p>
+                    <p><strong class="text-slate-700">3.3 Project-by-Project Basis.</strong> Each Project shall be defined and agreed upon in a separate Project Schedule signed by both Parties before commencement. No Project Schedule shall be binding until executed by authorised representatives of both Parties.</p>
+                    <p><strong class="text-slate-700">3.4 Reporting.</strong> Party B shall provide Party A with regular written progress updates — no less than [monthly] — detailing prospects approached, status of discussions, and any material developments per active Project.</p>
+                    <p><strong class="text-slate-700">3.5 Standards of Conduct.</strong> Party B shall conduct Business Development Activities in a professional manner, in compliance with all applicable laws, and in a way that upholds and enhances the reputation of the Jellin brand. Party B shall not make any representations about Jellin that are inaccurate, misleading, or inconsistent with materials approved by Party A.</p>
+                    <p><strong class="text-slate-700">3.6 Approval of Materials.</strong> Party B shall use only marketing and sales materials approved in advance by Party A. Party B shall seek written approval before distributing any new materials that reference the Jellin platform, brand, or Confidential Information.</p>
+                    <p><strong class="text-slate-700">3.7 No Solicitation of Existing Clients.</strong> Party B shall not approach or solicit any existing clients of Party A without prior written consent from Party A.</p>
+                </div>
+            </div>
+
+            <!-- Clause 4 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">4</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Remuneration</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">4.1 Per-Project Compensation.</strong> Party B shall be entitled to Remuneration for each Project successfully completed, as specified in the relevant Project Schedule. The Parties acknowledge and agree that Remuneration shall be determined on a per-project basis, reflecting the nature, scope, and commercial value of each Project.</p>
+                    <p><strong class="text-slate-700">4.2 Forms of Remuneration.</strong> Remuneration may take one or more of the following forms, as agreed in each Project Schedule:</p>
+                    <ul class="list-disc list-inside space-y-1 pl-4">
+                        <li>A fixed fee upon achievement of defined milestones or deliverables;</li>
+                        <li>A percentage-based commission on the first-year contract value of each Referred Client; or</li>
+                        <li>A combination of fixed fee and recurring commission.</li>
+                    </ul>
+                    <p><strong class="text-slate-700">4.3 Payment Terms.</strong> Unless otherwise specified in a Project Schedule, Remuneration shall be invoiced by Party B upon the agreed trigger event (e.g., contract signing by a Referred Client) and shall be payable by Party A within [thirty (30)] calendar days of receipt of a valid invoice.</p>
+                    <p><strong class="text-slate-700">4.4 Conditions for Remuneration.</strong> Remuneration shall be due only where: (a) the Referred Client was introduced exclusively by Party B; (b) the introduction is documented in writing prior to or at the time of first contact; (c) a binding paid agreement between Party A and the Referred Client has been fully executed; and (d) no breach of this Agreement by Party B has occurred in connection with the relevant Project.</p>
+                    <p><strong class="text-slate-700">4.5 Expenses.</strong> Unless expressly included in a Project Schedule, Party B shall be responsible for all of its own costs and expenses incurred in carrying out Business Development Activities. Party A shall not reimburse expenses without prior written approval.</p>
+                    <p><strong class="text-slate-700">4.6 Taxes.</strong> Each Party is responsible for its own tax obligations arising from this Agreement. Party B shall issue invoices in compliance with applicable tax regulations. No withholding shall apply unless required by law.</p>
+                    <p><strong class="text-slate-700">4.7 No Exclusivity or Guaranteed Volume.</strong> Nothing in this Agreement guarantees Party B a minimum volume of Projects, referrals, or Remuneration. Party A retains the right to engage other business development partners and to pursue its own direct sales activities.</p>
+                </div>
+            </div>
+
+            <!-- Clause 5 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">5</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Intellectual Property</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">5.1 Ownership.</strong> All intellectual property rights in the Jellin platform, its technology, brand, trademarks, trade names, logos, documentation, and any associated materials are and shall remain the exclusive property of Party A. Nothing in this Agreement transfers, assigns, or licences any intellectual property rights to Party B.</p>
+                    <p><strong class="text-slate-700">5.2 Limited Licence.</strong> Party A grants Party B a limited, non-exclusive, non-transferable, revocable licence to use the Jellin brand name, approved logos, and approved marketing materials solely for the purpose of performing Business Development Activities under this Agreement.</p>
+                    <p><strong class="text-slate-700">5.3 Brand Guidelines.</strong> Party B shall use the Jellin brand strictly in accordance with any brand guidelines provided by Party A and shall not alter, modify, or create derivative works from any Jellin brand assets without prior written consent.</p>
+                    <p><strong class="text-slate-700">5.4 Work Product.</strong> Any materials, reports, analyses, or other deliverables created by Party B specifically for the purposes of this Agreement and referencing the Jellin platform shall, upon creation, be the property of Party A unless otherwise agreed in writing in a Project Schedule.</p>
+                </div>
+            </div>
+
+            <!-- Clause 6 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">6</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Non-Solicitation &amp; Non-Competition</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">6.1 Non-Solicitation of Staff.</strong> During the Term and for a period of [twelve (12)] months following its expiry or termination, each Party agrees not to directly solicit, recruit, or attempt to employ any employee, officer, or contractor of the other Party who was involved in the performance of this Agreement.</p>
+                    <p><strong class="text-slate-700">6.2 Non-Competition.</strong> During the Term, Party B shall not, without Party A's prior written consent, develop, promote, distribute, or provide services in relation to any product or service that directly competes with the Jellin platform in the agreed territory.</p>
+                    <p><strong class="text-slate-700">6.3 Conflict of Interest.</strong> Party B shall promptly notify Party A in writing of any relationship, engagement, or circumstance that creates or may create a conflict of interest with Party B's obligations under this Agreement.</p>
+                </div>
+            </div>
+
+            <!-- Clause 7 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">7</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Data Protection</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">7.1 GDPR Compliance.</strong> Both Parties shall comply with all applicable data protection laws, including (where applicable) Regulation (EU) 2016/679 (GDPR), in connection with any personal data processed under or in connection with this Agreement.</p>
+                    <p><strong class="text-slate-700">7.2 No Sharing of Customer Data.</strong> Party B shall not receive, access, or process any personal data of Jellin's end-customers without a separate data processing agreement in place and Party A's explicit written authorisation.</p>
+                    <p><strong class="text-slate-700">7.3 Prospect Data.</strong> Personal data of business prospects handled by Party B during Business Development Activities is the responsibility of Party B, which shall ensure it has a valid legal basis for processing such data in accordance with applicable law.</p>
+                </div>
+            </div>
+
+            <!-- Clause 8 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">8</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Term &amp; Termination</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">8.1 Term.</strong> This Agreement shall commence on the Effective Date and shall continue for the Term unless terminated earlier in accordance with this clause.</p>
+                    <p><strong class="text-slate-700">8.2 Termination for Convenience.</strong> Either Party may terminate this Agreement by providing [thirty (30)] calendar days' written notice to the other Party. Any Projects in progress at the time of notice shall be completed or wound down in good faith unless otherwise agreed.</p>
+                    <p><strong class="text-slate-700">8.3 Termination for Cause.</strong> Either Party may terminate this Agreement with immediate effect by written notice if the other Party: (a) commits a material breach of this Agreement and fails to remedy it within [fifteen (15)] calendar days of written notice of such breach; (b) becomes insolvent, enters liquidation, or is subject to analogous proceedings; or (c) engages in fraud, wilful misconduct, or conduct materially damaging to the other Party's reputation.</p>
+                    <p><strong class="text-slate-700">8.4 Effect of Termination.</strong> Upon termination: (a) all licences granted under this Agreement shall immediately cease; (b) each Party shall comply with Clause 2.7 regarding the return or destruction of Confidential Information; (c) Party B shall be entitled to Remuneration only in respect of Projects for which the trigger event occurred before the effective date of termination; and (d) clauses that by their nature survive termination (including Clauses 2, 5, 6.1, 9, and 10) shall remain in full force.</p>
+                </div>
+            </div>
+
+            <!-- Clause 9 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">9</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Representations &amp; Warranties</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">9.1 Mutual Representations.</strong> Each Party represents and warrants that: (a) it is duly organised, validly existing, and in good standing under the laws of its jurisdiction; (b) it has full authority to enter into and perform this Agreement; (c) the execution and performance of this Agreement do not conflict with any obligation, agreement, or applicable law binding on it; and (d) the individual signing this Agreement is authorised to do so on behalf of the relevant Party.</p>
+                    <p><strong class="text-slate-700">9.2 Party B's Representations.</strong> Party B further represents and warrants that: (a) it possesses the expertise, relationships, and resources to perform Business Development Activities as contemplated by this Agreement; (b) it will perform all activities in compliance with applicable laws and regulations; and (c) it does not hold any existing obligations that would prevent it from fully performing its obligations hereunder.</p>
+                    <p><strong class="text-slate-700">9.3 No Warranty on Results.</strong> Nothing in this Agreement shall be construed as a warranty or guarantee by either Party that any particular commercial result, number of Referred Clients, or level of revenue will be achieved.</p>
+                </div>
+            </div>
+
+            <!-- Clause 10 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">10</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Liability &amp; Indemnification</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">10.1 Limitation of Liability.</strong> To the fullest extent permitted by law, neither Party shall be liable to the other for any indirect, consequential, incidental, special, or punitive damages arising out of or related to this Agreement, even if advised of the possibility of such damages.</p>
+                    <p><strong class="text-slate-700">10.2 Cap on Liability.</strong> Each Party's total aggregate liability to the other under or in connection with this Agreement shall not exceed the total Remuneration paid or payable under this Agreement in the twelve (12) months preceding the event giving rise to the claim.</p>
+                    <p><strong class="text-slate-700">10.3 Indemnification.</strong> Each Party shall indemnify, defend, and hold harmless the other Party from and against any third-party claims, losses, damages, costs, and expenses (including reasonable legal fees) arising out of: (a) a breach of this Agreement by the indemnifying Party; (b) the indemnifying Party's negligence or wilful misconduct; or (c) the indemnifying Party's violation of applicable law.</p>
+                    <p><strong class="text-slate-700">10.4 Breach of Confidentiality.</strong> The Parties acknowledge that a breach of Clause 2 may cause irreparable harm for which monetary damages would be an inadequate remedy, and that the non-breaching Party shall therefore be entitled to seek equitable relief, including injunction and specific performance, without the requirement to post a bond.</p>
+                </div>
+            </div>
+
+            <!-- Clause 11 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">11</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">Governing Law &amp; Dispute Resolution</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">11.1 Governing Law.</strong> This Agreement shall be governed by and construed in accordance with the laws of [________________], without regard to its conflict of law principles.</p>
+                    <p><strong class="text-slate-700">11.2 Amicable Resolution.</strong> The Parties shall first attempt to resolve any dispute arising out of or in connection with this Agreement through good-faith negotiation between senior representatives of each Party, within [thirty (30)] calendar days of written notice of the dispute.</p>
+                    <p><strong class="text-slate-700">11.3 Jurisdiction.</strong> If a dispute cannot be resolved amicably within the period specified in Clause 11.2, each Party irrevocably submits to the exclusive jurisdiction of the courts of [________________] for the resolution of any such dispute.</p>
+                </div>
+            </div>
+
+            <!-- Clause 12 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="clause-number">12</span>
+                    <h3 class="text-lg font-bold text-slate-800 pt-0.5">General Provisions</h3>
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3 pl-12">
+                    <p><strong class="text-slate-700">12.1 Entire Agreement.</strong> This Agreement, together with all executed Project Schedules, constitutes the entire agreement between the Parties with respect to its subject matter and supersedes all prior negotiations, representations, warranties, and agreements.</p>
+                    <p><strong class="text-slate-700">12.2 Amendments.</strong> No amendment to this Agreement shall be valid unless made in writing and signed by authorised representatives of both Parties.</p>
+                    <p><strong class="text-slate-700">12.3 Waiver.</strong> No failure or delay by either Party in exercising any right shall operate as a waiver of that right. No single or partial exercise of a right shall preclude any other exercise of that right.</p>
+                    <p><strong class="text-slate-700">12.4 Severability.</strong> If any provision of this Agreement is found to be invalid or unenforceable, it shall be modified to the minimum extent necessary to make it valid and enforceable, or severed if modification is not possible, without affecting the remaining provisions.</p>
+                    <p><strong class="text-slate-700">12.5 Relationship of the Parties.</strong> The Parties are independent contractors. Nothing in this Agreement creates a partnership, joint venture, agency, franchise, or employment relationship between the Parties. Party B has no authority to bind Party A to any obligation.</p>
+                    <p><strong class="text-slate-700">12.6 Notices.</strong> All notices under this Agreement shall be in writing and delivered by email (with read receipt or delivery confirmation), registered post, or courier to the addresses provided by each Party in Schedule 1 or as subsequently updated in writing.</p>
+                    <p><strong class="text-slate-700">12.7 Counterparts.</strong> This Agreement may be executed in counterparts, each of which shall be an original and which together shall constitute one and the same instrument. Electronic signatures shall be deemed valid.</p>
+                    <p><strong class="text-slate-700">12.8 Force Majeure.</strong> Neither Party shall be liable for any delay or failure to perform its obligations to the extent such delay or failure is caused by circumstances beyond its reasonable control, including natural disasters, acts of government, pandemics, or communications failures, provided the affected Party gives prompt written notice and uses reasonable efforts to mitigate the impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider mb-10">
+
+        <!-- PROJECT SCHEDULE TEMPLATE -->
+        <section class="mb-10 page-break">
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">Schedule 1 — Project Schedule Template</h2>
+            <p class="text-sm text-slate-500 mb-6">To be completed and signed separately for each individual Project under this Agreement.</p>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm text-sm text-slate-600 space-y-5">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Project Reference</p>
+                        <p class="border-b border-slate-300 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Project Commencement Date</p>
+                        <p class="border-b border-slate-300 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Project Description &amp; Scope</p>
+                    <div class="border border-slate-200 rounded-lg p-3 min-h-[4rem] bg-slate-50"></div>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Target Market / Territory</p>
+                    <p class="border-b border-slate-300 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Key Deliverables &amp; Milestones</p>
+                    <div class="border border-slate-200 rounded-lg p-3 min-h-[4rem] bg-slate-50"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Remuneration Structure</p>
+                        <div class="border border-slate-200 rounded-lg p-3 min-h-[3rem] bg-slate-50"></div>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Payment Trigger Event</p>
+                        <div class="border border-slate-200 rounded-lg p-3 min-h-[3rem] bg-slate-50"></div>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Additional Terms Specific to This Project</p>
+                    <div class="border border-slate-200 rounded-lg p-3 min-h-[3rem] bg-slate-50"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 pt-4 border-t border-slate-100">
+                    <div>
+                        <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-4">Party A Authorisation</p>
+                        <div class="signature-line"></div>
+                        <p class="text-xs text-slate-500 mt-2">Signature &amp; Date</p>
+                        <div class="signature-line mt-4"></div>
+                        <p class="text-xs text-slate-500 mt-2">Name &amp; Title (print)</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-pink-600 font-bold uppercase tracking-wider mb-4">Party B Authorisation</p>
+                        <div class="signature-line"></div>
+                        <p class="text-xs text-slate-500 mt-2">Signature &amp; Date</p>
+                        <div class="signature-line mt-4"></div>
+                        <p class="text-xs text-slate-500 mt-2">Name &amp; Title (print)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider mb-10">
+
+        <!-- SIGNATURES -->
+        <section class="mb-12 page-break">
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">Execution</h2>
+            <p class="text-sm text-slate-500 mb-8">By signing below, the authorised representatives of each Party confirm their understanding of and agreement to all terms of this Non-Disclosure &amp; Business Development Agreement.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Party A Signature -->
+                <div class="signature-box bg-purple-50 p-6 flex flex-col justify-between">
+                    <div>
+                        <p class="text-purple-700 font-bold uppercase text-xs tracking-wider mb-4">Party A — Disclosing Party &amp; Principal</p>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Company Name</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Signature</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[2.5rem]">&nbsp;</p>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Name (print)</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Title / Position</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Date</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-purple-200">
+                        <p class="text-xs text-slate-500">Official stamp (if applicable):</p>
+                        <div class="mt-2 border border-dashed border-slate-300 rounded-lg h-16 bg-white"></div>
+                    </div>
+                </div>
+
+                <!-- Party B Signature -->
+                <div class="signature-box bg-pink-50 p-6 flex flex-col justify-between">
+                    <div>
+                        <p class="text-pink-700 font-bold uppercase text-xs tracking-wider mb-4">Party B — Business Development Partner</p>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Company Name</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Signature</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[2.5rem]">&nbsp;</p>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Name (print)</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Title / Position</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Date</p>
+                            <p class="border-b border-slate-400 pb-1 min-h-[1.5rem]">&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-pink-200">
+                        <p class="text-xs text-slate-500">Official stamp (if applicable):</p>
+                        <div class="mt-2 border border-dashed border-slate-300 rounded-lg h-16 bg-white"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-xs text-slate-400 text-center mt-8">This document consists of twelve (12) clauses and one (1) schedule. Each Party acknowledges receiving a complete copy of this Agreement.</p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-6 text-center">
+        <p class="text-sm">Jellin &copy; <span id="yr"></span> &middot; Confidential &amp; Proprietary &middot; <a href="https://jellinapp.com/" class="hover:text-white transition-colors">jellinapp.com</a></p>
+        <p class="text-xs mt-2 text-slate-500">This document is provided for informational and contractual purposes only and does not constitute legal advice. Both Parties are encouraged to seek independent legal counsel before signing.</p>
+    </footer>
+
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jellin — Business Overview</title>
+    <link rel="icon" type="image/x-icon" href="assets/logos/icon/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logos/icon/mobile/jellin-j-gradient.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .jell-gradient { background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%); }
+        .jell-gradient-alt { background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); }
+        .jell-gradient-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .stat-number { background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Table of Contents */
+        .toc a { transition: color 0.2s; }
+        .toc a:hover { color: #a855f7; }
+
+        /* Section divider */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%);
+            border: none;
+            border-radius: 2px;
+        }
+
+        /* Tables */
+        .doc-table { width: 100%; border-collapse: collapse; }
+        .doc-table th { background: #f1f5f9; font-weight: 600; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid #e2e8f0; font-size: 0.875rem; }
+        .doc-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.875rem; vertical-align: top; }
+        .doc-table tr:last-child td { border-bottom: none; }
+        .doc-table tbody tr:hover { background: #f8fafc; }
+
+        /* Financial tables */
+        .fin-table th { background: #1e1b4b; color: white; }
+        .fin-table td { font-variant-numeric: tabular-nums; }
+        .fin-table .total-row td { font-weight: 700; border-top: 2px solid #6366f1; }
+        .fin-table .highlight-row td { background: #eef2ff; font-weight: 600; }
+
+        /* Pre/Code blocks for dashboards */
+        .dashboard-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Persona card */
+        .persona-card { transition: transform 0.2s; }
+        .persona-card:hover { transform: translateY(-2px); }
+
+        /* Chart containers */
+        .chart-container { position: relative; width: 100%; max-width: 100%; }
+        .chart-container canvas { max-height: 360px; }
+
+        /* Scroll-to-top button */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #scrollTopBtn:hover {
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* ─── Print styles ─── */
+        @media print {
+            /* Global reset */
+            *, *::before, *::after { box-shadow: none !important; text-shadow: none !important; }
+            body { font-size: 10.5pt; color: #1e293b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+            /* Page geometry */
+            @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+            @page :first { margin-top: 0; }
+
+            /* Hide interactive / screen-only elements */
+            #scrollTopBtn, .no-print { display: none !important; }
+
+            /* Page breaks */
+            .page-break { page-break-before: always; break-before: page; }
+            h2, h3 { page-break-after: avoid; break-after: avoid; }
+            table, .chart-container, .dashboard-block, .persona-card, img { page-break-inside: avoid; break-inside: avoid; }
+
+            /* Header — compact, keep gradient */
+            header { padding: 2rem 1.5rem !important; }
+            header p.text-2xl, header p.text-3xl { font-size: 16pt !important; }
+            header p.text-base, header p.text-lg { font-size: 10pt !important; }
+            header svg { width: 180px !important; }
+
+            /* Main content spacing */
+            section { padding: 1rem 0 !important; }
+            .max-w-4xl, .max-w-6xl { max-width: 100% !important; }
+            nav.toc { padding: 1rem 0 !important; }
+
+            /* Section dividers */
+            .section-divider { margin: 0.5rem auto !important; }
+
+            /* Tables */
+            .doc-table, .fin-table { font-size: 8.5pt; }
+            .doc-table th, .fin-table th { padding: 0.4rem 0.6rem; }
+            .doc-table td, .fin-table td { padding: 0.35rem 0.6rem; }
+            .fin-table th { background: #1e1b4b !important; color: white !important; }
+            .highlight-row td { background: #eef2ff !important; }
+
+            /* Dashboard blocks */
+            .dashboard-block { font-size: 7pt; line-height: 1.5; padding: 1rem; background: #0f172a !important; color: #e2e8f0 !important; }
+            .dashboard-block pre { font-size: 7pt; }
+
+            /* Charts */
+            .chart-container { border: 1px solid #e2e8f0; padding: 0.75rem; }
+            .chart-container canvas { max-height: 280px !important; }
+
+            /* Persona cards and coloured boxes */
+            .persona-card { box-shadow: none; border: 1px solid #e2e8f0; }
+            .bg-purple-50, .bg-pink-50, .bg-indigo-50 { border: 1px solid #e2e8f0; }
+
+            /* Grids — keep 2-col layout on print */
+            .grid.md\:grid-cols-2 { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .grid.md\:grid-cols-3 { grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+
+            /* Multi-Channel Delivery section */
+            .bg-gradient-to-br.from-slate-900 { background: #1e1b4b !important; padding: 2rem 1.5rem !important; }
+            .bg-gradient-to-br.from-slate-900 img { width: 140px !important; border-radius: 12px; }
+
+            /* Footer */
+            footer { padding: 0.5rem 0 !important; font-size: 8pt; }
+
+            /* TOC links — show as plain text */
+            .toc a { color: #334155 !important; text-decoration: none; }
+            .toc a::after { content: none !important; }
+
+            /* Links in body */
+            a[href] { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- HEADER -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <header class="jell-gradient text-white py-16 px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white opacity-10"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="mb-6 flex justify-center items-center">
+                <a href="https://jellinapp.com/" class="inline-block" title="jellinapp.com">
+                    <svg viewBox="0 0 200 80" class="w-72 h-auto drop-shadow-2xl" style="display: block; margin: 0 auto; padding: 8px 0;">
+                        <g transform="translate(22, 0)">
+                            <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M62 45 Q62 35 72 35 Q82 35 82 45 L82 47 L62 47 Q62 57 72 57 Q77 57 82 54" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M62 45 Q62 35 72 35 Q82 35 82 45 Z" fill="white" opacity="0.3"/>
+                            <path d="M92 25 L92 57" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M104 25 L104 57" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M116 37 L116 57" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="116" cy="30" r="3" fill="white"/>
+                            <path d="M128 57 L128 45 Q128 37 136 37 Q144 37 144 45 L144 57" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-2xl md:text-3xl font-light mb-4 opacity-95">Business Overview</p>
+            <p class="text-base md:text-lg opacity-80">Platform Introduction &middot; User Personas &middot; Technical Modules &middot; Financial Projections</p>
+            <p class="text-sm opacity-70 mt-4"><a href="https://jellinapp.com/" class="underline hover:opacity-100 transition-opacity">jellinapp.com</a></p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TABLE OF CONTENTS -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <nav class="max-w-4xl mx-auto py-12 px-6 toc">
+        <h2 class="text-2xl font-bold mb-6 text-slate-800">Contents</h2>
+        <div class="grid md:grid-cols-2 gap-x-12 gap-y-1">
+            <div>
+                <p class="font-bold text-purple-700 uppercase text-xs tracking-wider mb-3">Part I — Introduction</p>
+                <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
+                    <li><a href="#intro-what" class="hover:text-purple-600">What Jellin Does</a></li>
+                    <li><a href="#intro-problem" class="hover:text-purple-600">The Problem Jellin Solves</a></li>
+                    <li><a href="#intro-strong" class="hover:text-purple-600">Five Strong Points</a></li>
+                    <li><a href="#intro-who" class="hover:text-purple-600">Who Uses Jellin</a></li>
+                    <li><a href="#intro-how" class="hover:text-purple-600">How It Works — In 30 Seconds</a></li>
+                    <li><a href="#intro-glance" class="hover:text-purple-600">Platform at a Glance</a></li>
+                    <li><a href="#intro-different" class="hover:text-purple-600">Why Jellin Is Different</a></li>
+                </ul>
+                <p class="font-bold text-purple-700 uppercase text-xs tracking-wider mb-3">Part II — User Personas</p>
+                <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
+                    <li><a href="#personas-benefits" class="hover:text-purple-600">How Jellin Benefits Everyday Life</a></li>
+                    <li><a href="#personas-customers" class="hover:text-purple-600">Customer Personas</a></li>
+                    <li><a href="#personas-business" class="hover:text-purple-600">Business Personas</a></li>
+                    <li><a href="#personas-frontline" class="hover:text-purple-600">Frontline Staff Personas</a></li>
+                    <li><a href="#personas-matrix" class="hover:text-purple-600">Persona–Scenario Matrix</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-bold text-purple-700 uppercase text-xs tracking-wider mb-3">Part III — Technical Modules</p>
+                <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
+                    <li><a href="#tech-loyalty" class="hover:text-purple-600">Loyalty Programs</a></li>
+                    <li><a href="#tech-coupons" class="hover:text-purple-600">Coupons</a></li>
+                    <li><a href="#tech-checkin" class="hover:text-purple-600">Check-In Methods</a></li>
+                    <li><a href="#tech-roles" class="hover:text-purple-600">User Roles &amp; Permissions</a></li>
+                    <li><a href="#tech-groups" class="hover:text-purple-600">Groups</a></li>
+                    <li><a href="#tech-cross" class="hover:text-purple-600">Cross-Business Collaboration</a></li>
+                    <li><a href="#tech-delivery" class="hover:text-purple-600">Coupon Delivery</a></li>
+                    <li><a href="#tech-analytics" class="hover:text-purple-600">Analytics</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="section-divider max-w-4xl mx-auto">
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!--  PART I — INTRODUCTION                                     -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-4xl mx-auto py-16 px-6">
+        <span class="text-purple-600 font-bold uppercase text-xs tracking-wider">Part I</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mt-2 mb-6">Introduction</h1>
+        <p class="text-lg text-slate-600 leading-relaxed mb-12">
+            Jellin is a loyalty and rewards platform that connects businesses with their customers through the simplest possible interaction: a phone number, an email, or a QR scan. No app download required, no plastic cards, no lengthy registration — just instant, tangible rewards that make everyday transactions more meaningful.
+        </p>
+
+        <!-- What Jellin Does -->
+        <div id="intro-what" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">What Jellin Does</h2>
+            <p class="text-slate-600 leading-relaxed">
+                Jellin gives any business — from a single café to a hotel network to an entire shopping mall — the ability to run professional loyalty programs, instant promotions, and cross-business reward ecosystems. Customers participate by sharing only a phone number or email. Rewards are delivered via SMS, email, or the optional Jellin app.
+            </p>
+            <p class="text-slate-600 leading-relaxed mt-3">For customers, loyalty becomes effortless. For businesses, repeat visits become measurable.</p>
+        </div>
+
+        <!-- The Problem -->
+        <div id="intro-problem" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">The Problem Jellin Solves</h2>
+            <p class="text-slate-600 leading-relaxed">
+                Most loyalty programs fail because they demand too much from customers and deliver too little in return. They require app downloads, lengthy forms, plastic cards, or passwords. Customers lose interest before ever reaching a reward. Businesses invest in programs they can't measure.
+            </p>
+            <p class="text-slate-600 leading-relaxed mt-3">
+                On the business side, independent shops lack the tools that large chains take for granted. Multi-location operators struggle with siloed customer data. Hotels and malls have no practical way to connect partner businesses into a shared loyalty experience.
+            </p>
+            <p class="text-slate-700 font-semibold mt-3">Jellin eliminates these barriers on both sides.</p>
+        </div>
+
+        <!-- Five Strong Points -->
+        <div id="intro-strong" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Five Strong Points</h2>
+
+            <!-- 1 -->
+            <div class="mb-8 bg-purple-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-purple-800 mb-2">1. Zero-Barrier Participation</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    A phone number or email is all it takes. There is no app to download, no account to create, no card to carry. A customer can be enrolled in seconds — at a café counter, a hotel reception desk, or a mall checkout.
+                </p>
+                <p class="text-slate-600 leading-relaxed mt-2">
+                    This matters because the biggest obstacle to loyalty program success is sign-up friction. Every additional step loses customers. Jellin reduces the enrollment to a single question: <em>"Your number?"</em>
+                </p>
+                <p class="text-slate-500 text-sm mt-3"><strong>Technical foundation:</strong> Jellin supports two check-in methods — QR scan (for app users) and phone number / email lookup (for everyone else). Both methods lead to the same reward experience.</p>
+            </div>
+
+            <!-- 2 -->
+            <div class="mb-8 bg-pink-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-pink-800 mb-2">2. Rewards That Feel Immediate</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jellin doesn't make people wait months to see value. A free coffee on the 5th visit. A match ticket with a jacket purchase. A discount the moment you check into a hotel. The payoff is fast and tangible.
+                </p>
+                <p class="text-slate-600 leading-relaxed mt-2">The platform supports three distinct coupon types:</p>
+                <ul class="mt-2 space-y-1 text-slate-600 text-sm list-disc list-inside">
+                    <li><strong>Counting coupons</strong> — earned after a set number of check-ins (e.g., "free coffee every 5 visits")</li>
+                    <li><strong>Instant coupons</strong> — assigned on the spot by staff. Perfect for welcome offers and partner promotions.</li>
+                    <li><strong>Sweepstake coupons</strong> — awarded randomly to enrolled customers within a date range.</li>
+                </ul>
+            </div>
+
+            <!-- 3 -->
+            <div class="mb-8 bg-amber-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-amber-800 mb-2">3. One Identity, Many Places</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jells earned at one business carry over to partner businesses. A single phone number connects a customer to an entire neighborhood, mall, or brand network — without juggling separate loyalty cards or apps.
+                </p>
+                <p class="text-slate-600 leading-relaxed mt-2">This cross-business capability works through a group-based architecture:</p>
+                <ul class="mt-2 space-y-1 text-slate-600 text-sm list-disc list-inside">
+                    <li><strong>Internal groups</strong> — for own locations, where employees can assign both Jells and instant coupons.</li>
+                    <li><strong>Partner groups</strong> — for satellite businesses, where invited external operators can assign instant coupons under the host's loyalty program.</li>
+                </ul>
+            </div>
+
+            <!-- 4 -->
+            <div class="mb-8 bg-teal-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-teal-800 mb-2">4. Privacy Without Compromise</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Customers share only a phone number or email. There is no personal data harvesting, no invasive tracking, no behavioral profiling beyond what the customer explicitly opts into. Jellin is GDPR-compliant by design.
+                </p>
+                <p class="text-slate-600 leading-relaxed mt-2">
+                    This is a competitive advantage, not just a compliance checkbox. In a market where consumers are increasingly wary of data collection, Jellin's minimal-data approach builds trust.
+                </p>
+            </div>
+
+            <!-- 5 -->
+            <div class="mb-8 bg-blue-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-blue-800 mb-2">5. Works on Every Channel</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Whether someone prefers SMS, email, a QR scan, or the full app experience, Jellin meets them where they are:
+                </p>
+                <ul class="mt-2 space-y-1 text-slate-600 text-sm list-disc list-inside">
+                    <li><strong>Email</strong> — with an embedded QR code that can be shown at any point of sale</li>
+                    <li><strong>SMS</strong> — with a QR link for instant access</li>
+                    <li><strong>App</strong> — for customers who prefer the in-app experience</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Who Uses Jellin -->
+        <div id="intro-who" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Who Uses Jellin</h2>
+
+            <h3 class="text-lg font-semibold text-slate-700 mb-3">Customers</h3>
+            <div class="overflow-x-auto mb-8">
+                <table class="doc-table">
+                    <thead>
+                        <tr><th>Persona</th><th>Context</th><th>How Jellin Helps</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="font-semibold">The Daily Regular</td><td>Coffee shop, bakery, local store</td><td>Automatic rewards for repeat visits — no cards, no apps, just a phone number</td></tr>
+                        <tr><td class="font-semibold">The Fitness Enthusiast</td><td>Multi-location gym chain</td><td>Jells accumulate across all locations via QR check-in; unlock free sessions and merchandise</td></tr>
+                        <tr><td class="font-semibold">The Hotel Traveler</td><td>Hotel in an unfamiliar city</td><td>Welcome SMS with instant discounts at the hotel and partner businesses nearby</td></tr>
+                        <tr><td class="font-semibold">The Sports Fan</td><td>Team merchandise purchase</td><td>Buy a jacket, receive a free match ticket via email with QR entry</td></tr>
+                        <tr><td class="font-semibold">The Mall Explorer</td><td>Shopping mall</td><td>Earn Jells at any store; redeem a mall-wide gift card after reaching the threshold</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-lg font-semibold text-slate-700 mb-3">Businesses</h3>
+            <div class="overflow-x-auto">
+                <table class="doc-table">
+                    <thead>
+                        <tr><th>Persona</th><th>Context</th><th>How Jellin Helps</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="font-semibold">The Independent Shop Owner</td><td>Single-location café, boutique</td><td>Set up campaigns in minutes; see real-time analytics on what drives repeat business</td></tr>
+                        <tr><td class="font-semibold">The Multi-Location Operator</td><td>Gym chain, restaurant group</td><td>Unified dashboard across all locations; cross-location loyalty, employee tracking</td></tr>
+                        <tr><td class="font-semibold">The Ecosystem Builder</td><td>Hotel, mall, business district</td><td>White-label loyalty umbrella connecting partner businesses; shared foot traffic</td></tr>
+                        <tr><td class="font-semibold">The Marketing Professional</td><td>Agency managing client campaigns</td><td>One platform for loyalty, coupons, and engagement; provable ROI</td></tr>
+                        <tr><td class="font-semibold">The Sports / Entertainment Org</td><td>Team, venue, event promoter</td><td>Connect merchandise sales to experiences; turn casual buyers into devoted fans</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div id="intro-how" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">How It Works — In 30 Seconds</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="font-bold text-purple-700 mb-3">For the Customer</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-600 text-sm">
+                        <li>Visit a participating business</li>
+                        <li>Share your phone number or scan a QR code</li>
+                        <li>Earn Jells or receive an instant coupon</li>
+                        <li>Redeem rewards at the same business or any partner in the network</li>
+                    </ol>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="font-bold text-purple-700 mb-3">For the Business</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-600 text-sm">
+                        <li>Create a Jellin account and set up loyalty programs</li>
+                        <li>Define coupon rules (counting thresholds, instant offers, sweepstakes)</li>
+                        <li>Organize locations and partners into groups</li>
+                        <li>Staff check in customers and assign rewards</li>
+                        <li>Monitor everything through real-time analytics</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Platform at a Glance -->
+        <div id="intro-glance" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">Platform at a Glance</h2>
+            <div class="overflow-x-auto">
+                <table class="doc-table">
+                    <thead><tr><th class="w-1/4">Capability</th><th>Detail</th></tr></thead>
+                    <tbody>
+                        <tr><td class="font-semibold">Coupon types</td><td>Counting (earn after X visits), Instant (on-the-spot), Sweepstake (random within date range)</td></tr>
+                        <tr><td class="font-semibold">Check-in methods</td><td>QR scan (app) or phone number / email (no app)</td></tr>
+                        <tr><td class="font-semibold">User roles</td><td>Owner (full control), Manager (operations + analytics), Employee (check-in + rewards only)</td></tr>
+                        <tr><td class="font-semibold">Groups</td><td>Organize by location, partner network, or campaign — unlimited groups on Enterprise</td></tr>
+                        <tr><td class="font-semibold">Cross-business</td><td>Invite partner businesses as operators; customers earn and redeem across the network</td></tr>
+                        <tr><td class="font-semibold">Delivery</td><td>Email (QR), SMS (QR link), App (in-app QR)</td></tr>
+                        <tr><td class="font-semibold">Analytics</td><td>By program, group, location, employee, coupon type, customer, time period</td></tr>
+                        <tr><td class="font-semibold">Privacy</td><td>Phone number or email only — GDPR-compliant, no invasive tracking</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Why Jellin Is Different -->
+        <div id="intro-different" class="mb-4">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">Why Jellin Is Different</h2>
+            <p class="text-slate-600 leading-relaxed">
+                Traditional loyalty platforms force a choice: simple but limited, or powerful but complex. Jellin offers both simplicity and depth:
+            </p>
+            <ul class="mt-3 space-y-2 text-slate-600 list-disc list-inside">
+                <li>A café owner can set up a "free coffee every 5 visits" campaign in minutes — and that's all they need.</li>
+                <li>A hotel chain can build a cross-business ecosystem with partner cafés, boutiques, and tour operators — all managed from one dashboard.</li>
+                <li>Both use the same platform. The complexity is there when needed, invisible when it's not.</li>
+            </ul>
+            <p class="text-slate-600 leading-relaxed mt-3">
+                The combination of <strong>zero-friction participation</strong>, <strong>cross-business collaboration</strong>, and <strong>multi-channel delivery</strong> means Jellin works for the widest possible range of businesses and customers — without requiring either side to change how they already operate.
+            </p>
+        </div>
+    </section>
+
+    <hr class="section-divider max-w-4xl mx-auto">
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!--  PART II — PERSONAS                                        -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-4xl mx-auto py-16 px-6 page-break">
+        <span class="text-purple-600 font-bold uppercase text-xs tracking-wider">Part II</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mt-2 mb-6">User Personas</h1>
+        <p class="text-lg text-slate-600 leading-relaxed mb-12">
+            The key personas that interact with the Jellin platform — from everyday customers to business operators and frontline staff.
+        </p>
+
+        <!-- How Jellin Benefits -->
+        <div id="personas-benefits" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">How Jellin Benefits Everyday Life</h2>
+
+            <!-- The Daily Regular -->
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Daily Regular — "Sarah"</h3>
+                <p class="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-3">Coffee Shop Scenario</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>Sarah visits her coffee shop every morning but has nothing to show for her loyalty. Maybe there's a paper punch card she keeps losing, or a clunky app she never downloaded.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>Sarah gives her phone number once. Every visit is automatically tracked. On her 5th visit she gets her coffee free. She never has to remember a card, open an app, or ask for a stamp.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-purple-700 mt-3"><strong>Everyday impact:</strong> Loyalty becomes effortless. Her morning habit is rewarded without changing anything about how she already lives.</p>
+            </div>
+
+            <!-- The Fitness Enthusiast -->
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Fitness Enthusiast</h3>
+                <p class="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-3">Gym Network Scenario</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A gym member who trains at multiple locations has no way to consolidate progress. Each branch feels like starting over.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>Every check-in at any location earns Jells. A quick QR scan at the front desk and the points stack up. At 10 Jells, a free personal training session unlocks.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-purple-700 mt-3"><strong>Everyday impact:</strong> Consistency across the network is rewarded, making it easier to stick to fitness goals.</p>
+            </div>
+
+            <!-- The Hotel Traveler -->
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Hotel Traveler</h3>
+                <p class="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-3">Hotel / Hospitality Ecosystem</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A traveler checks into a hotel in an unfamiliar city. They don't know where to eat or what to explore. Paper flyers end up in the bin.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>The concierge Jells their phone number at check-in. Instantly, the guest gets a welcome SMS with 5 Jells: 20% off breakfast, a free coffee, and partner discounts nearby.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-purple-700 mt-3"><strong>Everyday impact:</strong> Travel feels more connected and rewarding. The guest discovers genuinely good local spots — all because one phone number unlocked an entire ecosystem.</p>
+            </div>
+
+            <!-- The Sports Fan -->
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Sports Fan</h3>
+                <p class="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-3">Sports Team / Merchandise</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A fan buys a team jacket online. The purchase and the match-day experience exist in separate worlds.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>The fan enters their email at checkout. Instantly, they receive a free ticket for Sunday's match — delivered as a QR code via email.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-purple-700 mt-3"><strong>Everyday impact:</strong> Merchandise purchases are no longer just transactions — they're keys to experiences.</p>
+            </div>
+
+            <!-- The Mall Explorer -->
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Mall Explorer</h3>
+                <p class="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-3">Shopping Mall</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A casual shopper visits a mall. Each store has its own loyalty program (or none at all). Spending is scattered and unrewarded.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>The cashier asks "Your number?" — and with that, the shopper earns Jells at the clothing store, bookstore, food court, and electronics shop. At 20 Jells: a $20 mall gift card.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-purple-700 mt-3"><strong>Everyday impact:</strong> Shopping becomes an interconnected experience. Exploring new stores feels rewarding rather than aimless.</p>
+            </div>
+
+            <!-- Business Personas Stories -->
+
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Independent Shop Owner</h3>
+                <p class="text-xs text-pink-600 font-semibold uppercase tracking-wider mb-3">Business Operator</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A cafe owner knows regulars by face but has no system to reward them. Marketing means an Instagram post and hoping for the best.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>In minutes, the owner sets up a "free coffee every 5 visits" campaign. The dashboard shows who's coming back, how often, and which campaigns work.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-pink-700 mt-3"><strong>Everyday impact:</strong> Running a small business becomes less stressful — a clear, affordable tool to build repeat customers and prove what's working.</p>
+            </div>
+
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Multi-Location Operator</h3>
+                <p class="text-xs text-pink-600 font-semibold uppercase tracking-wider mb-3">Business Operator</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A gym chain manages each location's loyalty separately. Customer data is siloed. Employee performance is hard to track.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>One unified dashboard covers all locations. The operator sees segmented metrics by salepoint, monitors employees, and scales from 3 to 30 locations without rebuilding.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-pink-700 mt-3"><strong>Everyday impact:</strong> Growth stops feeling chaotic. Strategic decisions are backed by real data.</p>
+            </div>
+
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Ecosystem Builder</h3>
+                <p class="text-xs text-pink-600 font-semibold uppercase tracking-wider mb-3">Business Operator</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A hotel manager tries to create partnership value between tenant businesses. Coordination is manual — no shared system, no tracking.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>A white-label loyalty umbrella. A hotel guest earns Jells that work at the partner cafe and boutique. Partners get shared foot traffic without complex setup.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-pink-700 mt-3"><strong>Everyday impact:</strong> An entire business neighborhood comes alive as a connected experience.</p>
+            </div>
+
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Marketing Professional</h3>
+                <p class="text-xs text-pink-600 font-semibold uppercase tracking-wider mb-3">Agency / Consultant</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A marketing agency runs campaigns but struggles to prove direct impact on foot traffic, repeat visits, and conversions.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>Real-time analytics show exactly how many people redeemed, how often they return, and which campaigns perform best. Hard numbers, not just impressions.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-pink-700 mt-3"><strong>Everyday impact:</strong> Client relationships improve because results are provable. The agency becomes a growth partner.</p>
+            </div>
+
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Sports / Entertainment Organization</h3>
+                <p class="text-xs text-pink-600 font-semibold uppercase tracking-wider mb-3">Business Operator</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>A sports team sells merchandise and game tickets through separate channels with no connection between them.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>Merchandise purchases trigger experience rewards. Buy a jacket, get a free match ticket. Online + stadium entry connected through one system.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-pink-700 mt-3"><strong>Everyday impact:</strong> Fan engagement deepens. Revenue streams reinforce each other instead of competing.</p>
+            </div>
+
+            <div class="persona-card bg-white border border-slate-200 rounded-2xl p-6 mb-6 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">The Cashier / Receptionist</h3>
+                <p class="text-xs text-teal-600 font-semibold uppercase tracking-wider mb-3">Frontline Staff</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600">
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">Before Jellin:</p>
+                        <p>Frontline staff deal with clunky POS integrations, forgotten cards, or customer frustration. Enrolling a new customer takes too long.</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-700 mb-1">With Jellin:</p>
+                        <p>"Your number?" — type it in or scan a QR code. The system shows customer status, Jells count, and next reward. Enrollment takes seconds.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-teal-700 mt-3"><strong>Everyday impact:</strong> Work becomes smoother. Staff create positive interactions rather than being held back by cumbersome systems.</p>
+            </div>
+        </div>
+
+        <!-- Detailed Customer Personas -->
+        <div id="personas-customers" class="mb-12 page-break">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Customer Personas — Detailed Profiles</h2>
+
+            <div class="space-y-6">
+                <!-- 1. The Daily Regular -->
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">1. The Daily Regular — "Sarah"</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Habitual, routine-driven consumer</td></tr>
+                                <tr><td class="font-semibold">Scenario</td><td>Coffee Shop</td></tr>
+                                <tr><td class="font-semibold">Motivation</td><td>Earn rewards passively through repeat visits; feel valued as a regular</td></tr>
+                                <tr><td class="font-semibold">Engagement</td><td>Low-friction, phone-number-only. No app download. Accumulative rewards.</td></tr>
+                                <tr><td class="font-semibold">Key quote</td><td><em>"Cool, thanks!"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Fitness Enthusiast -->
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">2. The Fitness Enthusiast</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Active, multi-location member</td></tr>
+                                <tr><td class="font-semibold">Scenario</td><td>Gym Network</td></tr>
+                                <tr><td class="font-semibold">Motivation</td><td>Unlock tangible perks by staying active</td></tr>
+                                <tr><td class="font-semibold">Engagement</td><td>QR-based check-in. Gamified progression.</td></tr>
+                                <tr><td class="font-semibold">Key quote</td><td><em>"Nice! What can I get with those?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. Hotel Traveler -->
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">3. The Hotel Traveler</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Transient visitor exploring a new area</td></tr>
+                                <tr><td class="font-semibold">Scenario</td><td>Hotel / Hospitality Ecosystem</td></tr>
+                                <tr><td class="font-semibold">Motivation</td><td>Get immediate value from the hotel stay; discover local partners effortlessly</td></tr>
+                                <tr><td class="font-semibold">Engagement</td><td>SMS/QR-only, no app download. Instant rewards + cross-business discovery.</td></tr>
+                                <tr><td class="font-semibold">Key quote</td><td><em>"Wow, that's great! Can I use it at other places too?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Sports Fan -->
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">4. The Sports Fan</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Passionate team supporter and merchandise buyer</td></tr>
+                                <tr><td class="font-semibold">Scenario</td><td>Sports Team / Merchandise</td></tr>
+                                <tr><td class="font-semibold">Motivation</td><td>Instant, tangible rewards tied to team loyalty</td></tr>
+                                <tr><td class="font-semibold">Engagement</td><td>Email-based delivery with QR verification. Online + physical.</td></tr>
+                                <tr><td class="font-semibold">Key quote</td><td><em>"Yes, here it is"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5. Mall Explorer -->
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">5. The Mall Explorer</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Casual shopper open to discovery</td></tr>
+                                <tr><td class="font-semibold">Scenario</td><td>Shopping Mall</td></tr>
+                                <tr><td class="font-semibold">Motivation</td><td>Tangible mall-wide rewards that make exploring feel rewarding</td></tr>
+                                <tr><td class="font-semibold">Engagement</td><td>Phone-number-only sign-up. Cross-store earning.</td></tr>
+                                <tr><td class="font-semibold">Key quote</td><td><em>"Can I add to my mall rewards here too?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Personas -->
+        <div id="personas-business" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Business Personas — Detailed Profiles</h2>
+
+            <div class="space-y-6">
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">6. The Independent Shop Owner</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Small business owner managing a single location</td></tr>
+                                <tr><td class="font-semibold">Needs</td><td>Easy campaign setup, phone/email-only onboarding, real-time analytics</td></tr>
+                                <tr><td class="font-semibold">Jellin value</td><td>Dual coupon system, no-friction sign-up, campaign analytics, privacy by design</td></tr>
+                                <tr><td class="font-semibold">Key concern</td><td><em>"Will this be easy to set up and run with my small team?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">7. The Multi-Location Operator</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Chain or franchise manager overseeing multiple locations</td></tr>
+                                <tr><td class="font-semibold">Needs</td><td>Unified dashboard, flexible permissions, cross-location loyalty, employee tracking</td></tr>
+                                <tr><td class="font-semibold">Jellin value</td><td>Network-wide loyalty, operational insights by salepoint, employee monitoring</td></tr>
+                                <tr><td class="font-semibold">Key concern</td><td><em>"Can I manage all my locations from one place and still track each one?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">8. The Ecosystem Builder</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Partnership coordinator or property manager</td></tr>
+                                <tr><td class="font-semibold">Needs</td><td>White-label marketplace, partner integrations, shared Jells, privacy protection</td></tr>
+                                <tr><td class="font-semibold">Jellin value</td><td>Issue Jells at Company A, redeem at Company B. Branded ecosystems. Shared traffic.</td></tr>
+                                <tr><td class="font-semibold">Key concern</td><td><em>"Can my partners participate without complex technical setup?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">9. The Marketing Professional / Agency</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Marketing strategist managing campaigns for clients</td></tr>
+                                <tr><td class="font-semibold">Needs</td><td>Multi-channel delivery, campaign analytics, client-facing performance data</td></tr>
+                                <tr><td class="font-semibold">Jellin value</td><td>One platform for loyalty + acquisition + engagement. Real-time tracking of redemptions.</td></tr>
+                                <tr><td class="font-semibold">Key concern</td><td><em>"Can I prove campaign success to my clients with hard data?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">10. The Sports / Entertainment Organization</h3>
+                    <div class="overflow-x-auto">
+                        <table class="doc-table">
+                            <tbody>
+                                <tr><td class="font-semibold w-1/4">Archetype</td><td>Sports team, venue, or entertainment brand</td></tr>
+                                <tr><td class="font-semibold">Needs</td><td>Instant reward triggers on purchase, QR-based verification, online + physical</td></tr>
+                                <tr><td class="font-semibold">Jellin value</td><td>Automatic reward fulfillment, email/QR delivery, no app requirement</td></tr>
+                                <tr><td class="font-semibold">Key concern</td><td><em>"Can we reward merchandise buyers with event access seamlessly?"</em></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frontline Persona -->
+        <div id="personas-frontline" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Frontline Staff Persona</h2>
+            <div class="bg-slate-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-slate-800 mb-3">11. The Cashier / Receptionist</h3>
+                <div class="overflow-x-auto">
+                    <table class="doc-table">
+                        <tbody>
+                            <tr><td class="font-semibold w-1/4">Archetype</td><td>Point-of-sale employee executing loyalty transactions</td></tr>
+                            <tr><td class="font-semibold">Behavior</td><td>Asks "Your number?", enters or scans, communicates reward status. Can onboard new customers on the spot.</td></tr>
+                            <tr><td class="font-semibold">Needs</td><td>Fast lookup, clear reward status display, seconds-fast onboarding</td></tr>
+                            <tr><td class="font-semibold">Jellin value</td><td>Simple phone-number or QR-scan workflow. Instant feedback. No complex training.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Persona-Scenario Matrix -->
+        <div id="personas-matrix" class="mb-4">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">Persona–Scenario Matrix</h2>
+            <div class="overflow-x-auto">
+                <table class="doc-table text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Persona</th>
+                            <th>Coffee Shop</th>
+                            <th>Gym Network</th>
+                            <th>Hotel</th>
+                            <th>Sports Team</th>
+                            <th>Shopping Mall</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="text-left font-medium">The Daily Regular</td><td>●</td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-left font-medium">The Fitness Enthusiast</td><td></td><td>●</td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-left font-medium">The Hotel Traveler</td><td></td><td></td><td>●</td><td></td><td></td></tr>
+                        <tr><td class="text-left font-medium">The Sports Fan</td><td></td><td></td><td></td><td>●</td><td></td></tr>
+                        <tr><td class="text-left font-medium">The Mall Explorer</td><td></td><td></td><td></td><td></td><td>●</td></tr>
+                        <tr class="border-t-2 border-slate-300"><td class="text-left font-medium">Independent Shop Owner</td><td>●</td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-left font-medium">Multi-Location Operator</td><td></td><td>●</td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-left font-medium">Ecosystem Builder</td><td></td><td></td><td>●</td><td></td><td>●</td></tr>
+                        <tr><td class="text-left font-medium">Marketing Professional</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+                        <tr><td class="text-left font-medium">Sports / Entertainment Org</td><td></td><td></td><td></td><td>●</td><td></td></tr>
+                        <tr><td class="text-left font-medium">Cashier / Receptionist</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 bg-purple-50 rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-purple-800 mb-3">Key Themes Across All Personas</h3>
+                <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+                    <li><strong>Minimal friction</strong> — Phone number or email is the only data required</li>
+                    <li><strong>Multi-channel flexibility</strong> — App, QR, SMS, and email delivery</li>
+                    <li><strong>Cross-business value</strong> — Jells earned at one business can be redeemed at another</li>
+                    <li><strong>Scalability</strong> — Works for a single cafe and a multi-brand mall ecosystem</li>
+                    <li><strong>Privacy first</strong> — Only phone numbers or emails. GDPR compliant. Trust by design.</li>
+                    <li><strong>Instant gratification</strong> — Rewards are immediate and tangible</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider max-w-4xl mx-auto">
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!--  PART III — TECHNICAL MODULES                              -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-4xl mx-auto py-16 px-6 page-break">
+        <span class="text-purple-600 font-bold uppercase text-xs tracking-wider">Part III</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mt-2 mb-6">Technical Modules</h1>
+        <p class="text-lg text-slate-600 leading-relaxed mb-12">
+            Core technical modules of the Jellin platform — how loyalty programs, coupons, check-ins, user roles, groups, cross-business collaboration, delivery, and analytics work together.
+        </p>
+
+        <!-- 1. Loyalty Programs -->
+        <div id="tech-loyalty" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">1. Loyalty Programs</h2>
+            <p class="text-slate-600 leading-relaxed">
+                A business owns a single Jellin account and can create <strong>multiple loyalty programs</strong> under it. Each loyalty program defines the rules for how customers earn and redeem rewards. Loyalty programs are assigned to <strong>groups</strong>, which determine which users and points of sale can operate under them.
+            </p>
+        </div>
+
+        <!-- 2. Coupons -->
+        <div id="tech-coupons" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">2. Coupons</h2>
+            <p class="text-slate-600 mb-6">Each loyalty program supports <strong>three coupon types</strong>:</p>
+
+            <div class="space-y-6">
+                <div class="bg-purple-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-purple-800 mb-2">2.1 Counting Coupon</h3>
+                    <p class="text-slate-600 text-sm mb-3">Earned after <strong>X consecutive check-ins</strong>. The business defines the threshold (e.g., "free coffee after 5 check-ins").</p>
+                    <p class="text-slate-500 text-xs"><strong>How it works:</strong> Customer checks in → Employee assigns Jells → At threshold, coupon is automatically generated and awarded.</p>
+                </div>
+
+                <div class="bg-pink-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-pink-800 mb-2">2.2 Instant Coupon</h3>
+                    <p class="text-slate-600 text-sm mb-3">Assigned <strong>immediately</strong> by the employee — no accumulation required.</p>
+                    <p class="text-slate-500 text-xs"><strong>Use cases:</strong> Welcome offers (hotel check-in), cross-business partner promotions, one-time incentives, event-based rewards.</p>
+                </div>
+
+                <div class="bg-amber-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-amber-800 mb-2">2.3 Sweepstake Coupon</h3>
+                    <p class="text-slate-600 text-sm mb-3">Awarded <strong>randomly</strong> to enrolled customers within a configured date range — no employee action or check-in required.</p>
+                    <p class="text-slate-500 text-xs"><strong>Configuration:</strong> Loyalty program (base), date range (window), coupon quantity (how many distributed randomly).</p>
+                    <p class="text-slate-500 text-xs mt-1"><strong>Use cases:</strong> Slow-period engagement, surprise-and-delight, re-engaging dormant customers, lottery-style promotions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Check-In Methods -->
+        <div id="tech-checkin" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">3. Check-In Methods</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="font-bold text-slate-700 mb-2">App Check-In (QR Scan)</h3>
+                    <ol class="list-decimal list-inside text-sm text-slate-600 space-y-1">
+                        <li>Customer opens Jellin app, presents profile QR code</li>
+                        <li>Employee scans with Jellin Business App</li>
+                        <li>Check-in recorded instantly</li>
+                    </ol>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6">
+                    <h3 class="font-bold text-slate-700 mb-2">No-App Check-In (Phone / Email)</h3>
+                    <ol class="list-decimal list-inside text-sm text-slate-600 space-y-1">
+                        <li>Customer tells employee their mobile number or email</li>
+                        <li>Employee enters it in the Jellin Business App</li>
+                        <li>Check-in recorded</li>
+                    </ol>
+                </div>
+            </div>
+            <p class="text-sm text-slate-500 mt-4">After check-in (both methods), the employee can <strong>assign Jells</strong> toward a counting coupon or <strong>assign an instant coupon</strong> directly.</p>
+        </div>
+
+        <!-- 4. User Roles -->
+        <div id="tech-roles" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">4. User Roles &amp; Permissions</h2>
+            <div class="overflow-x-auto">
+                <table class="doc-table">
+                    <thead><tr><th>Role</th><th>Capabilities</th><th>Analytics</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Owner</td>
+                            <td>Full control of account. Create/manage programs, groups, users. Invite external users via email.</td>
+                            <td>Full access</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Manager</td>
+                            <td>Full approval credentials. Create/manage programs, groups, users. Can cancel appointed coupons.</td>
+                            <td>Full access</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Employee</td>
+                            <td>Check-ins and reward assignment (scoped: Jells only, instant coupons only, or both). No management access.</td>
+                            <td>None</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. Groups -->
+        <div id="tech-groups" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">5. Groups</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">
+                Groups are the organizational unit connecting <strong>loyalty programs</strong>, <strong>users</strong>, and <strong>points of sale</strong>. A business can create as many groups as needed.
+            </p>
+            <div class="overflow-x-auto">
+                <table class="doc-table">
+                    <thead><tr><th>Group Type</th><th>Purpose</th><th>Example</th></tr></thead>
+                    <tbody>
+                        <tr><td class="font-semibold">Own network</td><td>Organize internal points of sale</td><td>A gym chain creates a group per city</td></tr>
+                        <tr><td class="font-semibold">Satellite / partner</td><td>Enable cross-business collaboration</td><td>A hotel creates a group for partner businesses</td></tr>
+                        <tr><td class="font-semibold">Campaign-specific</td><td>Isolate specific promotions</td><td>A mall creates a seasonal holiday program group</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 6. Cross-Business -->
+        <div id="tech-cross" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">6. Cross-Business Collaboration</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">Jellin enables cross-business rewards through groups, loyalty programs, and external user invitations:</p>
+            <ol class="list-decimal list-inside text-sm text-slate-600 space-y-2 mb-4">
+                <li><strong>Business A</strong> (e.g., a hotel) creates a partner group</li>
+                <li>Business A activates loyalty programs within that group</li>
+                <li>Business A <strong>invites users from Business B</strong> (e.g., a café) via email</li>
+                <li>The invited user joins as an <strong>employee/operator</strong> within that group</li>
+                <li>The invited user can assign <strong>instant coupons</strong> to customers under Business A's program</li>
+            </ol>
+            <div class="bg-blue-50 rounded-2xl p-4 text-sm text-slate-600">
+                <strong>Typical setup:</strong> A business maintains <strong>Internal groups</strong> (own shops — full Jells + instant coupons) and <strong>Partner groups</strong> (satellite businesses — instant coupons only). A hotel guest earns a coupon at check-in and redeems it at a partner café — without the café needing its own Jellin account.
+            </div>
+        </div>
+
+        <!-- 7. Coupon Delivery -->
+        <div id="tech-delivery" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">7. Coupon Delivery</h2>
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-slate-50 rounded-2xl p-5 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-purple-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Email</h3>
+                    <p class="text-xs text-slate-500">QR code in email — no app needed</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-5 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-pink-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">App</h3>
+                    <p class="text-xs text-slate-500">In-app coupon with QR</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-5 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">SMS</h3>
+                    <p class="text-xs text-slate-500">QR link via text message</p>
+                </div>
+            </div>
+            <div class="bg-teal-50 rounded-2xl p-4 text-sm text-slate-600">
+                <strong>Cross-business redemption via email:</strong> Customer earns coupon at Business A → coupon emailed with QR → customer visits Business B → shows QR → employee scans → coupon redeemed. Works without either party needing anything beyond an email and a QR scanner.
+            </div>
+        </div>
+
+        <!-- 8. Analytics -->
+        <div id="tech-analytics" class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">8. Analytics</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">Full analytics accessible to Owners and Managers, segmented across multiple dimensions:</p>
+            <div class="overflow-x-auto mb-6">
+                <table class="doc-table">
+                    <thead><tr><th>Dimension</th><th>Examples</th></tr></thead>
+                    <tbody>
+                        <tr><td class="font-semibold">By loyalty program</td><td>Performance of each program individually</td></tr>
+                        <tr><td class="font-semibold">By group</td><td>Internal groups vs. partner groups</td></tr>
+                        <tr><td class="font-semibold">By point of sale</td><td>Traffic and redemption per location</td></tr>
+                        <tr><td class="font-semibold">By user / employee</td><td>Individual operator performance</td></tr>
+                        <tr><td class="font-semibold">By coupon type</td><td>Counting vs. instant coupon activity</td></tr>
+                        <tr><td class="font-semibold">By customer</td><td>Visit frequency, accumulation, redemption history</td></tr>
+                        <tr><td class="font-semibold">By time period</td><td>Daily, weekly, monthly trends</td></tr>
+                        <tr><td class="font-semibold">Cross-business</td><td>Partner network contribution and cross-redemption</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Module Relationship -->
+        <div class="mb-4">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">Module Relationship Overview</h2>
+            <div class="dashboard-block">
+<pre class="m-0 whitespace-pre">Jellin Business Account (1 per business)
+│
+├── Loyalty Programs (multiple)
+│   ├── Counting Coupons (earned after X Jells)
+│   ├── Instant Coupons (assigned immediately)
+│   └── Sweepstake Coupons (awarded randomly within a date range)
+│
+├── Groups (multiple)
+│   ├── Assigned Loyalty Programs
+│   ├── Assigned Users (internal employees)
+│   └── Invited Users (external operators from partner businesses)
+│
+├── Users
+│   ├── Owner — full control, analytics, invitations
+│   ├── Manager — programs, groups, users, cancellations, analytics
+│   └── Employee — check-ins and coupon assignment (scoped permissions)
+│
+├── Check-In
+│   ├── App (QR scan from customer's Jellin app)
+│   └── No-App (phone number or email lookup)
+│
+├── Delivery
+│   ├── Email (QR code in email — no app needed)
+│   ├── App (in-app coupon with QR)
+│   └── SMS (QR link via text)
+│
+└── Analytics
+    └── Full reporting by program, group, salepoint, user, coupon type, customer, time</pre>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider max-w-4xl mx-auto">
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!--  CLOSING — MULTI-CHANNEL DELIVERY                          -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-6 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-purple-300 font-bold uppercase text-sm tracking-wider">Multi-Channel Delivery</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">A mobile seamless experience</h2>
+                <p class="text-slate-300 text-lg">Mobile-first coupon delivery that works for everyone</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="flex flex-col items-center">
+                    <p class="mb-6 font-semibold text-purple-300 uppercase tracking-widest text-sm flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <path d="M12 18h.01"/>
+                        </svg>
+                        A complete mobile operations dashboard
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="shadow-2xl rounded-3xl overflow-hidden">
+                            <img src="assets/jellin-analytics-01.jpg" alt="Jellin Analytics Dashboard" class="w-64 h-auto">
+                        </div>
+                        <div class="shadow-2xl rounded-3xl overflow-hidden">
+                            <img src="assets/jellin-email-01.jpg" alt="Jellin Email Coupon Delivery" class="w-64 h-auto">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <p class="mb-6 font-semibold text-pink-300 uppercase tracking-widest text-sm flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        Seamless App Experience for all
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="shadow-2xl rounded-3xl overflow-hidden">
+                            <img src="assets/jellin_customer_shos_01.jpg" alt="Jellin Customer Shops View" class="w-64 h-auto">
+                        </div>
+                        <div class="shadow-2xl rounded-3xl overflow-hidden">
+                            <img src="assets/jellin-qr-coupon-01.jpg" alt="Jellin QR Coupon" class="w-64 h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" aria-label="Scroll to top" title="Back to top">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-sm">&copy; Jellin &mdash; Loyalty That Sticks</p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- CHARTS                                             -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <script>
+    // Scroll-to-top button
+    (function() {
+        var btn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
+    </script>
+
+</body>
+</html>
