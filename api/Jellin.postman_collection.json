@@ -1,0 +1,4855 @@
+{
+  "info": {
+    "_postman_id": "876e9ad1-a206-4068-92ee-15ae0d2d7aaa",
+    "name": "Jellin",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9890809"
+  },
+  "item": [
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Confirm email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.request.headers.clear();"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"activationKey\": \"{{activationKey}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/confirmEmail",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "confirmEmail"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete operator account",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{BaseUrl}}/account",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get connection info",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{BaseUrl}}/account/connectionInfo",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "connectionInfo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let responseData=pm.response.json();\r",
+                  "// let connectionParameters = responseData?.connectionParameters;\r",
+                  "\r",
+                  "if (responseData.token != null) {\r",
+                  "    pm.environment.set(\"JellinAuthorizationToken\", responseData.token);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.request.headers.clear();"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\"\r\n\r\n\t// \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\"\r\n\r\n    //\"tenantId\": 1,\r\n    //\"email\": \"{{email}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/login",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\"AuthorizationToken\", JSON.parse(pm.response.text()));\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"refreshToken\": \"3+no5kQCRJhbkC59P8WRPbAXU7YBnS5NES57zpNSQ+JgyFYwyUAfBLtO77qjqL/Je5ZOFTSQO2eb9VWZBPZZzw==\",\r\n\t\"fcmToken\": \"cedK_5oWT3eizBfH3_SGh7:APA91bGAKGqjVKil8CQGdcWA8YdV-vMiUtRbbcyQddIAfjk9Gsk0Gq037JaNBfurIxrpBPf5-VeHIsg5t8Os85-7N71IB39N0wu85V_fiKfrOuzUlV8mzOo\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/refreshtoken",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "refreshtoken"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.request.headers.clear();"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"TenantName\": \"{{tenantName}}\",\r\n    \"CountryCode\": \"GR\",\r\n    \"Phone\": \"{{phoneNumberRaw}}\",\r\n    \"Email\": \"{{email}}\",\r\n    \"Vat\": \"{{vat}}\",\r\n    \"Password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/register",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Request password reset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.request.headers.clear();"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/requestPasswordReset",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "requestPasswordReset"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Resend confirmation email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let responseData=pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"AuthorizationToken\", responseData.token);\r",
+                  "pm.environment.set(\"RefreshToken\", responseData.refreshToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/resendConfirmationEmail",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "resendConfirmationEmail"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.request.headers.clear();"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"otp\": {{otp}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/resetPassword",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "resetPassword"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{newEmail}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/updateEmail",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "updateEmail"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"currentPassword\": \"{{currentPassword}}\",\r\n    \"updatedPassword\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/updatePassword",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "updatePassword"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Broadcast messages",
+      "item": [
+        {
+          "name": "Get all templates",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/broadcastMessages/templates",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "broadcastMessages",
+                "templates"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all templates with details",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/broadcastMessages/templatesDetails?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "broadcastMessages",
+                "templatesDetails"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create template",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"WelcomeTemplate\",\r\n    \"title\": \"Καλωσόρισμα\",\r\n    \"body\": \"Καλωσήρθες στην εφαρμογή μας.\",\r\n    \"dispatchMode\": \"Immediate\",\r\n    \"scheduleType\": \"OneTime\",\r\n    \"scheduledForUtc\": null,\r\n    \"recurrenceRule\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/broadcastMessages/templates",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "broadcastMessages",
+                "templates"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete template",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "1",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/broadcastMessages/templates",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "broadcastMessages",
+                "templates"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Send",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Καλωσόρισμα\",\r\n    \"body\": \"Καλωσήρθες στην εφαρμογή μας.\",\r\n    \"communicationOptions\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/broadcastMessages",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "broadcastMessages"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update template",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"WelcomeTemplate\",\r\n    \"title\": \"Καλωσόρισμα\",\r\n    \"body\": \"Καλωσήρθες στην εφαρμογή μας.\",\r\n    \"dispatchMode\": \"Immediate\",\r\n    \"scheduleType\": \"OneTime\",\r\n    \"scheduledForUtc\": null,\r\n    \"recurrenceRule\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/broadcastMessages/templates",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "broadcastMessages",
+                "templates"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "Create group",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Coffee group\",\r\n    \"requiredVisits\": 10,\r\n    \"interactionsNotifier\": 5,\r\n    \"couponDurationValidity\": 2,\r\n    \"couponDurationValidityMetricUnit\": \"Years\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/groups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete group",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "69\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/groups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all groups",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/groups?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get group by Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/groups/2",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "groups",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update group",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Coffee group\",\r\n    \"requiredVisits\": 5,\r\n    \"couponDurationValidity\": 2,\r\n    \"couponDurationValidityMetricUnit\": \"Years\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/groups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Identity management",
+      "item": [
+        {
+          "name": "Associate operator to role",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"OperatorId\": 20026,\r\n    \"RoleId\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/roles/operator",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "roles",
+                "operator"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Associate operator to tenant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"FullName\": \"{{fullName}}\",\r\n    \"Email\": \"{{email}}\",\r\n    \"Role\": \"User\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/operators/associate",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "operators",
+                "associate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create role",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Name\": \"RoleName\",\r\n    \"Description\": \"RoleDescription\",\r\n    \"Index\": null,\r\n    \"PermissionNames\": [\r\n        \"PermissionA\",\r\n        \"PermissionB\"\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/roles",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "roles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Dissociate operator from role",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"OperatorId\": 69\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/roles/operator",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "roles",
+                "operator"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all permissions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/permissions",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "permissions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get  all operators",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/operators?pageIndex=1&pageSize=5&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "operators"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "5"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all roles",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/roles?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all roles for operator association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/rolesForOperatorAssociation",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "rolesForOperatorAssociation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get operator by id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/operator/2",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "operator",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get  operators without associated role",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/operators/withoutRole?pageIndex=1&pageSize=5&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "operators",
+                "withoutRole"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "5"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get role associated operators",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/roles/3/operators?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "roles",
+                "3",
+                "operators"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get role by Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/roles/22",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "roles",
+                "22"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove operator - tenant association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\"A5B1D87D-F95F-4F0C-22A2-08DDB2A18B17\"",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/operators/associate",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "operators",
+                "associate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update operator - tenant association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"OperatorId\": 2,\r\n    \"FullName\": \"{{fullName}}\",\r\n    \"Email\": \"{{email}}\",\r\n    \"RoleId\": null,\r\n\t//\"RoleId\": 2,\r\n    \"IsLocked\": false,\r\n    \"IndividualPermissionNames\": [\r\n    //     // \"AddVisitInteractions\",\r\n    //    //\"EditLoyaltyPrograms\",\r\n    //     //\"EditOperators\",\r\n    //     // \"EditTransactorsContactInfo\",\r\n    //     // \"StampsWithoutThresholdExceedControl\",\r\n    //     // \"ManageLoyaltyPrograms\",\r\n    //     //\"ManageLotteries\",\r\n    //     // \"ManageVisitsAny\",\r\n    //     // \"ManageVisitsOwn\",\r\n    //     // \"NotifiedOnCouponStampsThresholdExceed\",\r\n    //     \"OperateOnCoupons\",\r\n    //     // \"OperateOnWallets\",\r\n    \"PropagateLoyaltyPrograms\"\r\n    //     // \"UpdateCouponsExpiryDate\",\r\n    //     // \"ViewExpiredCoupons\",\r\n    //     \"ViewLoyaltyProgramAnalytics\",\r\n    //     \"ViewLoyaltyPrograms\",\r\n    //     \"ViewLotteries\",\r\n    //     \"ViewLotteriesAnalytics\",\r\n    //     \"ViewOperatorAnalytics\",\r\n    //     \"ViewOperators\",\r\n    //     // \"ViewVisitsAny\",\r\n    //     \"ViewVisitsOwn\",\r\n        // \"ManageBroadcastMessageTemplates\",\r\n        //\"EditBroadcastMessageTemplates\",\r\n        //\"ViewBroadcastMessageTemplates\"\r\n        //\"SendBroadcastMessages\"\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/identityManagement/operator/associate",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "identityManagement",
+                "operator",
+                "associate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inbox messages",
+      "item": [
+        {
+          "name": "Delete all messages",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/inboxMessages/all",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "inboxMessages",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete message",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "69\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/inboxMessages",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "inboxMessages"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all messages",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/inboxMessages?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "inboxMessages"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Mark message as read",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "69\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/inboxMessages",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "inboxMessages"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update message importance",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"BoxMessageId\": 69,\r\n    \"IsImportant\": true\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/inboxMessages/importance",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "inboxMessages",
+                "importance"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loyalty programs",
+      "item": [
+        {
+          "name": "Create loyalty program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Free coffee per 5\",\r\n    \"requiredStamps\": 5,\r\n    \"interactionsNotifier\": 10,\r\n    \"activeFrom\": null,\r\n    \"activeTo\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyPrograms",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyPrograms"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Notify contractors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"shortDescription\": \"Short shortDescription\",\r\n    \"communicationOptions\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyPrograms/notifyConctractors",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyPrograms",
+                "notifyConctractors"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete loyalty program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "69",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyPrograms",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyPrograms"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get loyalty program by Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyPrograms/F4387534-3A38-446A-346B-08DDCF92FA8D",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyPrograms",
+                "F4387534-3A38-446A-346B-08DDCF92FA8D"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all loyalty programs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyPrograms?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyPrograms"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update loyalty program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 5,\r\n    \"name\": \"Test program\",\r\n    \"activeFrom\": null,\r\n    \"activeTo\": \"2026-06-08T16:44:30.0000000\",\r\n    \"requiredStamps\": 5,\r\n    \"interactionsNotifier\": null,\r\n    \"couponDurationValidity\": null,\r\n    \"couponDurationValidityMetricUnit\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyPrograms",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyPrograms"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Loyalty Programs to Groups",
+      "item": [
+        {
+          "name": "Create association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"loyaltyProgramId\": 2,\r\n    \"groupId\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyProgramsToGroups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyProgramsToGroups"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "1016",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyProgramsToGroups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyProgramsToGroups"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get available loyalty programs for group",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyProgramsToGroups/availableLoyaltyProgramsForGroup?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyProgramsToGroups",
+                "availableLoyaltyProgramsForGroup"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get available groups for loyalty program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/loyaltyProgramsToGroups/availableGroupsForLoyaltyProgram?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "loyaltyProgramsToGroups",
+                "availableGroupsForLoyaltyProgram"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Operations",
+      "item": [
+        {
+          "name": "Get visits",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "transactorPhone",
+                "value": "{{phoneNumber}}",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "groupId",
+                "value": "2",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{BaseUrl}}/operations/visits?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operations",
+                "visits"
+              ],
+              "query": [
+                {
+                  "key": "dateTimeFrom",
+                  "value": "2025-09-30",
+                  "disabled": true
+                },
+                {
+                  "key": "dateTimeTo",
+                  "value": "2025-12-31",
+                  "disabled": true
+                },
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get visit details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "visitId",
+                "value": "180074",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BaseUrl}}/operations/visitDetails",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operations",
+                "visitDetails"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New visit",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"TransactorId\": null,\r\n    \"TransactorPhone\": \"{{phoneNumber}}\",\r\n    \"InteractionDateTime\": \"2025-09-29T00:00:00\",\r\n    \"GroupId\": 2,\r\n    \"GroupVersion\": 50059,\r\n    \"RedeemGroupCouponIds\": [\r\n\r\n    ],\r\n    \"LoyaltyProgramsInteractions\": [\r\n        {\r\n            \"LoyaltyProgramId\": 1,\r\n            \"LoyaltyProgramVersion\": 50062,\r\n            \"CouponId\": null,\r\n            \"NewStamps\": 2,\r\n            \"ValidUntil\": null,\r\n            \"RedeemRequested\": false\r\n        }\r\n    ]    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/operations/visit",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operations",
+                "visit"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Immediate redeem visit",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"ContractorId\": 1,\r\n    \"GroupUniqueId\": \"dc2dee30-243a-4ac8-b0e5-ea41a9c4a617\",\r\n    \"LoyaltyProgramUniqueId\": \"6c027040-3c21-466a-8fb5-0a521b8da228\",\r\n    \"CouponUniqueId\": \"28e54558-6ce7-44b0-b191-4a211470be57\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/operations/immediateRedeemVisit",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operations",
+                "immediateRedeemVisit"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel visit",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"VisitId\": 20027,\r\n    \"InteractionDateTime\": \"2025-11-22T12:15:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/operations/visit",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operations",
+                "visit"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Operators",
+      "item": [
+        {
+          "name": "Get operation data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "TenantId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{BaseUrl}}/operators/operationData",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operators",
+                "operationData"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Lotteries",
+      "item": [
+        {
+          "name": "Get summaries (Raw data)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/lotteries/summaries?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "lotteries",
+                "summaries"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                },
+                {
+                  "key": "dateTimeFrom",
+                  "value": "2026-01-15",
+                  "disabled": true
+                },
+                {
+                  "key": "dateTimeTo",
+                  "value": "2026-02-10",
+                  "disabled": true
+                },
+                {
+                  "key": "loyaltyProgramIds",
+                  "value": "4",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get summaries evaluation data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/lotteries/summariesEvaluation",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "lotteries",
+                "summariesEvaluation"
+              ],
+              "query": [
+                {
+                  "key": "dateTimeFrom",
+                  "value": "2026-01-15",
+                  "disabled": true
+                },
+                {
+                  "key": "dateTimeTo",
+                  "value": "2026-02-10",
+                  "disabled": true
+                },
+                {
+                  "key": "loyaltyProgramIds",
+                  "value": "4",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New lottery",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"InteractionDateTime\": \"2026-03-19\",\r\n    \"TotalEligibles\": 1,\r\n    \"EligiblesPercentage\": null,\r\n    \"LotteryLoyaltyProgramId\": 2,\r\n    \"LotteryCouponsValidUntil\": null,\r\n    \"LastVisitBefore\": null,\r\n    \"LastVisitAfter\": null,\r\n    \"LotteryFilterGroupIds\": [],\r\n    \"LotteryFilterLoyaltyProgramIds\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/lotteries",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "lotteries"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Modules",
+      "item": [
+        {
+          "name": "Associate on tenant",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"tenantId\": 1,\r\n\t\"subscriptions\": [\r\n\t\t{\r\n\t\t\t\"moduleId\": 1,\t\t\r\n\t\t\t\"expiresAt\": \"2026-12-31T23:59:59\",\r\n\t\t\t\"paymentProvider\": \"Stripe\",\r\n\t\t\t\"paymentSubscriptionId\": \"sub_1NQXYz2eZvKYlo2C8qJ9K3Lm\",\r\n\t\t\t\"isCancelled\": false,\r\n\t\t\t\"cancelledAt\": null\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"moduleId\": 2,\r\n\t\t\t\"expiresAt\": \"2026-12-31T23:59:59\",\r\n\t\t\t\"paymentProvider\": \"Stripe\",\r\n\t\t\t\"paymentSubscriptionId\": \"sub_1NQXYz2eZvKYlo2C8qJ9K3Ln\",\r\n\t\t\t\"isCancelled\": false,\r\n\t\t\t\"cancelledAt\": null\r\n\t\t}\r\n\t]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/modules/associate",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "modules",
+                "associate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create module",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Lotteries\",\r\n    \"description\": \"Execute lotteries and distribute coupons on random transactors\",\r\n    \"status\": \"active\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/modules/",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "modules",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete module",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "69\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/modules",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "modules"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all modules",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/modules",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "modules"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update module",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Lotteries\",\r\n    \"description\": \"Execute lotteries and distribute coupons on random transactors\",\r\n    \"status\": \"active\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/modules",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "modules"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Operators to Groups",
+      "item": [
+        {
+          "name": "Create association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"operatorId\": 1,\r\n    \"groupId\":2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/operatorsToGroups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operatorsToGroups"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete association",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "-1",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/operatorsToGroups",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operatorsToGroups"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get OperatorToGroup mode options",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/operatorsToGroups/12/modeOptions",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operatorsToGroups",
+                "12",
+                "modeOptions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get available groups for operator",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/operatorsToGroups/availableGroupsForOperator?pageIndex=1&pageSize=5&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operatorsToGroups",
+                "availableGroupsForOperator"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "5"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get available operators for group",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/operatorsToGroups/availableOperatorsForGroup?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operatorsToGroups",
+                "availableOperatorsForGroup"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "totalItemsCountRequired",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update association mode options",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"operatorToGroupId\": 1034,\r\n    \"modeOptions\": [\r\n        \"bonus\"\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/operatorsToGroups/modeOptions",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "operatorsToGroups",
+                "modeOptions"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payments - Subscriptions",
+      "item": [
+        {
+          "name": "Stripe",
+          "item": [
+            {
+              "name": "Original api calls",
+              "item": [
+                {
+                  "name": "Products",
+                  "item": [
+                    {
+                      "name": "Get Products",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{BaseUrl}}/stripe/products",
+                          "host": [
+                            "{{BaseUrl}}"
+                          ],
+                          "path": [
+                            "stripe",
+                            "products"
+                          ],
+                          "query": [
+                            {
+                              "key": "customer",
+                              "value": "cus_UWI4vl3bXXsopp",
+                              "disabled": true
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Sessions",
+                  "item": [
+                    {
+                      "name": "Retrieve checkout session",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{BaseUrl}}/checkout/sessions/sessionId",
+                          "host": [
+                            "{{BaseUrl}}"
+                          ],
+                          "path": [
+                            "checkout",
+                            "sessions",
+                            "sessionId"
+                          ],
+                          "query": [
+                            {
+                              "key": "customer",
+                              "value": "cus_UWI4vl3bXXsopp",
+                              "disabled": true
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Subscriptions",
+                  "item": [
+                    {
+                      "name": "Retrieve subscription",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{BaseUrl}}/subscriptions/sub_1TXFVCFkwcEZ2roVXjzbHZ3g",
+                          "host": [
+                            "{{BaseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            "sub_1TXFVCFkwcEZ2roVXjzbHZ3g"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Retrieve subscriptions",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{BaseUrl}}/subscriptions?customer=cus_UWQkrSMfYXxneh",
+                          "host": [
+                            "{{BaseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "key": "customer",
+                              "value": "cus_UWQkrSMfYXxneh"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                }
+              ],
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{SecretKey}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {},
+                    "exec": [
+                      ""
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {},
+                    "exec": [
+                      ""
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Cancel subscription",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"TenantId\": 1,\r\n\t\"SubscriptionExternalId\": \"sub_1TXNtMFkwcEZ2roVSMmTts3a\",\r\n\t//\"NewExternalPriceId\": \"price_1TTmbXFkwcEZ2roVFxyCsgGd\" //month\r\n\t\"NewExternalPriceId\": \"price_1TTmcYFkwcEZ2roVYhLSTIEE\" //year\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/stripe/subscriptions",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "stripe",
+                    "subscriptions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change plan",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"TenantId\": 1,\r\n\t\"SubscriptionExternalId\": \"sub_1TXNtMFkwcEZ2roVSMmTts3a\",\r\n\t\"NewExternalPriceId\": \"price_1TTmbXFkwcEZ2roVFxyCsgGd\" //month\r\n\t//\"NewExternalPriceId\": \"price_1TTmcYFkwcEZ2roVYhLSTIEE\" //year\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/stripe/subscriptions",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "stripe",
+                    "subscriptions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create checkout session",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"TenantId\": 1,\r\n\t\"ExternalPriceId\": \"price_1TTmcYFkwcEZ2roVYhLSTIEE\" //AppUsage\r\n\t//\"ExternalPriceId\": \"price_1TXc9HFkwcEZ2roVUQSEvics\" //Analytics\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/stripe/subscriptions",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "stripe",
+                    "subscriptions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Products",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"SubscriptionType\": \"appUsage\",\r\n\t\"BillingCycle\": \"monthly\", //annually\r\n\t\"ReferenceId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/stripe/products",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "stripe",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Wallet deposit",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"ContractorToTenantId\": 1,\r\n\t\"Amount\": 15\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/stripe/wallet/deposit",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "stripe",
+                    "wallet",
+                    "deposit"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Summaries",
+      "item": [
+        {
+          "name": "Get loyalty programs summaries",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/summaries/loyaltyPrograms",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "summaries",
+                "loyaltyPrograms"
+              ],
+              "query": [
+                {
+                  "key": "dateTimeFrom",
+                  "value": "2026-01-15",
+                  "disabled": true
+                },
+                {
+                  "key": "dateTimeTo",
+                  "value": "2026-02-10",
+                  "disabled": true
+                },
+                {
+                  "key": "groupIds",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "loyaltyProgramIds",
+                  "value": "4",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get operations summaries",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/summaries/operations",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "summaries",
+                "operations"
+              ],
+              "query": [
+                {
+                  "key": "dateTimeFrom",
+                  "value": "2026-02-02",
+                  "disabled": true
+                },
+                {
+                  "key": "dateTimeTo",
+                  "value": "2026-02-10",
+                  "disabled": true
+                },
+                {
+                  "key": "groupIds",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "loyaltyProgramIds",
+                  "value": "10",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tenants",
+      "item": [
+        {
+          "name": "Accepted publishers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/tenants/acceptedPublishers",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                "acceptedPublishers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Tenant",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"deleteOwnerEmail\" : true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/tenants",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Tenant",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Dimitris Armenakis\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/tenants",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "System Admin",
+      "item": [
+        {
+          "name": "Referrals",
+          "item": [
+            {
+              "name": "All referrals",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "totalItemsCountRequired",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create referral",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"fkon54807\",\r\n    \"firstName\": \"Fotis\",\r\n    \"lastName\": \"Kwnstantopoulos\",\r\n    \"phoneNumber\": \"+306972054807\",\r\n    \"email\": \"fconstantopoulos@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get referral by Id",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/1",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update referral",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 1,\r\n    \"code\": \"fkon654807\",\r\n    \"firstName\": \"Fotis\",\r\n    \"lastName\": \"Kwnstantopoulos\",\r\n    \"phoneNumber\": \"+306972054807\",\r\n    \"email\": \"fconstantopoulos@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Tenants",
+          "item": [
+            {
+              "name": "All tenants",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/tenants?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "tenants"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "totalItemsCountRequired",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tenant info",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/tenants/info",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    "info"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tenant subscriptions",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/tenants/1/subscriptions",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    "1",
+                    "subscriptions"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Customer external login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let responseData=pm.response.json();\r",
+                  "// let connectionParameters = responseData?.connectionParameters;\r",
+                  "\r",
+                  "if (responseData.token != null) {\r",
+                  "    pm.environment.set(\"JellinAuthorizationToken\", responseData.token);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.request.headers.clear();"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/account/externalLogin",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "account",
+                "externalLogin"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transactors",
+      "item": [
+        {
+          "name": "Get transactor operational coupons",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "transactorId",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "phoneNumber",
+                "value": "{{phoneNumber}}",
+                "type": "text"
+              },
+              {
+                "key": "email",
+                "value": "{{email}}",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/transactors/operationalCoupons",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "transactors",
+                "operationalCoupons"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get transactor contact info",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "transactorId",
+                "value": "9",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "phoneNumber",
+                "value": "+306945211101",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/transactors/contactInfo",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "transactors",
+                "contactInfo"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Check status",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BaseUrl}}/status",
+          "host": [
+            "{{BaseUrl}}"
+          ],
+          "path": [
+            "status"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{JellinAuthorizationToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "var Header = require('postman-collection').Header\r",
+          "\r",
+          "pm.request.headers.add(new Header(`Client-Iana-TimeZone: Europe/Bucharest`));\r",
+          "// pm.request.headers.add(new Header(`DatabaseIndex: ${pm.environment.get(\"DatabaseIndex\")}`));\r",
+          "// pm.request.headers.add(new Header(`SchemaIndex: ${pm.environment.get(\"SchemaIndex\")}`));\r",
+          "\r",
+          "//console.log('request headers', pm.request.headers);\r",
+          "\r",
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
