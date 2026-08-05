@@ -11,10 +11,12 @@ const App = {
     dashboard: { view: DashboardView, auth: true },
     subscription: { view: SubscriptionView, auth: true },
     profile: { view: ProfileView, auth: true },
+    'confirm-email': { view: ConfirmEmailView, auth: false },
     'referral-login': { view: ReferralLoginView, auth: false, type: 'referral' },
     'referral-register': { view: ReferralRegisterView, auth: false, type: 'referral' },
     'referral-forgot-password': { view: ReferralForgotPasswordView, auth: false, type: 'referral' },
     'referral-dashboard': { view: ReferralDashboardView, auth: true, type: 'referral' },
+    'referral-confirm-email': { view: ReferralConfirmEmailView, auth: false, type: 'referral' },
   },
 
   currentRoute: null,

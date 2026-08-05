@@ -65,6 +65,9 @@ const LoginView = {
             <p style="margin-top:0.75rem; color:#64748b;">
               Don't have an account? <a href="#register" class="link">Sign up</a>
             </p>
+            <p style="margin-top:0.5rem; color:#64748b;">
+              Need to confirm your email? <a href="#confirm-email" class="link">Enter activation key</a>
+            </p>
           </div>
         </div>
       </div>

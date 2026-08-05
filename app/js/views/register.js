@@ -210,10 +210,10 @@ const RegisterView = {
           referralCode: referralCode || null,
         });
 
-        Toast.success('Account created! Please check your email to confirm your account, then sign in.');
-        // Redirect to login after a short delay
+        Toast.success('Account created! Check your email for the activation key.');
+        // Redirect to confirm email page after a short delay
         setTimeout(() => {
-          window.location.hash = '#login';
+          window.location.hash = '#confirm-email';
           // Pre-fill the email
           sessionStorage.setItem('jellin_registeredEmail', email);
         }, 1500);

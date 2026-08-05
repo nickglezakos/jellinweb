@@ -378,6 +378,16 @@ const API = (() => {
     },
 
     /**
+     * Confirm referral email with activation key
+     */
+    confirmEmail(activationKey, email, password) {
+      return request('/referrals/account/confirmEmail', {
+        method: 'POST',
+        body: JSON.stringify({ activationKey, email, password }),
+      }, true);
+    },
+
+    /**
      * Login as referral
      */
     login(email, password) {

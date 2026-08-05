@@ -199,9 +199,9 @@ const ReferralRegisterView = {
           password,
         });
 
-        Toast.success('Referral account created! Please check your email to confirm your account, then sign in.');
+        Toast.success('Referral account created! Check your email for the activation key.');
         setTimeout(() => {
-          window.location.hash = '#referral-login';
+          window.location.hash = '#referral-confirm-email';
           sessionStorage.setItem('jellin_referral_registeredEmail', email);
         }, 1500);
       } catch (err) {

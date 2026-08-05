@@ -61,6 +61,9 @@ const ReferralLoginView = {
             <p style="margin-top:0.75rem; color:#64748b;">
               Don't have a referral account? <a href="#referral-register" class="link">Register</a>
             </p>
+            <p style="margin-top:0.5rem; color:#64748b;">
+              Need to confirm your email? <a href="#referral-confirm-email" class="link">Enter activation key</a>
+            </p>
             <p style="margin-top:0.75rem; color:#64748b;">
               <a href="#login" class="link">← Back to Business Login</a>
             </p>
