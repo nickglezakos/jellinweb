@@ -186,9 +186,9 @@ const LoginView = {
           multiTenantSection.appendChild(backBtn);
 
         } else {
-          // Unconfirmed credentials
-          errorEl.textContent = 'Your account is not yet confirmed. Please check your email for the activation link.';
-          errorEl.style.display = 'block';
+          // Unconfirmed credentials — redirect to email confirmation
+          sessionStorage.setItem('jellin_registeredEmail', email);
+          window.location.hash = '#confirm-email';
         }
       } catch (err) {
         errorEl.textContent = err.message || 'Login failed. Please check your credentials.';
