@@ -1,0 +1,143 @@
+/**
+ * Jellin Referral Forgot Password View
+ */
+const ReferralForgotPasswordView = {
+  async render() {
+    return `
+      <!-- Hero Banner with Gradient Background -->
+      <div class="jell-gradient text-white py-10 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white opacity-10"></div>
+        <div class="relative z-10">
+          <svg viewBox="0 0 200 80" style="width: 180px; height: auto; display: block; margin: 0 auto;">
+            <g transform="translate(22, 0)">
+              <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48"
+                    fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M62 45 Q62 35 72 35 Q82 35 82 45 L82 47 L62 47 Q62 57 72 57 Q77 57 82 54"
+                    fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M92 25 L92 57"
+                    fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M104 25 L104 57"
+                    fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M116 37 L116 57"
+                    fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="116" cy="30" r="3" fill="white"/>
+              <path d="M128 57 L128 45 Q128 37 136 37 Q144 37 144 45 L144 57"
+                    fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+          <h1 style="font-size:1.5rem; font-weight:800; margin-top:0.75rem;">Reset Referral Password</h1>
+          <p style="opacity:0.85; font-size:0.95rem;">We'll send you a reset code</p>
+        </div>
+      </div>
+
+      <div class="app-container" style="padding-top: 1.5rem;">
+        <div class="auth-card">
+          <div id="referral-forgot-error" class="error-message" style="display:none;"></div>
+          <div id="referral-forgot-success" class="success-message" style="display:none;"></div>
+
+          <!-- Step 1: Request OTP -->
+          <form id="referral-forgot-form">
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display:block; font-weight:600; margin-bottom:0.25rem; font-size:0.875rem; color:#475569;">Email</label>
+              <input type="email" id="referral-forgot-email" class="input-field" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;" id="referral-forgot-submit">Send Reset Code</button>
+          </form>
+
+          <!-- Step 2: Enter OTP (hidden initially) -->
+          <div id="referral-otp-section" style="display:none;">
+            <p class="text-muted" style="margin-bottom: 1rem; text-align: center;">Enter the 6-digit code sent to your email.</p>
+            <form id="referral-otp-form">
+              <div style="margin-bottom: 1.5rem;">
+                <label style="display:block; font-weight:600; margin-bottom:0.25rem; font-size:0.875rem; color:#475569;">Reset Code</label>
+                <input type="text" id="referral-otp-input" class="input-field" placeholder="000000" required inputmode="numeric" pattern="[0-9]*" maxlength="8">
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%;" id="referral-otp-submit">Reset Password</button>
+            </form>
+          </div>
+
+          <div style="text-align:center; margin-top:1.5rem;">
+            <p style="color:#64748b;">
+              <a href="#referral-login" class="link">← Back to Referral Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+
+  init() {
+    const form = document.getElementById('referral-forgot-form');
+    const otpSection = document.getElementById('referral-otp-section');
+    const otpForm = document.getElementById('referral-otp-form');
+    const errorEl = document.getElementById('referral-forgot-error');
+    const successEl = document.getElementById('referral-forgot-success');
+    const submitBtn = document.getElementById('referral-forgot-submit');
+    const otpSubmitBtn = document.getElementById('referral-otp-submit');
+
+    let resetEmail = '';
+
+    // Step 1: Request OTP
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+      successEl.style.display = 'none';
+
+      resetEmail = document.getElementById('referral-forgot-email').value.trim();
+      if (!resetEmail) {
+        errorEl.textContent = 'Please enter your email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+
+      try {
+        await API.Referral.requestPasswordReset(resetEmail);
+        successEl.textContent = 'Reset code sent! Check your email.';
+        successEl.style.display = 'block';
+        form.style.display = 'none';
+        otpSection.style.display = 'block';
+        document.getElementById('referral-otp-input').focus();
+      } catch (err) {
+        errorEl.textContent = err.message || 'Failed to send reset code. Please try again.';
+        errorEl.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Reset Code';
+      }
+    });
+
+    // Step 2: Submit OTP
+    otpForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+      successEl.style.display = 'none';
+
+      const otp = document.getElementById('referral-otp-input').value.trim();
+      if (!otp) {
+        errorEl.textContent = 'Please enter the reset code.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      otpSubmitBtn.disabled = true;
+      otpSubmitBtn.innerHTML = '<span class="spinner"></span> Resetting...';
+
+      try {
+        await API.Referral.resetPassword(resetEmail, otp);
+        Toast.success('Password reset successful! A new password has been sent to your email.');
+        setTimeout(() => {
+          window.location.hash = '#referral-login';
+        }, 1500);
+      } catch (err) {
+        errorEl.textContent = err.message || 'Failed to reset password. Please check your code and try again.';
+        errorEl.style.display = 'block';
+      } finally {
+        otpSubmitBtn.disabled = false;
+        otpSubmitBtn.innerHTML = 'Reset Password';
+      }
+    });
+  },
+};

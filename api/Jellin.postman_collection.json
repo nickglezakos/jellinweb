@@ -7,7 +7,7 @@
   },
   "item": [
     {
-      "name": "Account",
+      "name": "Business account",
       "item": [
         {
           "name": "Confirm email",
@@ -50,7 +50,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"activationKey\": \"{{activationKey}}\"\r\n}",
+              "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\",\r\n    \"password\": \"Production!23\",\r\n    \"activationKey\": \"8C65F66F-DC11-45D9-8562-1CF8D6D0D4A3\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -209,7 +209,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\"\r\n\r\n\t// \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\"\r\n\r\n    //\"tenantId\": 1,\r\n    //\"email\": \"{{email}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "raw": "{\r\n    // \"email\": \"admin@bootcorelabs.com\",\r\n    // \"password\": \"dang.11042025\"\r\n\r\n\t// \"email\": \"dang@bootcorelabs.com\",\r\n    // \"password\": \"Production!23\"\r\n\r\n    //\"tenantId\": 1,\r\n    //\"email\": \"dimitris@bootcore.io\",\r\n    \"email\": \"jdarmen@gmail.com\",\r\n    \"password\": \"Production!23\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -261,7 +261,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"refreshToken\": \"3+no5kQCRJhbkC59P8WRPbAXU7YBnS5NES57zpNSQ+JgyFYwyUAfBLtO77qjqL/Je5ZOFTSQO2eb9VWZBPZZzw==\",\r\n\t\"fcmToken\": \"cedK_5oWT3eizBfH3_SGh7:APA91bGAKGqjVKil8CQGdcWA8YdV-vMiUtRbbcyQddIAfjk9Gsk0Gq037JaNBfurIxrpBPf5-VeHIsg5t8Os85-7N71IB39N0wu85V_fiKfrOuzUlV8mzOo\"\r\n}",
+              "raw": "{\r\n    \"refreshToken\": \"DdWM9i3selj1hYk2hrs6RtqYH+/CZrDmblkkvX6walp+zy63qyK4sjcF+F08zthHWwO0ZfUgo5Y6yzIJTQzv0A==\",\r\n\t\"fcmToken\": \"dmEGVaS9TPGaTaCpMXxGVs:APA91bFNZkeGlCo51k3fM0K8RIVqvwpEABhKSNFAph0-5P2-sfs9kxD8--qVkU5MPP_k7ZCBPdjLrDKlKK41rPKzOC_Km2UMw6jSfrgWhJDRItSqo1TlsoM\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -301,7 +301,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"TenantName\": \"{{tenantName}}\",\r\n    \"CountryCode\": \"GR\",\r\n    \"Phone\": \"{{phoneNumberRaw}}\",\r\n    \"Email\": \"{{email}}\",\r\n    \"Vat\": \"{{vat}}\",\r\n    \"Password\": \"{{password}}\"\r\n}",
+              "raw": "{\r\n    \"TenantName\": \"Dimitris (Personal)\",\r\n    \"CountryCode\": \"GR\",\r\n    \"Phone\": \"6975468665\",\r\n    \"Email\": \"jdarmen@gmail.com\",\r\n    \"Vat\": \"123856324\",\r\n    \"Password\": \"Production!23\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -359,7 +359,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"{{email}}\"\r\n}",
+              "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -392,7 +392,8 @@
                   "pm.environment.set(\"RefreshToken\", responseData.refreshToken);"
                 ],
                 "type": "text/javascript",
-                "packages": {}
+                "packages": {},
+                "requests": {}
               }
             },
             {
@@ -402,7 +403,8 @@
                   ""
                 ],
                 "type": "text/javascript",
-                "packages": {}
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -421,7 +423,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "raw": "{\r\n    \"email\": \"jdarmen1@gmail.com\",\r\n    \"password\": \"Production!23\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -479,7 +481,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"otp\": {{otp}}\r\n}",
+              "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\",\r\n    \"otp\": 62407233\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -537,7 +539,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"{{newEmail}}\"\r\n}",
+              "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -595,7 +597,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"currentPassword\": \"{{currentPassword}}\",\r\n    \"updatedPassword\": \"{{password}}\"\r\n}",
+              "raw": "{\r\n    \"currentPassword\": \"172*uIB5Lx\",\r\n    \"updatedPassword\": \"Production!23\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -614,6 +616,573 @@
             }
           },
           "response": []
+        }
+      ]
+    },
+    {
+      "name": "Referrals",
+      "item": [
+        {
+          "name": "Account",
+          "item": [
+            {
+              "name": "Delete account",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.request.headers.clear();"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"Code\": \"da70\",\r\n    \"FirstName\": \"Dimitris\",\r\n    \"LastName\": \"Armenakis\",\r\n    \"PhoneNumber\": \"+306975468665\",\r\n    \"Email\": \"jdarmen1@gmail.com\",\r\n    \"Password\": \"Production!23\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/register",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update base data",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.request.headers.clear();"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"Code\": \"da69\",\r\n    \"FirstName\": \"Dimitris\",\r\n    \"LastName\": \"Armenakis\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/updateBaseData",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "updateBaseData"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "let responseData=pm.response.json();\r",
+                      "// let connectionParameters = responseData?.connectionParameters;\r",
+                      "\r",
+                      "if (responseData.token != null) {\r",
+                      "    pm.environment.set(\"JellinAuthorizationToken\", responseData.token);\r",
+                      "}"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.request.headers.clear();"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jdarmen1@gmail.com\",\r\n    \"password\": \"Production!23\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/login",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Request password reset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.request.headers.clear();"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/requestPasswordReset",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "requestPasswordReset"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Resend confirmation email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "let responseData=pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\"AuthorizationToken\", responseData.token);\r",
+                      "pm.environment.set(\"RefreshToken\", responseData.refreshToken);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\",\r\n    \"password\": \"Production!23\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/resendConfirmationEmail",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "resendConfirmationEmail"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Reset password",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.request.headers.clear();"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jdarmen@gmail.com\",\r\n    \"otp\": 62407233\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/resetPassword",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "resetPassword"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jdarmen1@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/updateEmail",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "updateEmail"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update password",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"currentPassword\": \"172*uIB5Lx\",\r\n    \"updatedPassword\": \"Production!23\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/updatePassword",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "updatePassword"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Confirm email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.request.headers.clear();"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "TenantId",
+                    "value": "1",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jdarmen1@gmail.com\",\r\n    \"password\": \"Production!23\",\r\n    \"activationKey\": \"691020D7-86CC-4987-B90B-257678707AFF\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/referrals/account/confirmEmail",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "referrals",
+                    "account",
+                    "confirmEmail"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -1305,7 +1874,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"FullName\": \"{{fullName}}\",\r\n    \"Email\": \"{{email}}\",\r\n    \"Role\": \"User\"\r\n}",
+              "raw": "{\r\n    \"FullName\": \"Dimitris Armenakis (Postman)\",\r\n    \"Email\": \"d.armenakis@intale.com\",\r\n    \"Role\": \"User\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1909,7 +2478,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"OperatorId\": 2,\r\n    \"FullName\": \"{{fullName}}\",\r\n    \"Email\": \"{{email}}\",\r\n    \"RoleId\": null,\r\n\t//\"RoleId\": 2,\r\n    \"IsLocked\": false,\r\n    \"IndividualPermissionNames\": [\r\n    //     // \"AddVisitInteractions\",\r\n    //    //\"EditLoyaltyPrograms\",\r\n    //     //\"EditOperators\",\r\n    //     // \"EditTransactorsContactInfo\",\r\n    //     // \"StampsWithoutThresholdExceedControl\",\r\n    //     // \"ManageLoyaltyPrograms\",\r\n    //     //\"ManageLotteries\",\r\n    //     // \"ManageVisitsAny\",\r\n    //     // \"ManageVisitsOwn\",\r\n    //     // \"NotifiedOnCouponStampsThresholdExceed\",\r\n    //     \"OperateOnCoupons\",\r\n    //     // \"OperateOnWallets\",\r\n    \"PropagateLoyaltyPrograms\"\r\n    //     // \"UpdateCouponsExpiryDate\",\r\n    //     // \"ViewExpiredCoupons\",\r\n    //     \"ViewLoyaltyProgramAnalytics\",\r\n    //     \"ViewLoyaltyPrograms\",\r\n    //     \"ViewLotteries\",\r\n    //     \"ViewLotteriesAnalytics\",\r\n    //     \"ViewOperatorAnalytics\",\r\n    //     \"ViewOperators\",\r\n    //     // \"ViewVisitsAny\",\r\n    //     \"ViewVisitsOwn\",\r\n        // \"ManageBroadcastMessageTemplates\",\r\n        //\"EditBroadcastMessageTemplates\",\r\n        //\"ViewBroadcastMessageTemplates\"\r\n        //\"SendBroadcastMessages\"\r\n    ]\r\n}",
+              "raw": "{\r\n    \"OperatorId\": 2,\r\n    \"FullName\": \"Dimitris (Bootcore)\",\r\n    \"Email\": \"dimitris@bootcore.io\",\r\n    \"RoleId\": null,\r\n\t//\"RoleId\": 2,\r\n    \"IsLocked\": false,\r\n    \"IndividualPermissionNames\": [\r\n    //     // \"AddVisitInteractions\",\r\n    //    //\"EditLoyaltyPrograms\",\r\n    //     //\"EditOperators\",\r\n    //     // \"EditTransactorsContactInfo\",\r\n    //     // \"StampsWithoutThresholdExceedControl\",\r\n    //     // \"ManageLoyaltyPrograms\",\r\n    //     //\"ManageLotteries\",\r\n    //     // \"ManageVisitsAny\",\r\n    //     // \"ManageVisitsOwn\",\r\n    //     // \"NotifiedOnCouponStampsThresholdExceed\",\r\n    //     \"OperateOnCoupons\",\r\n    //     // \"OperateOnWallets\",\r\n    \"PropagateLoyaltyPrograms\"\r\n    //     // \"UpdateCouponsExpiryDate\",\r\n    //     // \"ViewExpiredCoupons\",\r\n    //     \"ViewLoyaltyProgramAnalytics\",\r\n    //     \"ViewLoyaltyPrograms\",\r\n    //     \"ViewLotteries\",\r\n    //     \"ViewLotteriesAnalytics\",\r\n    //     \"ViewOperatorAnalytics\",\r\n    //     \"ViewOperators\",\r\n    //     // \"ViewVisitsAny\",\r\n    //     \"ViewVisitsOwn\",\r\n        // \"ManageBroadcastMessageTemplates\",\r\n        //\"EditBroadcastMessageTemplates\",\r\n        //\"ViewBroadcastMessageTemplates\"\r\n        //\"SendBroadcastMessages\"\r\n    ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -2759,7 +3328,7 @@
             "header": [
               {
                 "key": "transactorPhone",
-                "value": "{{phoneNumber}}",
+                "value": "+306975468665",
                 "type": "text",
                 "disabled": true
               },
@@ -2838,7 +3407,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"TransactorId\": null,\r\n    \"TransactorPhone\": \"{{phoneNumber}}\",\r\n    \"InteractionDateTime\": \"2025-09-29T00:00:00\",\r\n    \"GroupId\": 2,\r\n    \"GroupVersion\": 50059,\r\n    \"RedeemGroupCouponIds\": [\r\n\r\n    ],\r\n    \"LoyaltyProgramsInteractions\": [\r\n        {\r\n            \"LoyaltyProgramId\": 1,\r\n            \"LoyaltyProgramVersion\": 50062,\r\n            \"CouponId\": null,\r\n            \"NewStamps\": 2,\r\n            \"ValidUntil\": null,\r\n            \"RedeemRequested\": false\r\n        }\r\n    ]    \r\n}",
+              "raw": "{\r\n    \"TransactorId\": null,\r\n    \"TransactorPhone\": \"+306975468665\",\r\n    \"InteractionDateTime\": \"2025-09-29T00:00:00\",\r\n    \"GroupId\": 2,\r\n    \"GroupVersion\": 50059,\r\n    \"RedeemGroupCouponIds\": [\r\n\r\n    ],\r\n    \"LoyaltyProgramsInteractions\": [\r\n        {\r\n            \"LoyaltyProgramId\": 1,\r\n            \"LoyaltyProgramVersion\": 50062,\r\n            \"CouponId\": null,\r\n            \"NewStamps\": 2,\r\n            \"ValidUntil\": null,\r\n            \"RedeemRequested\": false\r\n        }\r\n    ]    \r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -4362,87 +4931,6 @@
           "name": "Referrals",
           "item": [
             {
-              "name": "All referrals",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{BaseUrl}}/referrals?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
-                  "host": [
-                    "{{BaseUrl}}"
-                  ],
-                  "path": [
-                    "referrals"
-                  ],
-                  "query": [
-                    {
-                      "key": "pageIndex",
-                      "value": "1"
-                    },
-                    {
-                      "key": "pageSize",
-                      "value": "20"
-                    },
-                    {
-                      "key": "totalItemsCountRequired",
-                      "value": "true"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Create referral",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                }
-              ],
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n    \"code\": \"fkon54807\",\r\n    \"firstName\": \"Fotis\",\r\n    \"lastName\": \"Kwnstantopoulos\",\r\n    \"phoneNumber\": \"+306972054807\",\r\n    \"email\": \"fconstantopoulos@gmail.com\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{BaseUrl}}/referrals",
-                  "host": [
-                    "{{BaseUrl}}"
-                  ],
-                  "path": [
-                    "referrals"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "name": "Get referral by Id",
               "event": [
                 {
@@ -4485,50 +4973,31 @@
               "response": []
             },
             {
-              "name": "Update referral",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                }
-              ],
+              "name": "All referrals",
               "request": {
-                "method": "PUT",
+                "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n    \"id\": 1,\r\n    \"code\": \"fkon654807\",\r\n    \"firstName\": \"Fotis\",\r\n    \"lastName\": \"Kwnstantopoulos\",\r\n    \"phoneNumber\": \"+306972054807\",\r\n    \"email\": \"fconstantopoulos@gmail.com\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
                 "url": {
-                  "raw": "{{BaseUrl}}/referrals",
+                  "raw": "{{BaseUrl}}/referrals?pageIndex=1&pageSize=20&totalItemsCountRequired=true",
                   "host": [
                     "{{BaseUrl}}"
                   ],
                   "path": [
                     "referrals"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "totalItemsCountRequired",
+                      "value": "true"
+                    }
                   ]
                 }
               },
@@ -4632,65 +5101,6 @@
               "response": []
             }
           ]
-        },
-        {
-          "name": "Customer external login",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "let responseData=pm.response.json();\r",
-                  "// let connectionParameters = responseData?.connectionParameters;\r",
-                  "\r",
-                  "if (responseData.token != null) {\r",
-                  "    pm.environment.set(\"JellinAuthorizationToken\", responseData.token);\r",
-                  "}"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "exec": [
-                  "pm.request.headers.clear();"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disabledSystemHeaders": {}
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{BaseUrl}}/account/externalLogin",
-              "host": [
-                "{{BaseUrl}}"
-              ],
-              "path": [
-                "account",
-                "externalLogin"
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -4713,12 +5123,12 @@
               },
               {
                 "key": "phoneNumber",
-                "value": "{{phoneNumber}}",
+                "value": "+306975468665",
                 "type": "text"
               },
               {
                 "key": "email",
-                "value": "{{email}}",
+                "value": "jdarmen@gmail.com",
                 "type": "text",
                 "disabled": true
               }

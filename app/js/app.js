@@ -11,6 +11,10 @@ const App = {
     dashboard: { view: DashboardView, auth: true },
     subscription: { view: SubscriptionView, auth: true },
     profile: { view: ProfileView, auth: true },
+    'referral-login': { view: ReferralLoginView, auth: false, type: 'referral' },
+    'referral-register': { view: ReferralRegisterView, auth: false, type: 'referral' },
+    'referral-forgot-password': { view: ReferralForgotPasswordView, auth: false, type: 'referral' },
+    'referral-dashboard': { view: ReferralDashboardView, auth: true, type: 'referral' },
   },
 
   currentRoute: null,
@@ -49,19 +53,25 @@ const App = {
       return;
     }
 
+    // Determine which auth module to use based on route type
+    const isReferral = route.type === 'referral';
+    const authModule = isReferral ? ReferralAuth : Auth;
+    const defaultDashboard = isReferral ? 'referral-dashboard' : 'dashboard';
+    const defaultLogin = isReferral ? 'referral-login' : 'login';
+
     // Auth guard
-    if (route.auth && !Auth.isAuthenticated()) {
+    if (route.auth && !authModule.isAuthenticated()) {
       // Store intended destination
       sessionStorage.setItem('jellin_returnTo', routeName);
-      window.location.hash = '#login';
+      window.location.hash = `#${defaultLogin}`;
       return;
     }
 
     // If already authenticated and trying to access auth pages, redirect to dashboard
-    if (!route.auth && Auth.isAuthenticated()) {
+    if (!route.auth && authModule.isAuthenticated()) {
       // Allow forgot-password even when logged in (edge case: user wants to reset)
-      if (routeName !== 'forgot-password') {
-        window.location.hash = '#dashboard';
+      if (routeName !== 'forgot-password' && routeName !== 'referral-forgot-password') {
+        window.location.hash = `#${defaultDashboard}`;
         return;
       }
     }

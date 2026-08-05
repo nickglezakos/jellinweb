@@ -117,17 +117,27 @@ const API = (() => {
     }
 
     if (!response.ok) {
-      // If the response is a ResultInfo error object
+      // Log full error for debugging
+      console.error(`[API] ${response.status} from ${response.url}:`, data);
+
+      // If the response is a ResultInfo error object (backend validation errors)
       if (data && data.errors) {
         const messages = Array.isArray(data.errors)
           ? data.errors.map(e => e.message || e).join(', ')
           : JSON.stringify(data.errors);
         throw new Error(messages || `Request failed with status ${response.status}`);
       }
+      // If the response has a code/key/message structure (ResultInfo)
+      if (data && data.key && data.message) {
+        throw new Error(`[${data.key}] ${data.message}`);
+      }
       if (data && typeof data === 'string') {
         throw new Error(data);
       }
-      throw new Error(data?.message || data?.title || `Request failed with status ${response.status}`);
+      if (data && data.message) {
+        throw new Error(data.message);
+      }
+      throw new Error(data?.title || `Request failed with status ${response.status}`);
     }
 
     return data;
@@ -347,9 +357,94 @@ const API = (() => {
     },
   };
 
+  // ─── Referral Endpoints ──────────────────────────────────
+
+  const Referral = {
+    /**
+     * Register a new referral account
+     */
+    register(data) {
+      return request('/referrals/account/register', {
+        method: 'POST',
+        body: JSON.stringify({
+          code: data.code,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          phoneNumber: data.phoneNumber,
+          email: data.email,
+          password: data.password,
+        }),
+      }, true);
+    },
+
+    /**
+     * Login as referral
+     */
+    login(email, password) {
+      return request('/referrals/account/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+      }, true);
+    },
+
+    /**
+     * Update referral base data
+     */
+    updateBaseData(data) {
+      return request('/referrals/account/updateBaseData', {
+        method: 'PUT',
+        body: JSON.stringify({
+          code: data.code,
+          firstName: data.firstName,
+          lastName: data.lastName,
+        }),
+      });
+    },
+
+    /**
+     * Request password reset for referral
+     */
+    requestPasswordReset(email) {
+      return request('/referrals/account/requestPasswordReset', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+      }, true);
+    },
+
+    /**
+     * Reset referral password with OTP
+     */
+    resetPassword(email, otp) {
+      return request('/referrals/account/resetPassword', {
+        method: 'POST',
+        body: JSON.stringify({ email, otp }),
+      }, true);
+    },
+
+    /**
+     * Resend confirmation email for referral
+     */
+    resendConfirmationEmail(email, password) {
+      return request('/referrals/account/resendConfirmationEmail', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+      }, true);
+    },
+
+    /**
+     * Delete referral account
+     */
+    deleteAccount() {
+      return request('/referrals/account', {
+        method: 'DELETE',
+      });
+    },
+  };
+
   return {
     Account,
     Stripe,
+    Referral,
     getToken,
     getRefreshToken,
   };

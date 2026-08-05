@@ -10,6 +10,7 @@
 
 - [Account](#account)
 - [Referrals](#referrals)
+- [Referrals Account](#referrals-account)
 - [Stripe](#stripe)
 - [Summaries](#summaries)
 
@@ -108,16 +109,26 @@ Authenticates a user and returns a JWT token.
 {
   "token": "jwt-token",
   "refreshToken": "refresh-token",
-  "acceptedPublishers": { }
+  "associatedTenants": [],
+  "acceptedPublishers": [
+	{
+	  "publisherId": 1,
+	  "publishItems": ["Item1", "Item2"]
+	}
+  ]
 }
 ```
 
-**Response `200 OK` — Unconfirmed credentials:**
+> `acceptedPublishers` is an array grouped by `publisherId`. Each entry lists the `publishItems` (string representations of the publish item enum) accepted for that publisher. Empty array if no publishers are configured for the tenant.
+
+**Response `200 OK` — Unconfirmed credentials / failed auth:**
 
 ```json
 {
   "token": null,
-  "refreshToken": null
+  "refreshToken": null,
+  "associatedTenants": [],
+  "acceptedPublishers": []
 }
 ```
 
@@ -126,11 +137,15 @@ Authenticates a user and returns a JWT token.
 ```json
 {
   "token": null,
+  "refreshToken": null,
   "associatedTenants": [
 	{ "id": 1, "name": "Acme Corp", "status": "Active" }
-  ]
+  ],
+  "acceptedPublishers": []
 }
 ```
+
+> When `associatedTenants` is non-empty, repeat the login call including `tenantId` to disambiguate.
 
 ---
 
@@ -484,6 +499,250 @@ Updates an existing referral.
 | `lastName` | string | Yes | |
 | `phoneNumber` | string | Yes | International format |
 | `email` | string | Yes | |
+
+**Response:** `200 OK` — no body
+
+---
+
+## Referrals Account
+
+**Base route:** `api/referrals/account`  
+**Auth:** Anonymous (unless noted)
+
+---
+
+### POST `api/referrals/account/register`
+
+Registers a new referral user account.
+
+**Auth:** Anonymous
+
+**Request Body:**
+
+```json
+{
+  "code": "REF123",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "referral@example.com",
+  "password": "string"
+}
+```
+
+| Field | Type | Required |
+|---|---|---|
+| `code` | string | Yes |
+| `firstName` | string | Yes |
+| `lastName` | string | Yes |
+| `email` | string | Yes |
+| `password` | string | Yes |
+
+**Response:** `200 OK` — Returns the new referral account key (string).
+
+---
+
+### POST `api/referrals/account/confirmEmail`
+
+Confirms the referral user's email using the activation key sent via email.
+
+**Auth:** Anonymous
+
+**Request Body:**
+
+```json
+{
+  "activationKey": "string",
+  "email": "referral@example.com",
+  "password": "string"
+}
+```
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `activationKey` | string | Yes | Mapped from `UserUniqueId` |
+| `email` | string | Yes | Valid email address |
+| `password` | string | Yes | |
+
+**Response:** `200 OK` — no body
+
+---
+
+### POST `api/referrals/account/login`
+
+Authenticates a referral user and returns a JWT token.
+
+**Auth:** Anonymous
+
+**Request Body:**
+
+```json
+{
+  "tenantId": 1,
+  "email": "referral@example.com",
+  "password": "string"
+}
+```
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `tenantId` | int | No | |
+| `email` | string | Yes | |
+| `password` | string | Yes | |
+
+**Response `200 OK` — Successful login:**
+
+```json
+{
+  "token": "jwt-token",
+  "refreshToken": "refresh-token",
+  "associatedTenants": [],
+  "acceptedPublishers": []
+}
+```
+
+**Response `200 OK` — Unconfirmed credentials / failed auth:**
+
+```json
+{
+  "token": null,
+  "refreshToken": null,
+  "associatedTenants": [],
+  "acceptedPublishers": []
+}
+```
+
+---
+
+### POST `api/referrals/account/requestPasswordReset`
+
+Sends a password reset OTP to the referral user's email.
+
+**Auth:** Anonymous
+
+**Request Body:**
+
+```json
+{
+  "email": "referral@example.com"
+}
+```
+
+**Response:** `200 OK` — no body
+
+---
+
+### POST `api/referrals/account/resendConfirmationEmail`
+
+Resends the email confirmation link to the referral user.
+
+**Auth:** Anonymous
+
+**Request Body:**
+
+```json
+{
+  "tenantId": 1,
+  "email": "referral@example.com",
+  "password": "string"
+}
+```
+
+**Response:** `200 OK` — no body
+
+---
+
+### POST `api/referrals/account/resetPassword`
+
+Resets the referral user's password using the OTP received via email.
+
+**Auth:** Anonymous
+
+**Request Body:**
+
+```json
+{
+  "email": "referral@example.com",
+  "otp": 123456
+}
+```
+
+| Field | Type | Required |
+|---|---|---|
+| `email` | string | Yes |
+| `otp` | int | Yes |
+
+**Response:** `200 OK` — no body
+
+---
+
+### PUT `api/referrals/account/updateBaseData`
+
+Updates the base profile data (code, first name, last name) of the authenticated referral user.
+
+**Auth:** Bearer Token
+
+**Request Body:**
+
+```json
+{
+  "code": "REF123",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+```
+
+| Field | Type | Required |
+|---|---|---|
+| `code` | string | Yes |
+| `firstName` | string | Yes |
+| `lastName` | string | Yes |
+
+**Response:** `200 OK` — no body
+
+---
+
+### PUT `api/referrals/account/updateEmail`
+
+Updates the email address of the authenticated referral user.
+
+**Auth:** Bearer Token
+
+**Request Body:**
+
+```json
+{
+  "email": "new@example.com"
+}
+```
+
+**Response:** `200 OK` — no body
+
+---
+
+### PUT `api/referrals/account/updatePassword`
+
+Updates the password of the authenticated referral user.
+
+**Auth:** Bearer Token
+
+**Request Body:**
+
+```json
+{
+  "currentPassword": "string",
+  "updatedPassword": "string"
+}
+```
+
+**Response:** `200 OK` — no body
+
+---
+
+### DELETE `api/referrals/account`
+
+Deletes the authenticated referral user account.
+
+**Auth:** Bearer Token
 
 **Response:** `200 OK` — no body
 
