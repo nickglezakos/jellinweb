@@ -72,20 +72,23 @@ const ReferralDashboardView = {
     const errorEl = document.getElementById('referral-dashboard-error');
 
     try {
-      // Get user info from stored session
-      const user = ReferralAuth.getUser();
+      // Get user profile from the API
+      const profile = await API.Referral.getMyProfile();
       
       loadingEl.style.display = 'none';
       infoEl.style.display = 'block';
       actionsEl.style.display = 'block';
 
-      // Populate info from stored user data
-      document.getElementById('ref-dash-name').textContent = user?.firstName && user?.lastName
-        ? `${user.firstName} ${user.lastName}`
-        : user?.email || '—';
-      document.getElementById('ref-dash-code').textContent = user?.code || '—';
-      document.getElementById('ref-dash-email').textContent = user?.email || '—';
-      document.getElementById('ref-dash-phone').textContent = user?.phoneNumber || 'Not set';
+      // Populate info from API response
+      document.getElementById('ref-dash-name').textContent = (profile.firstName && profile.lastName)
+        ? `${profile.firstName} ${profile.lastName}`
+        : profile.email || '—';
+      document.getElementById('ref-dash-code').textContent = profile.code || '—';
+      document.getElementById('ref-dash-email').textContent = profile.email || '—';
+      document.getElementById('ref-dash-phone').textContent = profile.phoneNumber || 'Not set';
+
+      // Store profile data for other views
+      ReferralAuth.setUser(profile);
 
     } catch (err) {
       loadingEl.style.display = 'none';

@@ -16,6 +16,7 @@ const App = {
     'referral-register': { view: ReferralRegisterView, auth: false, type: 'referral' },
     'referral-forgot-password': { view: ReferralForgotPasswordView, auth: false, type: 'referral' },
     'referral-dashboard': { view: ReferralDashboardView, auth: true, type: 'referral' },
+    'referral-profile': { view: ReferralProfileView, auth: true, type: 'referral' },
     'referral-confirm-email': { view: ReferralConfirmEmailView, auth: false, type: 'referral' },
   },
 

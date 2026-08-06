@@ -798,7 +798,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"email\": \"jdarmen1@gmail.com\",\r\n    \"password\": \"Production!23\"\r\n}",
+                  "raw": "{\r\n    \"email\": \"fconstantopoulos@gmail.com\",\r\n    \"password\": \"Production!23\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1183,6 +1183,42 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Get referral tenants",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/referrals/tenants",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "referrals",
+                "tenants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get loggedIn referral profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/referrals/myProfile",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "referrals",
+                "myProfile"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },

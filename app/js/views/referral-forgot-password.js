@@ -115,8 +115,8 @@ const ReferralForgotPasswordView = {
       errorEl.style.display = 'none';
       successEl.style.display = 'none';
 
-      const otp = document.getElementById('referral-otp-input').value.trim();
-      if (!otp) {
+      const otp = parseInt(document.getElementById('referral-otp-input').value.trim(), 10);
+      if (!otp || isNaN(otp)) {
         errorEl.textContent = 'Please enter the reset code.';
         errorEl.style.display = 'block';
         return;

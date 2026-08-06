@@ -434,10 +434,10 @@ const API = (() => {
     /**
      * Resend confirmation email for referral
      */
-    resendConfirmationEmail(email, password) {
+    resendConfirmationEmail(email, password, tenantId = null) {
       return request('/referrals/account/resendConfirmationEmail', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, tenantId }),
       }, true);
     },
 
@@ -447,6 +447,44 @@ const API = (() => {
     deleteAccount() {
       return request('/referrals/account', {
         method: 'DELETE',
+      });
+    },
+
+    /**
+     * Get tenants associated with the authenticated referral user
+     */
+    getTenants() {
+      return request('/referrals/tenants', {
+        method: 'GET',
+      });
+    },
+
+    /**
+     * Get the profile of the authenticated referral user
+     */
+    getMyProfile() {
+      return request('/referrals/myProfile', {
+        method: 'GET',
+      });
+    },
+
+    /**
+     * Update referral account email
+     */
+    updateEmail(email) {
+      return request('/referrals/account/updateEmail', {
+        method: 'PUT',
+        body: JSON.stringify({ email }),
+      });
+    },
+
+    /**
+     * Update referral account password
+     */
+    updatePassword(currentPassword, updatedPassword) {
+      return request('/referrals/account/updatePassword', {
+        method: 'PUT',
+        body: JSON.stringify({ currentPassword, updatedPassword }),
       });
     },
   };

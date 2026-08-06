@@ -8,11 +8,111 @@
 
 ## Table of Contents
 
+- [Architecture Overview](#architecture-overview)
+- [Authentication & Authorization Model](#authentication--authorization-model)
 - [Account](#account)
 - [Referrals](#referrals)
 - [Referrals Account](#referrals-account)
 - [Stripe](#stripe)
 - [Summaries](#summaries)
+
+---
+
+## Architecture Overview
+
+### Endpoint Structure
+
+All routes follow the pattern:
+
+```
+{{baseUrl}}/api/{resource}/{sub-resource?}/{id?}
+```
+
+| Segment | Example | Notes |
+|---|---|---|
+| `api/account` | Base resource route | Defined at controller level via `[Route]` |
+| `api/account/login` | Sub-resource action | Defined at method level via `[Route("login")]` |
+| `api/referrals/{referralId}` | Route parameter | Path parameter, typed (e.g. `int`) |
+| `api/referrals/account/...` | Nested resource | `ReferralsAccountController` sits under `api/referrals/account` |
+
+HTTP verbs map to CRUD semantics:
+
+| Verb | Semantic |
+|---|---|
+| `GET` | Read / query |
+| `POST` | Create or action (login, register, confirm, etc.) |
+| `PUT` | Update |
+| `DELETE` | Delete |
+
+### Module Guard
+
+Some controllers are protected by a `[RequireModule]` attribute at the controller level. If the tenant does not have the module enabled, all endpoints of that controller return a non-success response regardless of the user's permissions.
+
+| Controller | Required Module |
+|---|---|
+| `SummariesController` | `Summaries` |
+
+---
+
+## Authentication & Authorization Model
+
+### How Access Is Granted
+
+The system has two independent user types — **Operators** (business users) and **Referral Users** — each with their own login flow.
+
+#### Operator / Business User Flow
+
+```
+Register → Confirm Email → Login → JWT Token
+```
+
+1. `POST /api/account/register` — Creates the user account and the tenant.
+2. `POST /api/account/confirmEmail` — Activates the account using the key sent by email. Required before login.
+3. `POST /api/account/login` — Returns a JWT access token and a refresh token.
+   - If the user belongs to **multiple tenants** and no `tenantId` was provided, returns `associatedTenants` instead of a token. The client must repeat the login call with the chosen `tenantId`.
+4. `POST /api/account/refreshToken` — Issues a new token using the refresh token. The **expired** access token must be sent (uses `IgnoreTokenExpiration` scheme).
+
+#### Referral User Flow
+
+```
+Register → Confirm Email → Login → JWT Token
+```
+
+Identical to the operator flow but through `api/referrals/account/*` routes.  
+Referral users authenticate independently and receive their own JWT scoped to the `Referral` role.
+
+### Role & Permission Hierarchy
+
+| Role / Policy | Who has it | How it is assigned |
+|---|---|---|
+| **System** (`RequireSystemRole`) | Internal system/admin accounts | Assigned at identity level — not obtainable via public registration |
+| **Operator** (standard Bearer) | Any authenticated operator user | Granted upon successful login via `api/account/login` |
+| **Referral** (`RequireReferralRole`) | Authenticated referral users | Granted upon successful login via `api/referrals/account/login` |
+| **Permission-based** (e.g. `ViewLoyaltyProgramAnalytics`) | Operators with specific permissions | Granted based on operator role configuration within the tenant |
+
+### Anonymous vs. Authenticated Endpoints
+
+| Category | Endpoints |
+|---|---|
+| **Anonymous** (no token required) | `register`, `confirmEmail`, `login`, `requestPasswordReset`, `resendConfirmationEmail`, `resetPassword`, Stripe webhook |
+| **Any authenticated Operator** | `connectionInfo`, `logout`, `refreshToken`, `updateEmail`, `updatePassword`, `DELETE /api/account` |
+| **Any authenticated Referral user** | `GET /api/referrals/tenants`, `GET /api/referrals/myProfile`, `updateBaseData`, `updateEmail`, `updatePassword`, `DELETE /api/referrals/account` |
+| **System role required** | `GET /api/referrals`, `GET /api/referrals/{id}`, `POST/PUT/DELETE /api/referrals`, all Stripe management endpoints |
+| **Permission-based** | All `api/summaries/*` endpoints |
+
+### Token Lifecycle
+
+```
+Login ──────────────────► Access Token (short-lived JWT)
+                                │
+                         Token expires
+                                │
+POST /api/account/refreshToken ─► New Access Token + New Refresh Token
+(send expired token + refresh token)
+```
+
+- Access token must be sent in the `Authorization: Bearer {token}` header.
+- `POST /api/account/logout` invalidates the refresh token server-side and optionally deregisters the FCM push token.
 
 ---
 
@@ -443,6 +543,47 @@ Returns a single referral by ID, including its associated tenants.
 ```
 
 **Response:** `404 Not Found` — if referral does not exist
+
+---
+
+### GET `api/referrals/tenants`
+
+Returns the list of tenants associated with the currently authenticated referral user.
+
+**Auth:** Bearer Token — requires **Referral** role
+
+**Response `200 OK`:**
+
+```json
+[
+  {
+	"id": 1,
+	"name": "Acme Corp"
+  }
+]
+```
+
+---
+
+### GET `api/referrals/myProfile`
+
+Returns the profile data of the currently authenticated referral user.
+
+**Auth:** Bearer Token — requires **Referral** role
+
+**Response `200 OK`:**
+
+```json
+{
+  "code": "REF123",
+  "firstName": "John",
+  "lastName": "Doe",
+  "phoneNumber": "+30 6900000000",
+  "phoneNumberConfirmed": true,
+  "email": "john@example.com",
+  "emailConfirmed": true
+}
+```
 
 ---
 
