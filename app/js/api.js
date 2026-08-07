@@ -8,16 +8,18 @@ const API = (() => {
 
   /**
    * Get the stored auth token
+   * @param {boolean} referral - If true, read referral token
    */
-  function getToken() {
-    return localStorage.getItem('jellin_token');
+  function getToken(referral = false) {
+    return localStorage.getItem(referral ? 'jellin_referral_token' : 'jellin_token');
   }
 
   /**
    * Get the stored refresh token
+   * @param {boolean} referral - If true, read referral refresh token
    */
-  function getRefreshToken() {
-    return localStorage.getItem('jellin_refreshToken');
+  function getRefreshToken(referral = false) {
+    return localStorage.getItem(referral ? 'jellin_referral_refreshToken' : 'jellin_refreshToken');
   }
 
   /**
@@ -26,15 +28,16 @@ const API = (() => {
    * @param {object} options - Fetch options (method, body, etc.)
    * @param {boolean} anonymous - If true, skip auth header
    * @param {boolean} ignoreExpiration - If true, use IgnoreTokenExpiration scheme
+   * @param {boolean} useReferralToken - If true, use referral JWT token
    */
-  async function request(endpoint, options = {}, anonymous = false, ignoreExpiration = false) {
+  async function request(endpoint, options = {}, anonymous = false, ignoreExpiration = false, useReferralToken = false) {
     const headers = {
       'Content-Type': 'application/json',
       ...options.headers,
     };
 
     if (!anonymous) {
-      const token = getToken();
+      const token = getToken(useReferralToken);
       if (token) {
         if (ignoreExpiration) {
           headers['Authorization'] = `IgnoreTokenExpiration ${token}`;
@@ -60,10 +63,10 @@ const API = (() => {
 
       // Handle 401 - try token refresh
       if (response.status === 401 && !anonymous && !ignoreExpiration) {
-        const refreshed = await refreshToken();
+        const refreshed = await refreshToken(useReferralToken);
         if (refreshed) {
           // Retry original request with new token
-          const newToken = getToken();
+          const newToken = getToken(useReferralToken);
           const retryHeaders = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${newToken}`,
@@ -76,7 +79,7 @@ const API = (() => {
           return handleResponse(retryResponse);
         } else {
           // Refresh failed - force logout
-          Auth.logout();
+          (useReferralToken ? ReferralAuth : Auth).logout();
           throw new Error('Session expired. Please login again.');
         }
       }
@@ -145,10 +148,13 @@ const API = (() => {
 
   /**
    * Refresh the JWT token
+   * @param {boolean} referral - If true, refresh referral token
    */
-  async function refreshToken() {
-    const refreshTokenValue = getRefreshToken();
-    const token = getToken();
+  async function refreshToken(referral = false) {
+    const tokenKey = referral ? 'jellin_referral_token' : 'jellin_token';
+    const refreshKey = referral ? 'jellin_referral_refreshToken' : 'jellin_refreshToken';
+    const refreshTokenValue = localStorage.getItem(refreshKey);
+    const token = localStorage.getItem(tokenKey);
     if (!refreshTokenValue || !token) return false;
 
     try {
@@ -166,9 +172,9 @@ const API = (() => {
       if (response.ok) {
         const data = await response.json();
         if (data.token) {
-          localStorage.setItem('jellin_token', data.token);
+          localStorage.setItem(tokenKey, data.token);
           if (data.refreshToken) {
-            localStorage.setItem('jellin_refreshToken', data.refreshToken);
+            localStorage.setItem(refreshKey, data.refreshToken);
           }
           return true;
         }
@@ -407,7 +413,7 @@ const API = (() => {
           firstName: data.firstName,
           lastName: data.lastName,
         }),
-      });
+      }, false, false, true);
     },
 
     /**
@@ -446,7 +452,7 @@ const API = (() => {
     deleteAccount() {
       return request('/referrals/account', {
         method: 'DELETE',
-      });
+      }, false, false, true);
     },
 
     /**
@@ -455,7 +461,7 @@ const API = (() => {
     getTenants() {
       return request('/referrals/tenants', {
         method: 'GET',
-      });
+      }, false, false, true);
     },
 
     /**
@@ -464,7 +470,7 @@ const API = (() => {
     getMyProfile() {
       return request('/referrals/myProfile', {
         method: 'GET',
-      });
+      }, false, false, true);
     },
 
     /**
@@ -474,7 +480,7 @@ const API = (() => {
       return request('/referrals/account/updateEmail', {
         method: 'PUT',
         body: JSON.stringify({ email }),
-      });
+      }, false, false, true);
     },
 
     /**
@@ -484,7 +490,7 @@ const API = (() => {
       return request('/referrals/account/updatePassword', {
         method: 'PUT',
         body: JSON.stringify({ currentPassword, updatedPassword }),
-      });
+      }, false, false, true);
     },
   };
 
