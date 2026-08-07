@@ -205,8 +205,7 @@ const ReferralAuth = (() => {
     try {
       const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
       if (refreshToken) {
-        // Call referral-specific logout if available, otherwise just clear
-        await API.Account.logout(refreshToken).catch(() => {});
+        await API.Referral.logout(refreshToken).catch(() => {});
       }
     } catch {
       // Ignore logout API errors

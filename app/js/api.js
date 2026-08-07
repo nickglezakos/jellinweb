@@ -395,10 +395,12 @@ const API = (() => {
     /**
      * Login as referral
      */
-    login(email, password) {
+    login(email, password, tenantId = null) {
+      const body = { email, password };
+      if (tenantId) body.tenantId = tenantId;
       return request('/referrals/account/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(body),
       }, true);
     },
 
@@ -490,6 +492,18 @@ const API = (() => {
       return request('/referrals/account/updatePassword', {
         method: 'PUT',
         body: JSON.stringify({ currentPassword, updatedPassword }),
+      }, false, false, true);
+    },
+    /**
+     * Logout - invalidate referral refresh token on server
+     */
+    logout(refreshToken) {
+      return request('/account/logout', {
+        method: 'POST',
+        body: JSON.stringify({
+          refreshToken: refreshToken || getRefreshToken(true),
+          fcmToken: null,
+        }),
       }, false, false, true);
     },
   };
