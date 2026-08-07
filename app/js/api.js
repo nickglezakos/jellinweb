@@ -370,7 +370,6 @@ const API = (() => {
           code: data.code,
           firstName: data.firstName,
           lastName: data.lastName,
-          phoneNumber: data.phoneNumber,
           email: data.email,
           password: data.password,
         }),

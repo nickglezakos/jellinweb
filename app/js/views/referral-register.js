@@ -48,10 +48,6 @@ const ReferralRegisterView = {
               <input type="text" id="ref-reg-lastName" class="input-field" placeholder="Your last name" required>
             </div>
             <div style="margin-bottom: 1rem;">
-              <label style="display:block; font-weight:600; margin-bottom:0.25rem; font-size:0.875rem; color:#475569;">Phone Number *</label>
-              <input type="tel" id="ref-reg-phone" class="input-field" placeholder="+306975468665" required>
-            </div>
-            <div style="margin-bottom: 1rem;">
               <label style="display:block; font-weight:600; margin-bottom:0.25rem; font-size:0.875rem; color:#475569;">Email *</label>
               <input type="email" id="ref-reg-email" class="input-field" placeholder="you@example.com" required autocomplete="email">
             </div>
@@ -161,13 +157,12 @@ const ReferralRegisterView = {
       const code = document.getElementById('ref-reg-code').value.trim();
       const firstName = document.getElementById('ref-reg-firstName').value.trim();
       const lastName = document.getElementById('ref-reg-lastName').value.trim();
-      const phoneNumber = document.getElementById('ref-reg-phone').value.trim();
       const email = document.getElementById('ref-reg-email').value.trim();
       const password = passwordInput.value;
       const confirmPassword = confirmInput.value;
 
       // Basic validation
-      if (!code || !firstName || !lastName || !phoneNumber || !email || !password) {
+      if (!code || !firstName || !lastName || !email || !password) {
         errorEl.textContent = 'Please fill in all required fields.';
         errorEl.style.display = 'block';
         return;
@@ -194,7 +189,6 @@ const ReferralRegisterView = {
           code,
           firstName,
           lastName,
-          phoneNumber,
           email,
           password,
         });
