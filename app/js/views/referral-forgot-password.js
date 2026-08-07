@@ -127,7 +127,7 @@ const ReferralForgotPasswordView = {
 
       try {
         await API.Referral.resetPassword(resetEmail, otp);
-        Toast.success('Password reset successful! A new password has been sent to your email.');
+        Toast.success('Password reset successful! Check your email for your new password, then sign in.');
         setTimeout(() => {
           window.location.hash = '#referral-login';
         }, 1500);
