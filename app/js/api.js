@@ -56,6 +56,14 @@ const API = (() => {
     delete config.headers;
 
     try {
+      const debugBody = options.body ? JSON.parse(options.body) : null;
+      if (debugBody && debugBody.password) debugBody.password = '***';
+      console.debug(`[API] ${options.method || 'GET'} ${BASE_URL}${endpoint}`, {
+        headers,
+        body: debugBody || '(none)',
+        useReferralToken,
+        anonymous,
+      });
       const response = await fetch(`${BASE_URL}${endpoint}`, {
         ...config,
         headers: options.headers ? { ...headers, ...options.headers } : headers,
@@ -121,7 +129,7 @@ const API = (() => {
 
     if (!response.ok) {
       // Log full error for debugging
-      console.error(`[API] ${response.status} from ${response.url}:`, data);
+      console.error(`[API] ${response.status} from ${response.url}:`, JSON.stringify(data, null, 2));
 
       // If the response is a ResultInfo error object (backend validation errors)
       if (data && data.errors) {
