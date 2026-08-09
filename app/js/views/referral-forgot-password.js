@@ -50,7 +50,7 @@ const ReferralForgotPasswordView = {
             <form id="referral-otp-form">
               <div style="margin-bottom: 1.5rem;">
                 <label style="display:block; font-weight:600; margin-bottom:0.25rem; font-size:0.875rem; color:#475569;">Reset Code</label>
-                <input type="text" id="referral-otp-input" class="input-field" placeholder="000000" required inputmode="numeric" pattern="[0-9]*" maxlength="8">
+                <input type="text" id="referral-otp-input" class="input-field" placeholder="000000" required inputmode="numeric">
               </div>
               <button type="submit" class="btn-primary" style="width:100%;" id="referral-otp-submit">Reset Password</button>
             </form>

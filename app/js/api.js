@@ -58,7 +58,8 @@ const API = (() => {
     try {
       const debugBody = options.body ? JSON.parse(options.body) : null;
       if (debugBody && debugBody.password) debugBody.password = '***';
-      console.debug(`[API] ${options.method || 'GET'} ${BASE_URL}${endpoint}`, {
+      if (debugBody && debugBody.otp !== undefined) debugBody.otp = `[${debugBody.otp}] (len=${String(debugBody.otp).length})`;
+      console.log(`[API] ${options.method || 'GET'} ${BASE_URL}${endpoint}`, {
         headers,
         body: debugBody || '(none)',
         useReferralToken,
