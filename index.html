@@ -113,29 +113,68 @@
                     </svg>
                 </div>
                 <span class="text-cyan-600 font-bold uppercase text-xs">Coffee Shop</span>
-                <h3 class="text-3xl font-bold mt-2 mb-4 text-slate-900">The Daily Regular</h3>
-                <p class="text-slate-700 leading-relaxed mb-6">
-                    Sarah visits her favorite coffee shop every morning. With Jellin, she simply provides her phone number once. Every visit is automatically tracked.
-                </p>
-                <img src="assets/jellin-everyday-regular-01.jpeg" alt="The Daily Regular - Coffee shop loyalty scenario" class="w-full rounded-2xl shadow-md mb-6">
-                <div class="bg-white rounded-xl p-4 border border-cyan-200">
-                    <p class="text-sm font-bold text-cyan-900 mb-3">Campaign: "Get a free cup every five times"</p>
-                    <div class="space-y-2 text-xs">
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-cyan-700 min-w-[70px]">Employee:</span>
-                            <span class="text-slate-600">Are you a member?</span>
+                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">The Daily Regular</h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Before Jellin -->
+                    <div>
+                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">No card. No visit.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            Sarah visits her favorite coffee shop every morning. A paper punch card is easy to lose, and there is no other record of the visit.
+                        </p>
+                        <img src="assets/jellin-everyday-regular-before.jpg" alt="Before Jellin: customer without a stamp card at the coffee counter" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-slate-200">
+                            <p class="text-sm font-bold text-slate-800 mb-3">Paper stamp card</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">Employee:</span>
+                                    <span class="text-slate-600">Got your stamp card?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600">I think I lost it.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">Employee:</span>
+                                    <span class="text-slate-600">Without the card, this visit doesn't count.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600">Okay. Maybe next time.</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600">Yes, my number is 555-890-...</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-cyan-700 min-w-[70px]">Employee:</span>
-                            <span class="text-slate-600">Thank you, this is your 4th time, next time you get a coupon!</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600">Cool, thanks!</span>
+                    </div>
+
+                    <!-- After Jellin -->
+                    <div>
+                        <p class="text-cyan-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-cyan-800 leading-tight mb-3">Your number is enough.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            Sarah visits her favorite coffee shop every morning. With Jellin, she simply provides her phone number once. Every visit is automatically tracked.
+                        </p>
+                        <img src="assets/jellin-everyday-regular-after.jpg" alt="After Jellin: customer gives her phone number and the barista tracks the visit" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-cyan-200">
+                            <p class="text-sm font-bold text-cyan-900 mb-3">Campaign: "Get a free cup every five times"</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-cyan-700 min-w-[70px]">Employee:</span>
+                                    <span class="text-slate-600">Are you a member?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600">Yes, my number is 555-890-...</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-cyan-700 min-w-[70px]">Employee:</span>
+                                    <span class="text-slate-600">Thank you, this is your 4th time, next time you get a coupon!</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600">Cool, thanks!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,37 +193,74 @@
                     </svg>
                 </div>
                 <span class="text-green-600 font-bold uppercase text-xs">Fitness Center</span>
-                <h3 class="text-3xl font-bold mt-2 mb-4 text-slate-900">The Gym Network</h3>
-                <p class="text-slate-700 leading-relaxed mb-6">
-                    A fitness chain uses Jellin across all locations. Members earn points wherever they train, redeemable for classes, merchandise, or personal training sessions.
-                </p>
-                <img src="assets/jellin-gym.jpeg" alt="The Gym Network - Fitness center loyalty scenario" class="w-full rounded-2xl shadow-md mb-6">
-                <div class="bg-white rounded-xl p-4 border border-green-200">
-                    <p class="text-sm font-bold text-green-900 mb-3">Campaign: "Train Anywhere, Earn Everywhere"</p>
-                    <div class="space-y-2 text-xs">
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                            <span class="text-slate-600">Welcome! Checking in for your workout?</span>
+                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">The Gym Network</h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Each branch starts over.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A gym member who trains at multiple locations has no way to consolidate progress. Each branch feels like starting over.
+                        </p>
+                        <img src="assets/jellin-gym-before.jpg" alt="Before Jellin: gym member with no shared progress across locations" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-slate-200">
+                            <p class="text-sm font-bold text-slate-800 mb-3">Separate loyalty per location</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[80px]">Receptionist:</span>
+                                    <span class="text-slate-600">Welcome! First time at this branch?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
+                                    <span class="text-slate-600">No, I train at your downtown location too.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[80px]">Receptionist:</span>
+                                    <span class="text-slate-600">Sorry — rewards don't carry over between locations.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
+                                    <span class="text-slate-600">Guess I'm starting from zero again.</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
-                            <span class="text-slate-600">Yes! Here's my QR code.</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                            <span class="text-slate-600 italic">[Scans QR code from member's phone app]</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                            <span class="text-slate-600">Perfect! You've earned 2 Jells today. You have 8 total across all our locations.</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
-                            <span class="text-slate-600">Nice! What can I get with those?</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                            <span class="text-slate-600">At 10 Jells you unlock a free personal training session!</span>
+                    </div>
+
+                    <div>
+                        <p class="text-green-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-green-800 leading-tight mb-3">Train anywhere. Earn everywhere.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A fitness chain uses Jellin across all locations. Members earn points wherever they train, redeemable for classes, merchandise, or personal training sessions.
+                        </p>
+                        <img src="assets/jellin-gym-after.jpg" alt="After Jellin: gym member checks in with QR and earns Jells across locations" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-green-200">
+                            <p class="text-sm font-bold text-green-900 mb-3">Campaign: "Train Anywhere, Earn Everywhere"</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
+                                    <span class="text-slate-600">Welcome! Checking in for your workout?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
+                                    <span class="text-slate-600">Yes! Here's my QR code.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
+                                    <span class="text-slate-600 italic">[Scans QR code from member's phone app]</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
+                                    <span class="text-slate-600">Perfect! You've earned 2 Jells today. You have 8 total across all our locations.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
+                                    <span class="text-slate-600">Nice! What can I get with those?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
+                                    <span class="text-slate-600">At 10 Jells you unlock a free personal training session!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,7 +268,7 @@
         </div>
 
         <!-- Hotel Scenario -->
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-12 flex flex-col gap-8 items-center border-2 border-purple-100 mb-12 shadow-lg">
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-12 border-2 border-purple-100 mb-12 shadow-lg">
             <div class="flex-1">
                 <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                     <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
@@ -201,47 +277,85 @@
                     </svg>
                 </div>
                 <span class="text-purple-600 font-bold uppercase text-xs">Hospitality Ecosystem</span>
-                <h3 class="text-3xl font-bold mt-2 mb-4">The Hotel Guest Scenario</h3>
-                <p class="text-slate-700 leading-relaxed mb-6">
-                    A traveler checks into a hotel. The concierge "Jells" their number. Instantly, the guest receives a welcome SMS with a QR link. 
-                    <br><br>
-                    They can now get loyalty points at the <strong>partnered Cafe</strong> around the corner and a discount at the <strong>local Apparel Shop</strong>, all under the hotel's custom loyalty umbrella.
-                </p>
-                <img src="assets/jellin-hotel.jpeg" alt="The Hotel Guest Scenario - Hospitality loyalty ecosystem" class="w-full rounded-2xl shadow-md mb-6">
-                <div class="bg-white rounded-xl p-4 border border-purple-200 mb-4">
-                    <p class="text-sm font-bold text-purple-900 mb-3">Campaign: "Neighborhood Explorer Network"</p>
-                    <div class="space-y-2 text-xs">
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
-                            <span class="text-slate-600">Welcome! Let me add you to our local partner rewards. Your number?</span>
+                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">The Hotel Guest Scenario</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Paper flyers in the bin.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A traveler checks into a hotel in an unfamiliar city. They don't know where to eat or what to explore. Paper flyers end up in the bin.
+                        </p>
+                        <img src="assets/jellin-hotel-before.jpg" alt="Before Jellin: hotel guest with only paper flyers for local tips" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-slate-200">
+                            <p class="text-sm font-bold text-slate-800 mb-3">Paper recommendations</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">Concierge:</span>
+                                    <span class="text-slate-600">Welcome! Here's a flyer with local restaurants.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
+                                    <span class="text-slate-600">Thanks… any discounts?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">Concierge:</span>
+                                    <span class="text-slate-600">Not really — you'll have to ask each place yourself.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
+                                    <span class="text-slate-600">Okay. Into the bag it goes.</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                            <span class="text-slate-600">555-890-...</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
-                            <span class="text-slate-600">Perfect! You just received 5 instant Jells! That gives you 20% off breakfast and a free coffee at our restaurant!</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                            <span class="text-slate-600">Wow, that's great! Can I use it at other places too?</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
-                            <span class="text-slate-600">Yes! You can also earn more Jells at our partner cafe and boutique down the street.</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                            <span class="text-slate-600 italic">[Next morning at restaurant] I'd like to use my breakfast discount.</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-pink-700 min-w-[70px]">Server:</span>
-                            <span class="text-slate-600">Of course! Your number? ... Applied! 20% off and your free coffee is on the way!</span>
+                    </div>
+
+                    <div>
+                        <p class="text-purple-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-purple-800 leading-tight mb-3">One number. A whole neighborhood.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A traveler checks into a hotel. The concierge "Jells" their number. Instantly, the guest receives a welcome SMS with a QR link.
+                            <br><br>
+                            They can now get loyalty points at the <strong>partnered Cafe</strong> around the corner and a discount at the <strong>local Apparel Shop</strong>, all under the hotel's custom loyalty umbrella.
+                        </p>
+                        <img src="assets/jellin-hotel-after.jpg" alt="After Jellin: concierge adds guest phone number for partner rewards" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-purple-200">
+                            <p class="text-sm font-bold text-purple-900 mb-3">Campaign: "Neighborhood Explorer Network"</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
+                                    <span class="text-slate-600">Welcome! Let me add you to our local partner rewards. Your number?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
+                                    <span class="text-slate-600">555-890-...</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
+                                    <span class="text-slate-600">Perfect! You just received 5 instant Jells! That gives you 20% off breakfast and a free coffee at our restaurant!</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
+                                    <span class="text-slate-600">Wow, that's great! Can I use it at other places too?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
+                                    <span class="text-slate-600">Yes! You can also earn more Jells at our partner cafe and boutique down the street.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
+                                    <span class="text-slate-600 italic">[Next morning at restaurant] I'd like to use my breakfast discount.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-pink-700 min-w-[70px]">Server:</span>
+                                    <span class="text-slate-600">Of course! Your number? ... Applied! 20% off and your free coffee is on the way!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <ul class="space-y-3 font-semibold text-slate-800">
+
+                <ul class="space-y-3 font-semibold text-slate-800 mb-8">
                     <li class="flex items-center gap-3">
                         <span class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
                         No app download for the traveler
@@ -255,43 +369,43 @@
                         Complete privacy protection
                     </li>
                 </ul>
-            </div>
-            <div class="flex-1 grid grid-cols-2 gap-4">
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-purple-100 hover:scale-105 transition-transform">
-                    <div class="flex items-center justify-center mb-3 h-12">
-                        <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6b21a8">
-                            <path d="M3 20h18v2H3zM5 4h14v16H5z"/>
-                            <path d="M8 8h3v3H8zM13 8h3v3h-3zM8 13h3v3H8zM13 13h3v3h-3z"/>
-                        </svg>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-purple-100 hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center mb-3 h-12">
+                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6b21a8">
+                                <path d="M3 20h18v2H3zM5 4h14v16H5z"/>
+                                <path d="M8 8h3v3H8zM13 8h3v3h-3zM8 13h3v3H8zM13 13h3v3h-3z"/>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-purple-900">Hotel</p>
+                        <p class="text-xs text-slate-500 mt-1">Main Partner</p>
                     </div>
-                    <p class="font-bold text-purple-900">Hotel</p>
-                    <p class="text-xs text-slate-500 mt-1">Main Partner</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-pink-100 hover:scale-105 transition-transform">
-                    <div class="flex items-center justify-center mb-3 h-12">
-                        <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#db2777">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                            <circle cx="12" cy="12" r="8"/>
-                        </svg>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-pink-100 hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center mb-3 h-12">
+                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#db2777">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                <circle cx="12" cy="12" r="8"/>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-pink-900">Partner Bistro</p>
+                        <p class="text-xs text-slate-500 mt-1">Food & Drinks</p>
                     </div>
-                    <p class="font-bold text-pink-900">Partner Bistro</p>
-                    <p class="text-xs text-slate-500 mt-1">Food & Drinks</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center col-span-2 border border-purple-100 hover:scale-105 transition-transform">
-                    <div class="flex items-center justify-center mb-3 h-12">
-                        <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6b21a8">
-                            <path d="M8 8c-2.5 0-4 2-4 4s1.5 4 4 4l8-8c2.5 0 4 2 4 4s-1.5 4-4 4"/>
-                            <path d="M12 16l-4-4M16 12l-4-4"/>
-                        </svg>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center col-span-2 border border-purple-100 hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center mb-3 h-12">
+                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6b21a8">
+                                <path d="M8 8c-2.5 0-4 2-4 4s1.5 4 4 4l8-8c2.5 0 4 2 4 4s-1.5 4-4 4"/>
+                                <path d="M12 16l-4-4M16 12l-4-4"/>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-purple-900">Seamless Network</p>
+                        <p class="text-xs text-slate-500 mt-1">One System, Many Benefits</p>
                     </div>
-                    <p class="font-bold text-purple-900">Seamless Network</p>
-                    <p class="text-xs text-slate-500 mt-1">One System, Many Benefits</p>
                 </div>
             </div>
         </div>
 
         <!-- Sports Team Scenario -->
-        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 flex flex-col gap-8 items-center border-2 border-blue-100 mb-12 shadow-lg">
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 border-2 border-blue-100 mb-12 shadow-lg">
             <div class="flex-1">
                 <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                     <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
@@ -301,41 +415,79 @@
                     </svg>
                 </div>
                 <span class="text-blue-600 font-bold uppercase text-xs">Sports Merchandise</span>
-                <h3 class="text-3xl font-bold mt-2 mb-4">The Team Supporter</h3>
-                <p class="text-slate-700 leading-relaxed mb-6">
-                    A sports team rewards fans who purchase official merchandise. Buy a team jacket online or in-store, and instantly receive a free ticket for next week's match. Just provide your phone number at checkout or at the stadium entrance.
-                </p>
-                <img src="assets/jellin-jacket-ticket.jpeg" alt="The Team Supporter - Sports merchandise loyalty scenario" class="w-full rounded-2xl shadow-md mb-6">
-                <div class="bg-white rounded-xl p-4 border border-blue-200 mb-4">
-                    <p class="text-sm font-bold text-blue-900 mb-3">Campaign: "Gear Up, Show Up Free"</p>
-                    <div class="space-y-2 text-xs">
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-blue-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600 italic">[Buying team jacket online] Entering customers email</span>
+                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">The Team Supporter</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Buy the jacket. Miss the match.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A fan buys a team jacket online. The purchase and the match-day experience exist in separate worlds.
+                        </p>
+                        <img src="assets/jellin-jacket-ticket-before.jpg" alt="Before Jellin: fan buys merchandise with no match ticket reward" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-slate-200">
+                            <p class="text-sm font-bold text-slate-800 mb-3">Merchandise only</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600 italic">[Buying team jacket online] Order confirmed.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">System:</span>
+                                    <span class="text-slate-600">Thanks for your purchase. Tracking number on the way.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600">Any chance that includes a match ticket?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">System:</span>
+                                    <span class="text-slate-600">No — tickets are sold separately.</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-indigo-700 min-w-[70px]">System:</span>
-                            <span class="text-slate-600">🎉 You've earned a FREE ticket for Sunday's match! Show the QR code you just received in your email at entry.</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600 italic">[Sunday at stadium entrance] Hi, I have a free ticket on my phone.</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
-                            <span class="text-slate-600">Great! Have you received the QR code?</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                            <span class="text-slate-600">Yes, here it is</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
-                            <span class="text-slate-600">Perfect! Ticket verified. Enjoy the game!</span>
+                    </div>
+
+                    <div>
+                        <p class="text-blue-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-blue-800 leading-tight mb-3">Gear up. Show up free.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A sports team rewards fans who purchase official merchandise. Buy a team jacket online or in-store, and instantly receive a free ticket for next week's match. Just provide your phone number at checkout or at the stadium entrance.
+                        </p>
+                        <img src="assets/jellin-jacket-ticket-after.jpg" alt="After Jellin: fan shows QR ticket from merchandise purchase at stadium" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-blue-200">
+                            <p class="text-sm font-bold text-blue-900 mb-3">Campaign: "Gear Up, Show Up Free"</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-blue-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600 italic">[Buying team jacket online] Entering customers email</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-indigo-700 min-w-[70px]">System:</span>
+                                    <span class="text-slate-600">🎉 You've earned a FREE ticket for Sunday's match! Show the QR code you just received in your email at entry.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600 italic">[Sunday at stadium entrance] Hi, I have a free ticket on my phone.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
+                                    <span class="text-slate-600">Great! Have you received the QR code?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
+                                    <span class="text-slate-600">Yes, here it is</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
+                                    <span class="text-slate-600">Perfect! Ticket verified. Enjoy the game!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <ul class="space-y-3 font-semibold text-slate-800">
+
+                <ul class="space-y-3 font-semibold text-slate-800 mb-8">
                     <li class="flex items-center gap-3">
                         <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
                         Instant reward for merchandise purchase
@@ -349,94 +501,130 @@
                         QR verification for easy redemption / no app needed for the customer.
                     </li>
                 </ul>
-            </div>
-            <div class="flex-1 grid grid-cols-2 gap-4">
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-blue-100 hover:scale-105 transition-transform">
-                    <div class="flex items-center justify-center mb-3 h-12">
-                        <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#3b82f6">
-                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                            <line x1="3" y1="6" x2="21" y2="6"/>
-                            <path d="M16 10a4 4 0 0 1-8 0"/>
-                        </svg>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-blue-100 hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center mb-3 h-12">
+                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#3b82f6">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                                <line x1="3" y1="6" x2="21" y2="6"/>
+                                <path d="M16 10a4 4 0 0 1-8 0"/>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-blue-900">Team Store</p>
+                        <p class="text-xs text-slate-500 mt-1">Official Merchandise</p>
                     </div>
-                    <p class="font-bold text-blue-900">Team Store</p>
-                    <p class="text-xs text-slate-500 mt-1">Official Merchandise</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-indigo-100 hover:scale-105 transition-transform">
-                    <div class="flex items-center justify-center mb-3 h-12">
-                        <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6366f1">
-                            <path d="M3 21h18"/>
-                            <path d="M9 8h1m5 0h1M9 12h1m5 0h1M9 16h1m5 0h1"/>
-                            <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
-                        </svg>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-indigo-100 hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center mb-3 h-12">
+                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6366f1">
+                                <path d="M3 21h18"/>
+                                <path d="M9 8h1m5 0h1M9 12h1m5 0h1M9 16h1m5 0h1"/>
+                                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-indigo-900">Stadium</p>
+                        <p class="text-xs text-slate-500 mt-1">Match Venue</p>
                     </div>
-                    <p class="font-bold text-indigo-900">Stadium</p>
-                    <p class="text-xs text-slate-500 mt-1">Match Venue</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center col-span-2 border border-blue-100 hover:scale-105 transition-transform">
-                    <div class="flex items-center justify-center mb-3 h-12">
-                        <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#3b82f6">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center col-span-2 border border-blue-100 hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center mb-3 h-12">
+                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#3b82f6">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-blue-900">Instant Reward</p>
+                        <p class="text-xs text-slate-500 mt-1">Buy Gear, Get Free Entry</p>
                     </div>
-                    <p class="font-bold text-blue-900">Instant Reward</p>
-                    <p class="text-xs text-slate-500 mt-1">Buy Gear, Get Free Entry</p>
                 </div>
             </div>
         </div>
 
         <!-- Retail Scenario -->
         <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 md:p-12 border-2 border-amber-100 shadow-lg">
-            <div class="grid grid-cols-1 gap-8 items-center">
-                <div>
-                    <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                        <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
-                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                            <line x1="3" y1="6" x2="21" y2="6"/>
-                            <path d="M16 10a4 4 0 0 1-8 0"/>
-                        </svg>
+            <div class="flex-1">
+                <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                    <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                </div>
+                <span class="text-amber-600 font-bold uppercase text-xs">Retail Store</span>
+                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">The Shopping Mall</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Every store starts from zero.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A casual shopper visits a mall. Each store has its own loyalty program — or none at all. Spending is scattered and unrewarded.
+                        </p>
+                        <img src="assets/jellin-mall-before.jpg" alt="Before Jellin: shopper with fragmented store loyalty at the mall" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-slate-200">
+                            <p class="text-sm font-bold text-slate-800 mb-3">Store-by-store loyalty</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">Cashier:</span>
+                                    <span class="text-slate-600">Want to join our store rewards?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
+                                    <span class="text-slate-600">I already have three other mall apps.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-600 min-w-[70px]">Cashier:</span>
+                                    <span class="text-slate-600">This one only works in our store, sorry.</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
+                                    <span class="text-slate-600">I'll skip it then.</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-amber-600 font-bold uppercase text-xs">Retail Store</span>
-                    <h3 class="text-3xl font-bold mt-2 mb-4 text-slate-900">The Shopping Mall</h3>
-                    <p class="text-slate-700 leading-relaxed mb-6">
-                        A shopping mall implements Jellin mall-wide. Shoppers earn Jells at any participating store. Collect 20 Jells and get a $20 mall gift card. This encourages exploration of different stores and increases overall mall traffic.
-                    </p>
-                    <img src="assets/jellin-mall.jpeg" alt="The Shopping Mall - Retail loyalty scenario" class="w-full rounded-2xl shadow-md mb-6">
-                    <div class="bg-white rounded-xl p-4 border border-amber-200">
-                        <p class="text-sm font-bold text-amber-900 mb-3">Campaign: "Mall Explorer Rewards"</p>
-                        <div class="space-y-2 text-xs">
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
-                                <span class="text-slate-600">Are you part of our mall rewards program?</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                <span class="text-slate-600">No, what is it?</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
-                                <span class="text-slate-600">Shop anywhere in the mall, collect 20 Jells, get a $20 gift card! Your number?</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                <span class="text-slate-600">555-890-...</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
-                                <span class="text-slate-600">You just earned 2 Jells!</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                <span class="text-slate-600 italic">[Later at bookstore] Can I add to my mall rewards here too?</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="font-semibold text-orange-700 min-w-[70px]">Bookseller:</span>
-                                <span class="text-slate-600">Yes! Your number? ... 3 more Jells added! You're at 5 total.</span>
+
+                    <div>
+                        <p class="text-amber-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
+                        <p class="text-2xl md:text-3xl font-extrabold text-amber-800 leading-tight mb-3">Shop anywhere. One rewards count.</p>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            A shopping mall implements Jellin mall-wide. Shoppers earn Jells at any participating store. Collect 20 Jells and get a $20 mall gift card. This encourages exploration of different stores and increases overall mall traffic.
+                        </p>
+                        <img src="assets/jellin-mall-after.jpg" alt="After Jellin: shopper earns mall-wide Jells with a phone number" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
+                        <div class="bg-white rounded-xl p-4 border border-amber-200">
+                            <p class="text-sm font-bold text-amber-900 mb-3">Campaign: "Mall Explorer Rewards"</p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
+                                    <span class="text-slate-600">Are you part of our mall rewards program?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
+                                    <span class="text-slate-600">No, what is it?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
+                                    <span class="text-slate-600">Shop anywhere in the mall, collect 20 Jells, get a $20 gift card! Your number?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
+                                    <span class="text-slate-600">555-890-...</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
+                                    <span class="text-slate-600">You just earned 2 Jells!</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
+                                    <span class="text-slate-600 italic">[Later at bookstore] Can I add to my mall rewards here too?</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-semibold text-orange-700 min-w-[70px]">Bookseller:</span>
+                                    <span class="text-slate-600">Yes! Your number? ... 3 more Jells added! You're at 5 total.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white p-5 rounded-2xl shadow-md text-center border border-amber-100">
                         <div class="flex items-center justify-center mb-2 h-8">
