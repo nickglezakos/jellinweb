@@ -76,6 +76,7 @@ const ReferralRegisterView = {
               </div>
               <div id="ref-reg-password-match" style="font-size:0.8rem; margin-top:0.25rem; min-height:1.25rem;"></div>
             </div>
+            <p style="color:#64748b; font-size:0.8rem; margin-bottom:1rem;">By creating an account you agree to the <a href="../legal/terms.html" class="link">Terms of Use</a> and <a href="../legal/privacy.html" class="link">Privacy Policy</a>.</p>
             <button type="submit" class="btn-primary" style="width:100%;" id="referral-register-submit">Create Referral Account</button>
           </form>
 

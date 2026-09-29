@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete your Jellin account | Jellin</title>
+  <meta name="description" content="Request deletion of your Jellin account and associated data without opening the app. For the Jellin app on Google Play.">
+  <link rel="canonical" href="https://jellinapp.com/legal/delete-account.html">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/icon/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/logos/icon/mobile/jellin-j-gradient.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="legal.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-20">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+      <a href="../index.html" class="font-extrabold text-lg tracking-tight">Jellin</a>
+      <nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold text-slate-600" aria-label="Legal">
+        <a href="terms.html" class="hover:text-purple-700">Terms</a>
+        <a href="privacy.html" class="hover:text-purple-700">Privacy</a>
+        <a href="delete-account.html" class="text-purple-700" aria-current="page">Delete account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-12">
+    <p class="text-purple-600 font-bold uppercase text-xs tracking-wider">Jellin · Google Play</p>
+    <h1 class="text-4xl font-extrabold mt-2 mb-3">Delete your Jellin account</h1>
+    <p class="text-slate-600 text-lg leading-relaxed mb-8">You can ask Jellin to permanently delete your account and the personal data tied to it. You do not need the Android app installed, and you do not need to sign in on this page.</p>
+
+    <section class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-10 mb-8" aria-labelledby="request-heading">
+      <h2 id="request-heading" class="text-2xl font-extrabold mb-2">Request deletion</h2>
+      <p class="text-slate-600 mb-6">Tell us which Jellin account to delete. We email the address you give us to confirm the request is yours before anything is removed. Deletion is permanent and cannot be undone.</p>
+
+      <form id="delete-form" data-endpoint="https://formspree.io/f/xdalrjdj">
+        <label class="block text-sm font-semibold mb-1 text-slate-700" for="delete-type">What should be deleted</label>
+        <select id="delete-type" name="deletion_type" required class="w-full border border-slate-300 rounded-xl p-3 mb-4 bg-white">
+          <option value="">Choose one</option>
+          <option value="Business user account">My business user account (login only)</option>
+          <option value="Business workspace and loyalty records">My business workspace and its loyalty records</option>
+          <option value="Referral account">My referral account</option>
+          <option value="Customer loyalty record">My customer record (phone or email used at a business)</option>
+        </select>
+
+        <label class="block text-sm font-semibold mb-1 text-slate-700" for="delete-email">Email address on the account</label>
+        <input id="delete-email" name="email" type="email" required autocomplete="email" class="w-full border border-slate-300 rounded-xl p-3 mb-4" placeholder="you@example.com">
+
+        <label class="block text-sm font-semibold mb-1 text-slate-700" for="delete-phone">Phone number <span class="font-normal text-slate-500">(if the account or loyalty record uses one)</span></label>
+        <input id="delete-phone" name="phone" type="tel" autocomplete="tel" class="w-full border border-slate-300 rounded-xl p-3 mb-4" placeholder="+30 …">
+
+        <label class="block text-sm font-semibold mb-1 text-slate-700" for="delete-business">Business name <span class="font-normal text-slate-500">(if you know it)</span></label>
+        <input id="delete-business" name="business_name" type="text" class="w-full border border-slate-300 rounded-xl p-3 mb-4" placeholder="The business that enrolled you, or your own workspace">
+
+        <label class="block text-sm font-semibold mb-1 text-slate-700" for="delete-notes">Anything we should know</label>
+        <textarea id="delete-notes" name="message" rows="3" class="w-full border border-slate-300 rounded-xl p-3 mb-4" placeholder="Optional"></textarea>
+
+        <label class="flex items-start gap-3 text-sm text-slate-700 mb-6">
+          <input id="delete-confirm" name="confirm_permanent_deletion" type="checkbox" required class="mt-1">
+          <span>I request permanent deletion of the Jellin account or record described above, and I understand that deleted data cannot be restored. If I have a paid subscription, I ask Jellin to cancel it as part of this request.</span>
+        </label>
+
+        <button type="submit" id="delete-submit" class="jell-gradient text-white font-bold px-6 py-3 rounded-full">Send deletion request</button>
+        <p class="text-sm text-slate-500 mt-4">You can also email <a class="text-purple-700 font-semibold underline" href="mailto:nick.glezakos@gmail.com?subject=Jellin%20account%20deletion%20request">nick.glezakos@gmail.com</a> with the subject “Jellin account deletion request”.</p>
+      </form>
+
+      <div id="delete-thanks" class="hidden">
+        <p class="font-bold text-lg text-slate-900">Request received</p>
+        <p class="text-slate-600 mt-2">We will write to the email address you entered to confirm it is yours. After we confirm, we delete the account and associated data, usually within 30 days. Some billing records may be kept where tax law requires it. That exception is explained below.</p>
+      </div>
+    </section>
+
+    <article class="legal-prose bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-10">
+      <h2 id="in-app">If you can still sign in</h2>
+      <p>Business accounts and referral accounts can also be deleted from Profile in the Jellin web app, and from the equivalent account settings in the Jellin Android app. In-app deletion and this page remove the same account. This page exists so you can ask after you have uninstalled the app.</p>
+
+      <h2 id="what">What we delete</h2>
+      <ul>
+        <li><strong>Business user account.</strong> Your login, email, phone number on the user, password, session tokens, and device push token. If you were only invited into another business, that business’s programs, visits, and customer records stay with the business.</li>
+        <li><strong>Business workspace.</strong> The workspace, its operators’ access, loyalty programs, groups, visits, coupons, message templates, broadcasts, and the customer phone numbers and email addresses stored for that workspace.</li>
+        <li><strong>Referral account.</strong> Your name, referral code, phone number, email address, password, and the link between you and associated businesses.</li>
+        <li><strong>Customer loyalty record.</strong> The phone number or email address, visit history, stamps, and coupons held for that record. If a business enrolled you, we process the request with that business, because they run the program.</li>
+      </ul>
+
+      <h2 id="kept">What we may keep</h2>
+      <ul>
+        <li>Invoices and subscription records that tax or accounting law requires us to keep, commonly for five years under Greek tax rules, and longer only where a specific rule says so. These records are not used to run a loyalty program.</li>
+        <li>Information we must retain to resolve a chargeback, fraud investigation, or legal claim, for as long as that matter is open.</li>
+        <li>Aggregated statistics that no longer identify you.</li>
+      </ul>
+      <p>We do not treat deactivation, a ban, or a hidden profile as deletion. A completed request removes the account.</p>
+
+      <h2 id="subscription">Paid subscriptions</h2>
+      <p>If a Stripe subscription is still active, cancelling it is part of closing the account. Say so in the form and we will cancel it if you cannot reach the Subscription screen. Cancellation ends access to the paid plan and a refund for the unused period is processed, matching the subscription screen in the product. Amounts already due for use before cancellation remain payable.</p>
+      <p>If you subscribed through Google Play, cancel that subscription in Google Play as well (Play Store → Payments &amp; subscriptions). Deleting the Jellin account does not by itself cancel a subscription that Google bills.</p>
+
+      <h2 id="timing">How long it takes</h2>
+      <p>We confirm the request by email, then complete deletion within 30 days. We will tell you if a legal hold applies to a specific record and what that means.</p>
+
+      <p class="mt-8">Related: <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+    </article>
+  </main>
+
+  <footer class="border-t border-slate-200 py-8 px-6 text-center text-sm text-slate-500">
+    <p>© 2026 Jellin. <a href="../index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('delete-form');
+      const thanks = document.getElementById('delete-thanks');
+      const submitBtn = document.getElementById('delete-submit');
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        const endpoint = form.dataset.endpoint;
+        const data = new FormData(form);
+        data.set('message', [
+          'Jellin account deletion request',
+          'Type: ' + (data.get('deletion_type') || ''),
+          'Phone: ' + (data.get('phone') || ''),
+          'Business: ' + (data.get('business_name') || ''),
+          'Notes: ' + (document.getElementById('delete-notes').value || ''),
+          'Permanent deletion confirmed: yes',
+          'Cancel active subscription: yes'
+        ].join('\n'));
+        try {
+          const resp = await fetch(endpoint, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (!resp.ok) throw new Error('submission_failed');
+          form.classList.add('hidden');
+          thanks.classList.remove('hidden');
+        } catch (err) {
+          const subject = encodeURIComponent('Jellin account deletion request');
+          const body = encodeURIComponent(
+            'Type: ' + document.getElementById('delete-type').value + '\n' +
+            'Email: ' + document.getElementById('delete-email').value + '\n' +
+            'Phone: ' + document.getElementById('delete-phone').value + '\n' +
+            'Business: ' + document.getElementById('delete-business').value + '\n' +
+            'Notes: ' + document.getElementById('delete-notes').value
+          );
+          window.location.href = 'mailto:nick.glezakos@gmail.com?subject=' + subject + '&body=' + body;
+          submitBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

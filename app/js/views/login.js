@@ -68,6 +68,11 @@ const LoginView = {
             <p style="margin-top:0.5rem; color:#64748b;">
               Need to confirm your email? <a href="#confirm-email" class="link">Enter activation key</a>
             </p>
+            <p style="margin-top:0.75rem; color:#94a3b8; font-size:0.8rem;">
+              <a href="../legal/terms.html" class="link">Terms</a>
+              · <a href="../legal/privacy.html" class="link">Privacy</a>
+              · <a href="../legal/delete-account.html" class="link">Delete account</a>
+            </p>
           </div>
         </div>
       </div>

@@ -91,6 +91,7 @@ const RegisterView = {
               <label style="display:block; font-weight:600; margin-bottom:0.25rem; font-size:0.875rem; color:#475569;">Referral Code <span class="text-muted">(optional)</span></label>
               <input type="text" id="reg-referralCode" class="input-field" placeholder="Enter a referral code">
             </div>
+            <p style="color:#64748b; font-size:0.8rem; margin-bottom:1rem;">By creating an account you agree to the <a href="../legal/terms.html" class="link">Terms of Use</a> and <a href="../legal/privacy.html" class="link">Privacy Policy</a>.</p>
             <button type="submit" class="btn-primary" style="width:100%;" id="register-submit">Create Account</button>
           </form>
 

@@ -67,6 +67,11 @@ const ReferralLoginView = {
             <p style="margin-top:0.75rem; color:#64748b;">
               <a href="#login" class="link">← Back to Business Login</a>
             </p>
+            <p style="margin-top:0.75rem; color:#94a3b8; font-size:0.8rem;">
+              <a href="../legal/terms.html" class="link">Terms</a>
+              · <a href="../legal/privacy.html" class="link">Privacy</a>
+              · <a href="../legal/delete-account.html" class="link">Delete account</a>
+            </p>
           </div>
         </div>
       </div>
