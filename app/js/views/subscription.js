@@ -1,6 +1,7 @@
 /**
  * Jellin Subscription View
  * View Stripe products, subscribe, manage current subscription.
+ * Purchase is limited to JWT role Administrator.
  */
 const SubscriptionView = {
   async render() {
@@ -18,6 +19,17 @@ const SubscriptionView = {
         <div id="sub-loading" style="text-align:center; padding:3rem;">
           <span class="spinner spinner-dark" style="width:2.5rem; height:2.5rem;"></span>
           <p class="text-muted" style="margin-top:1rem;">Loading plans...</p>
+        </div>
+
+        <!-- Non-Administrator message -->
+        <div id="sub-mobile-only" style="display:none;">
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>Business owner access required</h3>
+            <p>Web checkout is available to tenant Administrators. If you are staff or joined through another channel, please register and manage your account through the Jellin mobile app.</p>
+          </div>
         </div>
 
         <!-- Current Subscription Card -->
@@ -66,18 +78,33 @@ const SubscriptionView = {
 
     const loadingEl = document.getElementById('sub-loading');
     const errorEl = document.getElementById('sub-error');
+    const mobileOnlyEl = document.getElementById('sub-mobile-only');
     const plansList = document.getElementById('sub-plans-list');
     const plansSection = document.getElementById('sub-plans');
     const emptyEl = document.getElementById('sub-empty');
     const subscribeBtn = document.getElementById('sub-subscribe-btn');
     const actionsDiv = document.getElementById('sub-actions');
     const currentCard = document.getElementById('sub-current');
-    const currentDetails = document.getElementById('sub-current-details');
     const cancelModal = document.getElementById('sub-cancel-modal');
 
     let selectedPriceId = null;
     let selectedPlanName = null;
     let products = [];
+
+    // Non-Administrators: polite mobile-app message, no Stripe calls
+    if (!Auth.isAdministrator()) {
+      loadingEl.style.display = 'none';
+      mobileOnlyEl.style.display = 'block';
+      return;
+    }
+
+    const tenantId = Auth.getTenantId();
+    if (!tenantId) {
+      loadingEl.style.display = 'none';
+      errorEl.textContent = 'Unable to determine your business account from the session. Please sign out and sign in again.';
+      errorEl.style.display = 'block';
+      return;
+    }
 
     try {
       products = await API.Stripe.getProducts();
@@ -143,11 +170,6 @@ const SubscriptionView = {
         subscribeBtn.innerHTML = '<span class="spinner"></span> Redirecting to checkout...';
 
         try {
-          // Note: tenantId needs to come from the auth context
-          // For now we pass a default value; the API doc says it's required
-          const user = Auth.getUser();
-          const tenantId = 1; // This should ideally come from the JWT or user context
-
           const checkoutUrl = await API.Stripe.createSubscription(tenantId, selectedPriceId);
 
           if (checkoutUrl && typeof checkoutUrl === 'string') {
@@ -177,7 +199,6 @@ const SubscriptionView = {
 
         try {
           const subscriptionExternalId = cancelModal.dataset.subId;
-          const tenantId = 1; // TODO: from auth context
           await API.Stripe.cancelSubscription(tenantId, subscriptionExternalId);
           Toast.success('Subscription cancelled. Refund will be processed.');
           cancelModal.style.display = 'none';

@@ -6,6 +6,24 @@ const Auth = (() => {
   const TOKEN_KEY = 'jellin_token';
   const REFRESH_TOKEN_KEY = 'jellin_refreshToken';
   const USER_KEY = 'jellin_user';
+  const ROLE_CLAIM = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
+  const ADMINISTRATOR_ROLE = 'Administrator';
+
+  /**
+   * Decode a JWT payload segment with URL-safe base64 support
+   */
+  function parseJwtPayload(token) {
+    if (!token) return null;
+    try {
+      const segment = token.split('.')[1];
+      if (!segment) return null;
+      const base64 = segment.replace(/-/g, '+').replace(/_/g, '/');
+      const padded = base64 + '='.repeat((4 - (base64.length % 4)) % 4);
+      return JSON.parse(atob(padded));
+    } catch {
+      return null;
+    }
+  }
 
   /**
    * Store tokens after successful login
@@ -29,7 +47,8 @@ const Auth = (() => {
 
     // Optional: Check token expiry (basic check, parse JWT payload)
     try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
+      const payload = parseJwtPayload(token);
+      if (!payload) return !!token;
       const now = Math.floor(Date.now() / 1000);
       // Token expired? (Allow 30 second buffer)
       if (payload.exp && payload.exp < now - 30) {
@@ -105,16 +124,44 @@ const Auth = (() => {
    * Decode JWT payload (for debugging / display)
    */
   function decodeToken() {
-    const token = getToken();
-    if (!token) return null;
-    try {
-      return JSON.parse(atob(token.split('.')[1]));
-    } catch {
+    return parseJwtPayload(getToken());
+  }
+
+  /**
+   * Role claim from the access token (string, array, or null)
+   */
+  function getRole() {
+    const payload = decodeToken();
+    if (!payload) return null;
+    const role = payload[ROLE_CLAIM];
+    return role === undefined || role === null ? null : role;
+  }
+
+  /**
+   * True when JWT role is Administrator (string or array of roles)
+   */
+  function isAdministrator() {
+    const role = getRole();
+    if (Array.isArray(role)) {
+      return role.includes(ADMINISTRATOR_ROLE);
+    }
+    return role === ADMINISTRATOR_ROLE;
+  }
+
+  /**
+   * TenantId from JWT as a positive integer, or null if missing/invalid
+   */
+  function getTenantId() {
+    const payload = decodeToken();
+    if (!payload || payload.TenantId === undefined || payload.TenantId === null) {
       return null;
     }
+    const tenantId = parseInt(payload.TenantId, 10);
+    return Number.isInteger(tenantId) && tenantId >= 1 ? tenantId : null;
   }
 
   return {
+    ROLE_CLAIM,
     setSession,
     isAuthenticated,
     getUser,
@@ -124,6 +171,9 @@ const Auth = (() => {
     getToken,
     getRefreshToken,
     decodeToken,
+    getRole,
+    isAdministrator,
+    getTenantId,
   };
 })();
 
