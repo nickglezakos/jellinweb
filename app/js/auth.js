@@ -7,7 +7,7 @@ const Auth = (() => {
   const REFRESH_TOKEN_KEY = 'jellin_refreshToken';
   const USER_KEY = 'jellin_user';
   const ROLE_CLAIM = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
-  const ADMINISTRATOR_ROLE = 'Administrator';
+  const OWNER_ROLE = 'Owner';
 
   /**
    * Decode a JWT payload segment with URL-safe base64 support
@@ -138,14 +138,15 @@ const Auth = (() => {
   }
 
   /**
-   * True when JWT role is Administrator (string or array of roles)
+   * True when JWT role is Owner (string or array of roles).
+   * Only Owners may open web Stripe checkout.
    */
-  function isAdministrator() {
+  function isOwner() {
     const role = getRole();
     if (Array.isArray(role)) {
-      return role.includes(ADMINISTRATOR_ROLE);
+      return role.includes(OWNER_ROLE);
     }
-    return role === ADMINISTRATOR_ROLE;
+    return role === OWNER_ROLE;
   }
 
   /**
@@ -172,7 +173,7 @@ const Auth = (() => {
     getRefreshToken,
     decodeToken,
     getRole,
-    isAdministrator,
+    isOwner,
     getTenantId,
   };
 })();

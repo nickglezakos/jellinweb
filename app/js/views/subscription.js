@@ -1,7 +1,7 @@
 /**
  * Jellin Subscription View
  * View Stripe products, subscribe, manage current subscription.
- * Purchase is limited to JWT role Administrator.
+ * Purchase is limited to JWT role Owner.
  */
 const SubscriptionView = {
   async render() {
@@ -21,7 +21,7 @@ const SubscriptionView = {
           <p class="text-muted" style="margin-top:1rem;">Loading plans...</p>
         </div>
 
-        <!-- Non-Administrator / unavailable message -->
+        <!-- Non-Owner / unavailable message -->
         <div id="sub-notice" style="display:none;">
           <div style="text-align:center; padding:2.5rem 1rem 1.5rem;">
             <p id="sub-notice-text" style="color:#64748b; font-size:1rem; line-height:1.6; margin:0 auto 1.5rem; max-width:26rem;"></p>
@@ -114,10 +114,10 @@ const SubscriptionView = {
     let selectedPriceId = null;
     let products = [];
 
-    // Non-Administrators: subtle message + go back, no Stripe calls
-    if (!Auth.isAdministrator()) {
+    // Non-Owners: subtle message + go back, no Stripe calls
+    if (!Auth.isOwner()) {
       this.showNotice(
-        'Subscriptions on the web are managed by the business Administrator. Please use the Jellin mobile app for your account, or ask your Administrator if you need plan access.'
+        'Subscriptions on the web are managed by the business Owner. Please use the Jellin mobile app for your account, or ask your Owner if you need plan access.'
       );
       return;
     }
