@@ -135,8 +135,12 @@ const LoginView = {
         const response = await API.Account.login(email, password);
 
         if (response.token) {
-          // Successful login
+          // Successful login — store TenantId from JWT when present (single-store owners)
           Auth.setSession(response.token, response.refreshToken, { email });
+          const tenantId = Auth.getTenantId();
+          if (tenantId) {
+            Auth.setUser({ email, tenantId });
+          }
           // Check if there's a redirect after login (e.g. from email confirmation)
           const returnTo = sessionStorage.getItem('jellin_returnTo');
           if (returnTo) {
@@ -145,8 +149,8 @@ const LoginView = {
           } else {
             window.location.hash = '#dashboard';
           }
-        } else if (response.associatedTenants) {
-          // Multi-tenant: user belongs to multiple tenants
+        } else if (response.associatedTenants && response.associatedTenants.length > 0) {
+          // Multi-tenant: user belongs to multiple tenants — pick the store (tenant) to use
           multiTenantData = response;
           multiTenantSection.style.display = 'block';
           // Hide login form
@@ -164,11 +168,12 @@ const LoginView = {
           // Add tenant selection handler
           tenantList.querySelectorAll('button').forEach(btn => {
             btn.addEventListener('click', async () => {
-              const tenantId = parseInt(btn.dataset.tenantId);
+              const tenantId = parseInt(btn.dataset.tenantId, 10);
               try {
                 const retryResponse = await API.Account.login(email, password, tenantId);
                 if (retryResponse.token) {
-                  Auth.setSession(retryResponse.token, retryResponse.refreshToken, { email });
+                  // Persist the chosen store id for Stripe and other tenant-scoped calls
+                  Auth.setSession(retryResponse.token, retryResponse.refreshToken, { email, tenantId });
                   window.location.hash = '#dashboard';
                 }
               } catch (err) {

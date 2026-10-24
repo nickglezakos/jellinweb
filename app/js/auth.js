@@ -150,15 +150,25 @@ const Auth = (() => {
   }
 
   /**
-   * TenantId from JWT as a positive integer, or null if missing/invalid
+   * Parse a positive tenant id from a value, or null if invalid
+   */
+  function parseTenantId(value) {
+    if (value === undefined || value === null || value === '') return null;
+    const tenantId = parseInt(value, 10);
+    return Number.isInteger(tenantId) && tenantId >= 1 ? tenantId : null;
+  }
+
+  /**
+   * TenantId for the active store: JWT claim first, then value saved at login
+   * (e.g. after the user picks a store from associatedTenants).
    */
   function getTenantId() {
     const payload = decodeToken();
-    if (!payload || payload.TenantId === undefined || payload.TenantId === null) {
-      return null;
-    }
-    const tenantId = parseInt(payload.TenantId, 10);
-    return Number.isInteger(tenantId) && tenantId >= 1 ? tenantId : null;
+    const fromToken = payload ? parseTenantId(payload.TenantId) : null;
+    if (fromToken) return fromToken;
+
+    const user = getUser();
+    return user ? parseTenantId(user.tenantId) : null;
   }
 
   return {
@@ -175,6 +185,7 @@ const Auth = (() => {
     getRole,
     isOwner,
     getTenantId,
+    parseTenantId,
   };
 })();
 
