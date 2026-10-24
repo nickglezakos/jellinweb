@@ -6,7 +6,7 @@ const Navbar = {
   render(activePage) {
     return `
       <nav class="navbar">
-        <div class="navbar-brand">Jellin</div>
+        <a href="../index.html" class="navbar-brand" style="text-decoration:none;color:inherit;">Jellin</a>
         <div class="navbar-links">
           <a href="#dashboard" class="navbar-link ${activePage === 'dashboard' ? 'active' : ''}">Dashboard</a>
           <a href="#subscription" class="navbar-link ${activePage === 'subscription' ? 'active' : ''}">Subscription</a>
@@ -48,7 +48,7 @@ const ReferralNavbar = {
   render(activePage) {
     return `
       <nav class="navbar">
-        <div class="navbar-brand">Jellin Referral</div>
+        <a href="../index.html" class="navbar-brand" style="text-decoration:none;color:inherit;">Jellin Referral</a>
         <div class="navbar-links">
           <a href="#referral-dashboard" class="navbar-link ${activePage === 'dashboard' ? 'active' : ''}">Dashboard</a>
           <a href="#" class="navbar-link" id="ref-nav-logout" style="color: #ef4444;">Logout</a>

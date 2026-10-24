@@ -1,1279 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jellin | Loyalty That Sticks</title>
-    
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Jellin | Loyalty That Sticks">
-    <meta name="description" content="A marketing app that jells with your customers. Create powerful campaigns with loyalty and instant coupons in minutes - reach everyone, even with no app.">
-    
-    <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jellinapp.com/">
-    <meta property="og:title" content="Jellin | Loyalty That Sticks">
-    <meta property="og:description" content="A marketing app that jells with your customers. Create powerful campaigns with loyalty and instant coupons in minutes - reach everyone, even with no app.">
-    <meta property="og:image" content="https://jellinapp.com/assets/jellin-share-image.png?v=2">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jellin - A marketing app that jells with your customers">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jellinapp.com/">
-    <meta property="twitter:title" content="Jellin | Loyalty That Sticks">
-    <meta property="twitter:description" content="A marketing app that jells with your customers. Create powerful campaigns with loyalty and instant coupons in minutes - reach everyone, even with no app.">
-    <meta property="twitter:image" content="https://jellinapp.com/assets/jellin-share-image.png?v=2">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/logos/icon/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/logos/icon/mobile/jellin-j-gradient.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/logos/icon/mobile/jellin-j-gradient.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .jell-gradient { background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%); }
-        .jell-gradient-alt { background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); }
-        .jell-gradient-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .phone-bg { background: #000; border: 8px solid #333; border-radius: 36px; }
-        .feature-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        .stat-number { background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .icon-svg { width: 100%; height: 100%; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-        .before-jellin img {
-            filter: grayscale(1) contrast(0.9) brightness(0.95);
-            opacity: 0.75;
-        }
-        .before-jellin .bg-white {
-            background-color: #f1f5f9 !important;
-            border-color: #cbd5e1 !important;
-            filter: grayscale(1);
-            opacity: 0.8;
-        }
-        .before-jellin > p {
-            color: #94a3b8 !important;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jellin | Loyalty That Sticks</title>
+  <meta name="description" content="Loyalty that sticks. No app required. Phone or email. Points. Coupons. Done.">
+  <meta name="title" content="Jellin | Loyalty That Sticks">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jellinapp.com/">
+  <meta property="og:title" content="Jellin | Loyalty That Sticks">
+  <meta property="og:description" content="Loyalty that sticks. No app required. Phone or email. Points. Coupons. Done.">
+  <meta property="og:image" content="assets/jellin-share-image.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Jellin | Loyalty That Sticks">
+  <meta property="twitter:description" content="Loyalty that sticks. No app required.">
+  <meta property="twitter:image" content="assets/jellin-share-image.png">
+  <link rel="icon" type="image/x-icon" href="assets/logos/icon/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/logos/icon/mobile/jellin-j-gradient.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logos/icon/mobile/jellin-j-gradient.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body>
+  <!--
+    CTAs locked to backend SPA — see docs/BACKEND-INTEGRATION.md
+    Start free → app/index.html  |  Become a partner → app/index.html#referral-login
+  -->
 
-    <header class="jell-gradient text-white py-20 px-6 text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-white opacity-10"></div>
-        <div class="max-w-4xl mx-auto relative z-10">
-            <!-- SVG Logo -->
-            <div class="mb-6 flex justify-center items-center">
-                <div class="inline-block">
-                    <svg viewBox="0 0 200 80" class="w-80 h-auto drop-shadow-2xl" style="display: block; margin: 0 auto; padding: 8px 0;">
-                        <g transform="translate(22, 0)">
-                            <!-- Main J -->
-                            <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48" 
-                                  fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            
-                            <!-- Letter e -->
-                            <path d="M62 45 Q62 35 72 35 Q82 35 82 45 L82 47 L62 47 Q62 57 72 57 Q77 57 82 54" 
-                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M62 45 Q62 35 72 35 Q82 35 82 45 Z" fill="white" opacity="0.3"/>
-                            
-                            <!-- Letter l (first) -->
-                            <path d="M92 25 L92 57" 
-                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                            
-                            <!-- Letter l (second) -->
-                            <path d="M104 25 L104 57" 
-                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                            
-                            <!-- Letter i -->
-                            <path d="M116 37 L116 57" 
-                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="116" cy="30" r="3" fill="white"/>
-                            
-                            <!-- Letter n -->
-                            <path d="M128 57 L128 45 Q128 37 136 37 Q144 37 144 45 L144 57" 
-                                  fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        </svg>
-                </div>
-            </div>
-            <p class="text-2xl md:text-3xl font-light mb-10 opacity-95">A marketing app that "jells" with your customers</p>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <a href="app/index.html" class="bg-white text-purple-600 px-10 py-4 rounded-full font-bold shadow-2xl hover:scale-105 transition-transform inline-block no-underline">Get Started Free</a>
-                <a href="app/index.html#referral-login" class="border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-purple-600 transition-all inline-block no-underline">Be a Jellin Referral</a>
-            </div>
+  <nav class="site-nav" aria-label="Primary">
+    <a class="site-nav__brand" href="#top" aria-label="Jellin home">Jellin</a>
+    <button type="button" class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+    <div class="site-nav__links" id="nav-menu">
+      <a href="#stories">Stories</a>
+      <a href="#how">How</a>
+      <a href="#product">Product</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--nav" href="app/index.html">Start free</a>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="hero__media" aria-hidden="true">
+      <div class="hero__glow"></div>
+      <div class="hero__stage">
+        <figure class="hero__phone hero__phone--left">
+          <img src="assets/jellin_customer_shos_01.jpg" alt="" width="720" height="1600">
+          <figcaption>Rewards</figcaption>
+        </figure>
+        <figure class="hero__phone hero__phone--center">
+          <img src="assets/jellin-email-01.jpg" alt="" width="720" height="1600">
+          <figcaption>Phone · Email</figcaption>
+        </figure>
+        <figure class="hero__phone hero__phone--right">
+          <img src="assets/jellin-analytics-01.jpg" alt="" width="720" height="1600">
+          <figcaption>Live insights</figcaption>
+        </figure>
+      </div>
+      <div class="hero__wash"></div>
+    </div>
+    <div class="hero__inner reveal">
+      <p class="hero__brand">Jellin</p>
+      <h1 class="hero__title">Loyalty that sticks.<br>No app required.</h1>
+      <p class="hero__support">Phone or email. Points. Coupons. Done.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="app/index.html">Start free</a>
+        <a class="btn btn--ghost" href="app/index.html#referral-login">Become a partner</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="proof" class="proof-band">
+    <div class="proof">
+      <article class="proof__row reveal" data-tone="purple">
+        <div class="proof__copy">
+          <span class="proof__mark">01</span>
+          <h2 class="proof__line">Number in.<br>Reward out.</h2>
+          <p class="proof__sub">Capture a phone or email once — every visit feeds the same reward.</p>
         </div>
-    </header>
-
-    <section class="max-w-6xl mx-auto py-20 px-6">
-        <div class="text-center mb-16">
-            <span class="text-purple-600 font-bold uppercase text-sm tracking-wider">Real World Examples</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Gifts grow revenue</h2>
-            <p class="text-slate-600 text-lg">See how different businesses use Jellin to grow</p>
+        <div class="proof__visual" aria-hidden="true">
+          <div class="proof__device">
+            <img src="assets/jellin-email-01.jpg" alt="" width="720" height="1600">
+          </div>
+          <div class="proof__chip proof__chip--float">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V19a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.09a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+            +30 ··· ····
+          </div>
+          <div class="proof__chip proof__chip--float proof__chip--late">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7"/><path d="M12 2v13"/><path d="m8 11 4 4 4-4"/></svg>
+            Reward unlocked
+          </div>
         </div>
+      </article>
 
-
-                <!-- Coffee Shop Scenario -->
-        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-8 md:p-12 border-2 border-cyan-100 mb-12 shadow-lg">
-            <div class="flex-1">
-                <div class="w-16 h-16 jell-gradient-alt rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
-                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                        <line x1="6" y1="1" x2="6" y2="4"/>
-                        <line x1="10" y1="1" x2="10" y2="4"/>
-                        <line x1="14" y1="1" x2="14" y2="4"/>
-                    </svg>
-                </div>
-                <span class="text-cyan-600 font-bold uppercase text-xs">Coffee Shop</span>
-                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">One coffee becomes a habit</h3>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Before Jellin -->
-                    <div class="before-jellin">
-                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">No card. No visit.</p>
-                        <img src="assets/jellin-everyday-regular-before.jpg" alt="Before Jellin: customer without a stamp card at the coffee counter" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            Sarah visits her favorite coffee shop every morning. A paper punch card is easy to lose, and there is no other record of the visit.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-slate-200">
-                            <p class="text-sm font-bold text-slate-800 mb-3">Paper stamp card</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">Employee:</span>
-                                    <span class="text-slate-600">Got your stamp card?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600">I think I lost it.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">Employee:</span>
-                                    <span class="text-slate-600">Without the card, this visit doesn't count.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600">Okay. Maybe next time.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- After Jellin -->
-                    <div>
-                        <p class="text-cyan-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-cyan-800 leading-tight mb-3">Your number is enough.</p>
-                        <img src="assets/jellin-everyday-regular-after.jpg" alt="After Jellin: customer gives her phone number and the barista tracks the visit" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            Sarah visits her favorite coffee shop every morning. With Jellin, she simply provides her phone number once. Every visit is automatically tracked.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-cyan-200">
-                            <p class="text-sm font-bold text-cyan-900 mb-3">Campaign: "Get a free cup every five times"</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-cyan-700 min-w-[70px]">Employee:</span>
-                                    <span class="text-slate-600">Are you a member?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600">Yes, my number is 555-890-...</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-cyan-700 min-w-[70px]">Employee:</span>
-                                    <span class="text-slate-600">Thank you, this is your 4th time, next time you get a coupon!</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600">Cool, thanks!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <article class="proof__row proof__row--flip reveal" data-tone="pink">
+        <div class="proof__copy">
+          <span class="proof__mark">02</span>
+          <h2 class="proof__line">Works with or<br>without the app.</h2>
+          <p class="proof__sub">Same loyalty whether they open the app, tap a link, or just reply by SMS.</p>
+          <ul class="proof__channels">
+            <li>
+              <span class="proof__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+              App
+            </li>
+            <li>
+              <span class="proof__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v6M14 20h3"/></svg></span>
+              QR
+            </li>
+            <li>
+              <span class="proof__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="m4 7 8 5 8-5"/></svg></span>
+              Email
+            </li>
+            <li>
+              <span class="proof__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              SMS
+            </li>
+          </ul>
         </div>
-
-        <!-- Gym Scenario -->
-        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 border-2 border-green-100 mb-12 shadow-lg">
-            <div class="flex-1">
-                <div class="w-16 h-16 jell-gradient-green rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
-                        <path d="M6.5 6.5h11v11h-11z"/>
-                        <path d="M17.5 10v4M6.5 10v4M2 10v4M22 10v4"/>
-                        <line x1="20.5" y1="10" x2="20.5" y2="14"/>
-                        <line x1="3.5" y1="10" x2="3.5" y2="14"/>
-                    </svg>
-                </div>
-                <span class="text-green-600 font-bold uppercase text-xs">Fitness Center</span>
-                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">One membership. Every location counts.</h3>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="before-jellin">
-                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Each branch starts over.</p>
-                        <img src="assets/jellin-gym-before.jpg" alt="Before Jellin: gym member with no shared progress across locations" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A gym member who trains at multiple locations has no way to consolidate progress. Each branch feels like starting over.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-slate-200">
-                            <p class="text-sm font-bold text-slate-800 mb-3">Separate loyalty per location</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[80px]">Receptionist:</span>
-                                    <span class="text-slate-600">Welcome! First time at this branch?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
-                                    <span class="text-slate-600">No, I train at your downtown location too.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[80px]">Receptionist:</span>
-                                    <span class="text-slate-600">Sorry — rewards don't carry over between locations.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
-                                    <span class="text-slate-600">Guess I'm starting from zero again.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p class="text-green-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-green-800 leading-tight mb-3">Train anywhere. Earn everywhere.</p>
-                        <img src="assets/jellin-gym-after.jpg" alt="After Jellin: gym member checks in with QR and earns Jells across locations" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A fitness chain uses Jellin across all locations. Members earn points wherever they train, redeemable for classes, merchandise, or personal training sessions.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-green-200">
-                            <p class="text-sm font-bold text-green-900 mb-3">Campaign: "Train Anywhere, Earn Everywhere"</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                                    <span class="text-slate-600">Welcome! Checking in for your workout?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
-                                    <span class="text-slate-600">Yes! Here's my QR code.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                                    <span class="text-slate-600 italic">[Scans QR code from member's phone app]</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                                    <span class="text-slate-600">Perfect! You've earned 2 Jells today. You have 8 total across all our locations.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[80px]">Member:</span>
-                                    <span class="text-slate-600">Nice! What can I get with those?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-green-700 min-w-[80px]">Receptionist:</span>
-                                    <span class="text-slate-600">At 10 Jells you unlock a free personal training session!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="proof__visual" aria-hidden="true">
+          <div class="proof__device proof__device--offset">
+            <img src="assets/jellin_customer_shos_01.jpg" alt="" width="720" height="1600">
+          </div>
+          <div class="proof__device proof__device--back">
+            <img src="assets/treat-app-coupons-list.jpg" alt="" width="720" height="1600">
+          </div>
         </div>
+      </article>
 
-        <!-- Hotel Scenario -->
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-12 border-2 border-purple-100 mb-12 shadow-lg">
-            <div class="flex-1">
-                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
-                        <path d="M3 20h18v2H3zM5 4h14v16H5z"/>
-                        <path d="M8 8h3v3H8zM13 8h3v3h-3zM8 13h3v3H8zM13 13h3v3h-3z"/>
-                    </svg>
-                </div>
-                <span class="text-purple-600 font-bold uppercase text-xs">Hospitality Ecosystem</span>
-                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">Check-ins unlock the whole neighborhood</h3>
-
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="before-jellin">
-                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Paper flyers in the bin.</p>
-                        <img src="assets/jellin-hotel-before.jpg" alt="Before Jellin: hotel guest with only paper flyers for local tips" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A traveler checks into a hotel in an unfamiliar city. They don't know where to eat or what to explore. Paper flyers end up in the bin.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-slate-200">
-                            <p class="text-sm font-bold text-slate-800 mb-3">Paper recommendations</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">Concierge:</span>
-                                    <span class="text-slate-600">Welcome! Here's a flyer with local restaurants.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                                    <span class="text-slate-600">Thanks… any discounts?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">Concierge:</span>
-                                    <span class="text-slate-600">Not really — you'll have to ask each place yourself.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                                    <span class="text-slate-600">Okay. Into the bag it goes.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p class="text-purple-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-purple-800 leading-tight mb-3">One number. A whole neighborhood.</p>
-                        <img src="assets/jellin-hotel-after.jpg" alt="After Jellin: concierge adds guest phone number for partner rewards" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A traveler checks into a hotel. The concierge "Jells" their number. Instantly, the guest receives a welcome SMS with a QR link.
-                            <br><br>
-                            They can now get loyalty points at the <strong>partnered Cafe</strong> around the corner and a discount at the <strong>local Apparel Shop</strong>, all under the hotel's custom loyalty umbrella.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-purple-200">
-                            <p class="text-sm font-bold text-purple-900 mb-3">Campaign: "Neighborhood Explorer Network"</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
-                                    <span class="text-slate-600">Welcome! Let me add you to our local partner rewards. Your number?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                                    <span class="text-slate-600">555-890-...</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
-                                    <span class="text-slate-600">Perfect! You just received 5 instant Jells! That gives you 20% off breakfast and a free coffee at our restaurant!</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                                    <span class="text-slate-600">Wow, that's great! Can I use it at other places too?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-purple-700 min-w-[70px]">Concierge:</span>
-                                    <span class="text-slate-600">Yes! You can also earn more Jells at our partner cafe and boutique down the street.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Guest:</span>
-                                    <span class="text-slate-600 italic">[Next morning at restaurant] I'd like to use my breakfast discount.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-pink-700 min-w-[70px]">Server:</span>
-                                    <span class="text-slate-600">Of course! Your number? ... Applied! 20% off and your free coffee is on the way!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <ul class="space-y-3 font-semibold text-slate-800 mb-8">
-                    <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        No app download for the traveler
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        Shared traffic for local partners
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        Complete privacy protection
-                    </li>
-                </ul>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-purple-100 hover:scale-105 transition-transform">
-                        <div class="flex items-center justify-center mb-3 h-12">
-                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6b21a8">
-                                <path d="M3 20h18v2H3zM5 4h14v16H5z"/>
-                                <path d="M8 8h3v3H8zM13 8h3v3h-3zM8 13h3v3H8zM13 13h3v3h-3z"/>
-                            </svg>
-                        </div>
-                        <p class="font-bold text-purple-900">Hotel</p>
-                        <p class="text-xs text-slate-500 mt-1">Main Partner</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-pink-100 hover:scale-105 transition-transform">
-                        <div class="flex items-center justify-center mb-3 h-12">
-                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#db2777">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                                <circle cx="12" cy="12" r="8"/>
-                            </svg>
-                        </div>
-                        <p class="font-bold text-pink-900">Partner Bistro</p>
-                        <p class="text-xs text-slate-500 mt-1">Food & Drinks</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center col-span-2 border border-purple-100 hover:scale-105 transition-transform">
-                        <div class="flex items-center justify-center mb-3 h-12">
-                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6b21a8">
-                                <path d="M8 8c-2.5 0-4 2-4 4s1.5 4 4 4l8-8c2.5 0 4 2 4 4s-1.5 4-4 4"/>
-                                <path d="M12 16l-4-4M16 12l-4-4"/>
-                            </svg>
-                        </div>
-                        <p class="font-bold text-purple-900">Seamless Network</p>
-                        <p class="text-xs text-slate-500 mt-1">One System, Many Benefits</p>
-                    </div>
-                </div>
-            </div>
+      <article class="proof__row reveal" data-tone="amber">
+        <div class="proof__copy">
+          <span class="proof__mark">03</span>
+          <h2 class="proof__line">One system across<br>shops, malls, hotels.</h2>
+          <p class="proof__sub">Earn here, redeem there — one program that stretches across your network.</p>
+          <ul class="proof__network">
+            <li>Cafe</li>
+            <li>Gym</li>
+            <li>Hotel</li>
+            <li>Mall</li>
+          </ul>
         </div>
-
-        <!-- Sports Team Scenario -->
-        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 border-2 border-blue-100 mb-12 shadow-lg">
-            <div class="flex-1">
-                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 2v10l6 3"/>
-                        <path d="M16 8l-4 4"/>
-                    </svg>
-                </div>
-                <span class="text-blue-600 font-bold uppercase text-xs">Sports Merchandise</span>
-                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">Jackets come with a seat</h3>
-
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="before-jellin">
-                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Buy the jacket. Miss the match.</p>
-                        <img src="assets/jellin-jacket-ticket-before.jpg" alt="Before Jellin: fan buys merchandise with no match ticket reward" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A fan buys a team jacket online. The purchase and the match-day experience exist in separate worlds.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-slate-200">
-                            <p class="text-sm font-bold text-slate-800 mb-3">Merchandise only</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600 italic">[Buying team jacket online] Order confirmed.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">System:</span>
-                                    <span class="text-slate-600">Thanks for your purchase. Tracking number on the way.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600">Any chance that includes a match ticket?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">System:</span>
-                                    <span class="text-slate-600">No — tickets are sold separately.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p class="text-blue-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-blue-800 leading-tight mb-3">Gear up. Show up free.</p>
-                        <img src="assets/jellin-jacket-ticket-after.jpg" alt="After Jellin: fan shows QR ticket from merchandise purchase at stadium" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A sports team rewards fans who purchase official merchandise. Buy a team jacket online or in-store, and instantly receive a free ticket for next week's match. Just provide your phone number at checkout or at the stadium entrance.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-blue-200">
-                            <p class="text-sm font-bold text-blue-900 mb-3">Campaign: "Gear Up, Show Up Free"</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-blue-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600 italic">[Buying team jacket online] Entering customers email</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-indigo-700 min-w-[70px]">System:</span>
-                                    <span class="text-slate-600">🎉 You've earned a FREE ticket for Sunday's match! Show the QR code you just received in your email at entry.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600 italic">[Sunday at stadium entrance] Hi, I have a free ticket on my phone.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
-                                    <span class="text-slate-600">Great! Have you received the QR code?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Customer:</span>
-                                    <span class="text-slate-600">Yes, here it is</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-blue-700 min-w-[70px]">Staff:</span>
-                                    <span class="text-slate-600">Perfect! Ticket verified. Enjoy the game!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <ul class="space-y-3 font-semibold text-slate-800 mb-8">
-                    <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        Instant reward for merchandise purchase
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        Works online and at stadium entrance
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                        QR verification for easy redemption / no app needed for the customer.
-                    </li>
-                </ul>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-blue-100 hover:scale-105 transition-transform">
-                        <div class="flex items-center justify-center mb-3 h-12">
-                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#3b82f6">
-                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                                <line x1="3" y1="6" x2="21" y2="6"/>
-                                <path d="M16 10a4 4 0 0 1-8 0"/>
-                            </svg>
-                        </div>
-                        <p class="font-bold text-blue-900">Team Store</p>
-                        <p class="text-xs text-slate-500 mt-1">Official Merchandise</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center border border-indigo-100 hover:scale-105 transition-transform">
-                        <div class="flex items-center justify-center mb-3 h-12">
-                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#6366f1">
-                                <path d="M3 21h18"/>
-                                <path d="M9 8h1m5 0h1M9 12h1m5 0h1M9 16h1m5 0h1"/>
-                                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
-                            </svg>
-                        </div>
-                        <p class="font-bold text-indigo-900">Stadium</p>
-                        <p class="text-xs text-slate-500 mt-1">Match Venue</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center col-span-2 border border-blue-100 hover:scale-105 transition-transform">
-                        <div class="flex items-center justify-center mb-3 h-12">
-                            <svg class="w-12 h-12 icon-svg" viewBox="0 0 24 24" stroke="#3b82f6">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                        </div>
-                        <p class="font-bold text-blue-900">Instant Reward</p>
-                        <p class="text-xs text-slate-500 mt-1">Buy Gear, Get Free Entry</p>
-                    </div>
-                </div>
-            </div>
+        <div class="proof__visual" aria-hidden="true">
+          <div class="proof__device">
+            <img src="assets/jellin-analytics-01.jpg" alt="" width="720" height="1600">
+          </div>
+          <div class="proof__map">
+            <span></span><span></span><span></span>
+            <span></span><span></span>
+          </div>
         </div>
+      </article>
+    </div>
+    <div id="stories" class="stories-intro">
+      <h2 class="reveal">See it in the wild.</h2>
+    </div>
+  </section>
 
-        <!-- Retail Scenario -->
-        <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 md:p-12 border-2 border-amber-100 shadow-lg">
-            <div class="flex-1">
-                <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <svg class="w-9 h-9 icon-svg" viewBox="0 0 24 24" stroke="white">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <path d="M16 10a4 4 0 0 1-8 0"/>
-                    </svg>
-                </div>
-                <span class="text-amber-600 font-bold uppercase text-xs">Retail Store</span>
-                <h3 class="text-3xl font-bold mt-2 mb-6 text-slate-900">One purchase opens every store</h3>
+  <article class="story" data-accent="cyan">
+    <div class="story__media">
+      <img src="assets/jellin-everyday-regular-after.jpg" alt="Customer at a coffee counter sharing their number for loyalty" width="1600" height="1200">
+    </div>
+    <div class="story__copy reveal">
+      <p class="story__label">Coffee</p>
+      <h3 class="story__title">One coffee becomes a habit.</h3>
+      <p class="story__line">Their number is the stamp card.</p>
+      <p class="story__bubble" aria-hidden="true">Free cup every 5 visits</p>
+    </div>
+  </article>
 
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="before-jellin">
-                        <p class="text-slate-500 font-extrabold uppercase text-xs tracking-wider mb-2">Before Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-slate-700 leading-tight mb-3">Every store starts from zero.</p>
-                        <img src="assets/jellin-mall-before.jpg" alt="Before Jellin: shopper with fragmented store loyalty at the mall" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A casual shopper visits a mall. Each store has its own loyalty program — or none at all. Spending is scattered and unrewarded.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-slate-200">
-                            <p class="text-sm font-bold text-slate-800 mb-3">Store-by-store loyalty</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">Cashier:</span>
-                                    <span class="text-slate-600">Want to join our store rewards?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                    <span class="text-slate-600">I already have three other mall apps.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-600 min-w-[70px]">Cashier:</span>
-                                    <span class="text-slate-600">This one only works in our store, sorry.</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                    <span class="text-slate-600">I'll skip it then.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <article class="story story--flip" data-accent="green">
+    <div class="story__media">
+      <img src="assets/jellin-gym-after.jpg" alt="Gym member checking in with a phone QR code" width="1600" height="1200">
+    </div>
+    <div class="story__copy reveal">
+      <p class="story__label">Gym</p>
+      <h3 class="story__title">Train anywhere. Earn everywhere.</h3>
+      <p class="story__line">One membership. Every location counts.</p>
+      <p class="story__bubble" aria-hidden="true">8 Jells across all branches</p>
+    </div>
+  </article>
 
-                    <div>
-                        <p class="text-amber-600 font-extrabold uppercase text-xs tracking-wider mb-2">After Jellin</p>
-                        <p class="text-2xl md:text-3xl font-extrabold text-amber-800 leading-tight mb-3">Shop anywhere. One rewards count.</p>
-                        <img src="assets/jellin-mall-after.jpg" alt="After Jellin: shopper earns mall-wide Jells with a phone number" class="w-full rounded-2xl shadow-md mb-4 object-cover aspect-[4/3]">
-                        <p class="text-slate-700 leading-relaxed mb-4">
-                            A shopping mall implements Jellin mall-wide. Shoppers earn Jells at any participating store. Collect 20 Jells and get a $20 mall gift card. This encourages exploration of different stores and increases overall mall traffic.
-                        </p>
-                        <div class="bg-white rounded-xl p-4 border border-amber-200">
-                            <p class="text-sm font-bold text-amber-900 mb-3">Campaign: "Mall Explorer Rewards"</p>
-                            <div class="space-y-2 text-xs">
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
-                                    <span class="text-slate-600">Are you part of our mall rewards program?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                    <span class="text-slate-600">No, what is it?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
-                                    <span class="text-slate-600">Shop anywhere in the mall, collect 20 Jells, get a $20 gift card! Your number?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                    <span class="text-slate-600">555-890-...</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-amber-700 min-w-[70px]">Cashier:</span>
-                                    <span class="text-slate-600">You just earned 2 Jells!</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-slate-700 min-w-[70px]">Shopper:</span>
-                                    <span class="text-slate-600 italic">[Later at bookstore] Can I add to my mall rewards here too?</span>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="font-semibold text-orange-700 min-w-[70px]">Bookseller:</span>
-                                    <span class="text-slate-600">Yes! Your number? ... 3 more Jells added! You're at 5 total.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <article class="story" data-accent="pink">
+    <div class="story__media">
+      <img src="assets/jellin-hotel-after.jpg" alt="Hotel guest unlocking local partner rewards" width="1600" height="1200">
+    </div>
+    <div class="story__copy reveal">
+      <p class="story__label">Hotel</p>
+      <h3 class="story__title">Check-ins unlock the neighborhood.</h3>
+      <p class="story__line">One number. Partner perks across the block.</p>
+      <p class="story__bubble" aria-hidden="true">Welcome · 5 Jells · 20% breakfast</p>
+    </div>
+  </article>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-5 rounded-2xl shadow-md text-center border border-amber-100">
-                        <div class="flex items-center justify-center mb-2 h-8">
-                            <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#d97706">
-                                <path d="M16 3l4 4v14H4V7l4-4M9 7h6v10H9z"/>
-                            </svg>
-                        </div>
-                        <p class="font-semibold text-sm">Fashion</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl shadow-md text-center border border-amber-100">
-                        <div class="flex items-center justify-center mb-2 h-8">
-                            <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#d97706">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                            </svg>
-                        </div>
-                        <p class="font-semibold text-sm">Books</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl shadow-md text-center border border-amber-100">
-                        <div class="flex items-center justify-center mb-2 h-8">
-                            <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#d97706">
-                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
-                                <circle cx="9" cy="9" r="1.5"/>
-                                <circle cx="15" cy="9" r="1.5"/>
-                                <circle cx="12" cy="13" r="1.5"/>
-                            </svg>
-                        </div>
-                        <p class="font-semibold text-sm">Food Court</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl shadow-md text-center border border-amber-100">
-                        <div class="flex items-center justify-center mb-2 h-8">
-                            <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#d97706">
-                                <path d="M6 12h4M18 12h.01M15 15h.01M15 9h.01"/>
-                                <rect x="2" y="7" width="20" height="10" rx="2"/>
-                            </svg>
-                        </div>
-                        <p class="font-semibold text-sm">Entertainment</p>
-                    </div>
-                </div>
-            </div>
+  <article class="story story--flip" data-accent="amber">
+    <div class="story__media">
+      <img src="assets/jellin-jacket-ticket-after.jpg" alt="Fan receiving a match ticket reward with merchandise" width="1600" height="1200">
+    </div>
+    <div class="story__copy reveal">
+      <p class="story__label">Sports</p>
+      <h3 class="story__title">Gear up. Show up free.</h3>
+      <p class="story__line">Buy the jacket. Get the ticket.</p>
+      <p class="story__bubble" aria-hidden="true">QR at the gate · you’re in</p>
+    </div>
+  </article>
+
+  <section id="how" class="how">
+    <div class="how__inner">
+      <h2 class="reveal">Three moves. That’s the product.</h2>
+      <ol class="how__steps">
+        <li class="reveal">
+          <span class="how__num">1</span>
+          <div>
+            <h3>Capture</h3>
+            <p>Phone or email. That’s the join.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="how__num">2</span>
+          <div>
+            <h3>Reward</h3>
+            <p>Points, coupons, bonuses — same campaign.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="how__num">3</span>
+          <div>
+            <h3>Connect</h3>
+            <p>One shop or a whole network.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="how__channels reveal">App · QR · SMS · Email</p>
+    </div>
+  </section>
+
+  <section id="product" class="product">
+    <div class="product__head reveal">
+      <h2>Looks good in their hand.</h2>
+      <p>SMS, email, or full app — same rewards.</p>
+    </div>
+    <div class="product__rail" tabindex="0" aria-label="Product screenshots">
+      <figure class="product__shot">
+        <img src="assets/jellin_customer_shos_01.jpg" alt="Customer rewards and loyalty programs in the app" width="640" height="1280">
+      </figure>
+      <figure class="product__shot">
+        <img src="assets/jellin-email-01.jpg" alt="Phone or email join with digital punch-card coupons" width="640" height="1280">
+      </figure>
+      <figure class="product__shot">
+        <img src="assets/treat-app-coupons-list.jpg" alt="Shop loyalty treats tracked by phone number" width="640" height="1280">
+      </figure>
+      <figure class="product__shot">
+        <img src="assets/jellin-analytics-01.jpg" alt="Live Jells analytics for operators" width="640" height="1280">
+      </figure>
+    </div>
+  </section>
+
+  <section id="trust" class="trust">
+    <div class="trust__grid">
+      <div class="reveal">
+        <h2>Private by default.</h2>
+        <p>Only phone or email. GDPR-ready from day one.</p>
+        <a class="trust__link" href="legal/privacy.html">Privacy by design →</a>
+      </div>
+      <div class="reveal">
+        <h2>Connected if you need it.</h2>
+        <p class="trust__stack">POS · CRM · ERP · Automation</p>
+        <a class="btn btn--secondary" href="#contact">Ask about integrations</a>
+      </div>
+    </div>
+    <p class="trust__phrases reveal">Dual coupons · Cross-business redeem · White-label · Live analytics</p>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2 class="reveal">Questions</h2>
+    <div class="faq__list">
+      <details open>
+        <summary>Do customers need the app?</summary>
+        <p>No. Phone or email is enough.</p>
+      </details>
+      <details>
+        <summary>Can partners share rewards?</summary>
+        <p>Yes. Earn at A, redeem at B.</p>
+      </details>
+      <details>
+        <summary>Does it work across locations?</summary>
+        <p>Yes. One program, many stores.</p>
+      </details>
+      <details>
+        <summary>How do I see results?</summary>
+        <p>Live redemptions and visits in the dashboard.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="close">
+    <div class="close__inner reveal">
+      <p class="close__brand">Jellin</p>
+      <h2>Let’s jell.</h2>
+      <p class="muted">Prelaunch · ETA May 2026</p>
+      <div class="close__ctas">
+        <a class="btn btn--primary" href="app/index.html">Start free</a>
+        <button type="button" id="contact-open-btn" class="btn btn--ghost-dark">Get a demo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div>
+      <h3>Product</h3>
+      <a href="#stories">Stories</a>
+      <a href="#how">How</a>
+      <a href="#product">Product</a>
+      <a href="app/index.html">Start free</a>
+    </div>
+    <div>
+      <h3>Partners</h3>
+      <a href="app/index.html#referral-login">Become a partner</a>
+      <a href="app/index.html#referral-register">Create partner account</a>
+    </div>
+    <div>
+      <h3>Legal</h3>
+      <a href="legal/privacy.html">Privacy</a>
+      <a href="legal/terms.html">Terms</a>
+      <a href="legal/delete-account.html">Delete account</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="site-footer__copy">© 2026 Jellin. Loyalty that sticks.</p>
+  </footer>
+
+  <div id="contact-modal" class="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+      <button type="button" class="modal__close" data-close aria-label="Close">✕</button>
+      <h3 id="contact-title">Request a prelaunch demo</h3>
+      <p>Enter your email and we’ll be in touch.</p>
+      <form id="contact-form" data-endpoint="https://formspree.io/f/xdalrjdj" data-cc="jdarmen@gmail.com">
+        <label for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+        <div class="modal__actions">
+          <button type="button" data-close class="btn btn--secondary">Cancel</button>
+          <button type="submit" id="contact-submit" class="btn btn--primary">Send</button>
         </div>
-    </section>
+      </form>
+      <div id="contact-thanks" hidden>
+        <p><strong>Thanks — your request has been sent!</strong></p>
+        <p>We’ll contact you at the email you provided.</p>
+      </div>
+    </div>
+  </div>
 
-    <section class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-6 text-white overflow-hidden">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-purple-300 font-bold uppercase text-sm tracking-wider">Multi-Channel Delivery</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">A mobile seamless experience</h2>
-                <p class="text-slate-300 text-lg">Mobile-first coupon delivery that works for everyone</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                
-                <div class="flex flex-col items-center">
-                    <p class="mb-6 font-semibold text-purple-300 uppercase tracking-widest text-sm flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                            <path d="M12 18h.01"/>
-                        </svg>
-                        A complete mobile operations dahsboard
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/jellin-analytics-01.jpg" alt="SMS Experience Screenshot 1" class="w-64 h-auto">
-                        </div>
-                        <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/jellin-email-01.jpg" alt="SMS Experience Screenshot 2" class="w-64 h-auto">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center">
-                    <p class="mb-6 font-semibold text-pink-300 uppercase tracking-widest text-sm flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                        </svg>
-                        Seamless App Experience for all
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/jellin_customer_shos_01.jpg" alt="App Experience Screenshot 1" class="w-64 h-auto">
-                        </div>
-                        <div class="shadow-2xl rounded-3xl overflow-hidden">
-                            <img src="assets/jellin-qr-coupon-01.jpg" alt="App Experience Screenshot 2" class="w-64 h-auto">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Replaced original features with comparison view (cloned, full-row features) -->
-    <section class="max-w-6xl mx-auto py-20 px-6" aria-label="Comparison - Large feature rows">
-        <div class="text-center mb-16">
-            <span class="text-purple-600 font-bold uppercase text-sm tracking-wider">For Marketing Professionals</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Now, your marketing connects everyone</h2>
-            <p class="text-slate-600 text-lg max-w-2xl mx-auto">Create powerful campaigns with loyalty and instant coupons in minutes</p>
-        </div>
-
-        <div class="grid md:grid-cols-1 gap-8 mb-16">
-            <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-purple-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">1</div>
-                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-purple-900">Reach everyone - even with no app</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">Let your customers choose betwen the no-download, email / SMS-only channel or the full experience of the app. Reach anyone with just an email / mobile number (no other data) and scale your campaigns across unlimited touchpoints.</p>
-                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="3" width="7" height="18" rx="1.5" />
-                                    <path d="M19 7v4" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">App</div>
-                                <div class="text-slate-600 text-sm">Full app experience for engaged users</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                                    <path d="M7 7h0" />
-                                    <path d="M17 7h0" />
-                                    <path d="M7 17h0" />
-                                    <path d="M17 17h0" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">QR</div>
-                                <div class="text-slate-600 text-sm">QR links for quick access & check-ins</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 4h16v12H4z" />
-                                    <path d="M4 8l8 4 8-4" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Email</div>
-                                <div class="text-slate-600 text-sm">Email-only delivery for no-download reach</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">SMS</div>
-                                <div class="text-slate-600 text-sm">SMS delivery via mobile number</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-pink-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">2</div>
-                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-pink-900">Multiple Reward Methods</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">Deploy instant coupons for immediate conversions, build loyalty programs with point accumulation, or create lottery-style campaigns for viral engagement. Mix and match to maximize results.</p>
-                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="6" width="20" height="12" rx="2" />
-                                    <path d="M2 10h20" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Coupon</div>
-                                <div class="text-slate-600 text-sm">Instant coupons for immediate conversions</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v20" />
-                                    <circle cx="12" cy="7" r="3" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Member</div>
-                                <div class="text-slate-600 text-sm">Member tiers & exclusive rewards</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2l2 4 4 .5-3 2 1 4-4-2-4 2 1-4-3-2L10 6z" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Bonus</div>
-                                <div class="text-slate-600 text-sm">One-off bonuses to incentivize action</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12h16" />
-                                    <path d="M4 8h10" />
-                                    <path d="M4 16h6" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Points</div>
-                                <div class="text-slate-600 text-sm">Point accumulation for loyalty</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-cyan-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">3</div>
-                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-cyan-900">Operate from a Single Shop to an Entire Network</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">Whether you manage one location or coordinate multiple stores across multiple brands, Jellin scales effortlessly. Unified dashboard, flexible permissions, seamless partner integrations.</p>
-                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="6" width="6" height="6" rx="1" />
-                                    <path d="M6 12v6" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Store A</div>
-                                <div class="text-slate-600 text-sm">Single location operations</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 12h18" />
-                                    <path d="M12 3v18" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Connect</div>
-                                <div class="text-slate-600 text-sm">Partner & system integrations</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="9" y="4" width="6" height="6" rx="1" />
-                                    <path d="M12 10v10" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Store B</div>
-                                <div class="text-slate-600 text-sm">Multi-location management</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="15" y="6" width="6" height="6" rx="1" />
-                                    <path d="M18 12v6" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Store C</div>
-                                <div class="text-slate-600 text-sm">Franchise / brand scale</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-amber-100 text-center feature-card">
-                <div class="w-20 h-20 jell-gradient rounded-2xl flex items-center justify-center text-white text-5xl font-bold mx-auto mb-6 shadow-xl">4</div>
-                <h3 class="text-5xl md:text-6xl font-bold mb-4 text-amber-900">Customer live Rating & Complete Operational Insights</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">Real-time analytics on customer behavior, redemption rates, and campaign performance. Monitor ROI, identify trends, and optimize operations with comprehensive dashboards.</p>
-                <div class="mb-6 w-full rounded-2xl overflow-hidden shadow-inner border border-slate-100">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white">
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="6" width="4" height="10" rx="1" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Visits</div>
-                                <div class="text-slate-600 text-sm">Track visits and live visit trends</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 14l6-4 4 6 6-8" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Trends</div>
-                                <div class="text-slate-600 text-sm">Trend analysis & performance metrics</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="11" width="4" height="10" rx="1" />
-                                    <rect x="9" y="7" width="4" height="14" rx="1" />
-                                    <rect x="15" y="3" width="4" height="18" rx="1" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Segmentation metrics</div>
-                                <div class="text-slate-600 text-sm">Group by salepoints, loyalty programs, etc.</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-2">
-                            <div class="w-14 h-14 jell-gradient rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                                <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="9" />
-                                    <path d="M12 3v9l7 3" />
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold">Impact analysis</div>
-                                <div class="text-slate-600 text-sm">One glance statistics delivery for instant impact estimation</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="bg-white py-20 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-purple-600 font-bold uppercase text-sm tracking-wider">Platform Features</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">A marketing app that "jells" with your customers</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#a855f7">
-                            <circle cx="12" cy="12" r="10"/>
-                            <circle cx="12" cy="12" r="6"/>
-                            <circle cx="12" cy="12" r="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Dual Coupon System</h3>
-                    <p class="text-slate-600">Create loyalty programs (earn & redeem) and instant coupons in one campaign. Mix and match for maximum engagement.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#06b6d4">
-                            <path d="M23 4v6h-6M1 20v-6h6"/>
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Cross-Business Synergies</h3>
-                    <p class="text-slate-600">Issue Jells at Company A, redeem at Company B. Give client employees access to send customers between businesses.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#10b981">
-                            <path d="M3 21h18"/>
-                            <path d="M9 8h1m5 0h1M9 12h1m5 0h1M9 16h1m5 0h1"/>
-                            <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">White-Label Marketplaces</h3>
-                    <p class="text-slate-600">Build entire ecosystems for malls, networks, or multinationals. Your brand, your rules, unlimited scale.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#f59e0b">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                            <path d="M12 18h.01"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Phone/email only Onboarding</h3>
-                    <p class="text-slate-600">Customers join with just a phone number or email. No forms, no friction. SMS / email works everywhere; app is optional.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#ec4899">
-                            <line x1="18" y1="20" x2="18" y2="10"/>
-                            <line x1="12" y1="20" x2="12" y2="4"/>
-                            <line x1="6" y1="20" x2="6" y2="14"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Campaign Analytics</h3>
-                    <p class="text-slate-600">Real-time tracking of redemptions, engagement and more. Prove campaign success to clients with data.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 icon-svg" viewBox="0 0 24 24" stroke="#6366f1">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Privacy by Design</h3>
-                    <p class="text-slate-600">Only phone numbers / emails stored behind the strictest security. GDPR compliant. Build trust with end customers from day one.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto py-20 px-6" aria-label="Frequently Asked Questions">
-        <div class="text-center mb-14">
-            <span class="text-purple-600 font-bold uppercase text-sm tracking-wider">FAQ</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Questions marketers ask before they launch</h2>
-            <p class="text-slate-600 text-lg max-w-3xl mx-auto">Everything you need to track loyalty, grow customer acquisition, and prove campaign performance with Jellin.</p>
-        </div>
-
-        <div class="max-w-4xl mx-auto space-y-4">
-            <details class="bg-white rounded-2xl p-6 shadow-md border border-slate-200" open>
-                <summary class="text-xl font-bold text-slate-900 cursor-pointer">How do I track and reward loyal customers while finding new ones?</summary>
-                <p class="text-slate-600 leading-relaxed mt-4">Jellin is an all-in-one loyalty and acquisition platform where you can create and manage loyalty programs, track customer behavior, and reward your most loyal customers. It helps both small businesses and large enterprises grow repeat engagement while attracting new customers.</p>
-            </details>
-
-            <details class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
-                <summary class="text-xl font-bold text-slate-900 cursor-pointer">How can I multiply customers by collaborating with local businesses?</summary>
-                <p class="text-slate-600 leading-relaxed mt-4">Jellin’s cross-promotion feature lets you partner with local businesses for joint promotions and shared rewards. This expands your reach, strengthens the local business community, and creates a reward network that benefits every partner.</p>
-            </details>
-
-            <details class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
-                <summary class="text-xl font-bold text-slate-900 cursor-pointer">How can I track employee performance and reward great work?</summary>
-                <p class="text-slate-600 leading-relaxed mt-4">Jellin tracks team transactions and progress, helps you create incentives for strong performance, and gives managers oversight with approval rights whenever needed. It also highlights unusual or out-of-policy transaction patterns early, so you can coach proactively, protect standards, and keep your team motivated.</p>
-            </details>
-
-            <details class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
-                <summary class="text-xl font-bold text-slate-900 cursor-pointer">How do I create a seamless customer onboarding flow?</summary>
-                <p class="text-slate-600 leading-relaxed mt-4">With phone or email-only onboarding, customers can join your loyalty program without long forms or app downloads. SMS and email work everywhere, reducing friction and increasing sign-up rates.</p>
-            </details>
-
-            <details class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
-                <summary class="text-xl font-bold text-slate-900 cursor-pointer">How can I measure loyalty campaign success?</summary>
-                <p class="text-slate-600 leading-relaxed mt-4">Jellin campaign analytics provide real-time tracking for redemptions, engagement, and other key metrics. You can use this data to prove results to clients and optimize future campaigns with confidence.</p>
-            </details>
-
-            <details class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
-                <summary class="text-xl font-bold text-slate-900 cursor-pointer">I offer social marketing services. How does Jellin add value for my clients?</summary>
-                <p class="text-slate-600 leading-relaxed mt-4">Jellin gives your clients one platform for loyalty, acquisition, and customer engagement. You can help them run smarter programs, track behavior, reward loyalty, and unlock local cross-promotions that drive measurable growth.</p>
-            </details>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto pb-20 px-6" aria-label="Third-party integrations">
-        <div class="jell-gradient rounded-3xl p-8 md:p-12 text-white shadow-2xl">
-            <div class="max-w-4xl">
-                <span class="font-bold uppercase text-sm tracking-wider opacity-90">Integrations</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Jellin works with your existing systems out of the box</h2>
-                <p class="text-lg leading-relaxed opacity-95 mb-6">Connect Jellin to your current stack without rebuilding your operations. We support third-party systems such as POS platforms, ERPs, CRMs, and automation systems to help your team launch faster and scale with confidence.</p>
-                <div class="flex flex-wrap gap-3 mb-8">
-                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">POS Systems</span>
-                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">ERP Platforms</span>
-                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">CRM Tools</span>
-                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">Automation Systems</span>
-                </div>
-                <a href="#contact-anchor" class="inline-block bg-white text-purple-700 px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform">Contact us for integration details</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gradient-to-br from-slate-900 to-purple-900 py-16 px-6 text-white">
-        <div class="max-w-6xl mx-auto">
-                <div id="contact-anchor" class="text-center mb-12">
-                <!-- SVG Logo -->
-                <div class="mb-4 flex justify-center items-center">
-                    <div class="inline-block">
-                        <svg viewBox="0 0 200 90" class="w-64 h-auto" style="display: block; margin: 0 auto;">
-                            <!-- Main J -->
-                            <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48" 
-                                  fill="none" stroke="url(#gradient1)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            
-                            <!-- 'ellin' text close to J -->
-                            <text x="58" y="65" font-family="Inter, sans-serif" font-size="48" font-weight="800" fill="url(#gradient1)">ellin</text>
-                        
-                        <!-- Gradient definition -->
-                        <defs>
-                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#f9a8d4;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    </div>
-                </div>
-                <p class="text-slate-300 text-lg mb-8">Ready to amplify your marketing campaigns? Start creating today.</p>
-                <button id="contact-open-btn" type="button" class="jell-gradient px-12 py-4 rounded-full font-bold text-white shadow-2xl hover:scale-105 transition-transform text-lg">ETA: May 2026. Contact us for a prelaunch demo</button>
-            </div>
-            <!-- Contact modal (hidden by default) -->
-            <div id="contact-modal" class="hidden fixed inset-0 z-50 items-center justify-center">
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                <div class="relative bg-white rounded-2xl p-6 w-[min(560px,92%)] mx-4 shadow-xl">
-                    <button id="contact-modal-close" class="absolute top-3 right-3 text-slate-500 hover:text-slate-800">✕</button>
-                    <h3 class="text-2xl font-bold mb-2 text-slate-900">Request a prelaunch demo</h3>
-                    <p class="text-slate-600 mb-4">Enter your email and we'll be in touch.</p>
-                    <!-- Set `data-endpoint` to your form endpoint (e.g. Formspree). -->
-                    <!-- Example: data-endpoint="https://formspree.io/f/your-form-id" -->
-                    <!-- Add data-cc to include a CC address for mailto fallback or backend handling. -->
-                    <form id="contact-form" data-endpoint="https://formspree.io/f/xdalrjdj" data-cc="jdarmen@gmail.com">
-                        <label class="block text-sm font-semibold mb-1 text-slate-700">Email</label>
-                        <input id="contact-email" name="email" type="email" required class="w-full border rounded-md p-3 mb-4 text-black" placeholder="you@example.com" />
-                        <div class="flex items-center justify-end gap-3">
-                            <button type="button" id="contact-cancel" class="px-4 py-2 rounded-md border text-black">Cancel</button>
-                            <button type="submit" id="contact-submit" class="jell-gradient px-5 py-2 rounded-md font-bold text-white">Send</button>
-                        </div>
-                    </form>
-                    <div id="contact-thanks" class="hidden text-center p-4">
-                        <p class="font-bold text-lg text-slate-900">Thanks — your request has been sent!</p>
-                        <p class="text-slate-600 mt-2">We'll contact you at the email you provided.</p>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-            (function(){
-                const contactAnchor = document.getElementById('contact-anchor');
-                const openBtn = document.getElementById('contact-open-btn');
-                const modal = document.getElementById('contact-modal');
-                const closeBtn = document.getElementById('contact-modal-close');
-                const cancelBtn = document.getElementById('contact-cancel');
-                const form = document.getElementById('contact-form');
-                const thanks = document.getElementById('contact-thanks');
-                const submitBtn = document.getElementById('contact-submit');
-
-                function showModal(){ modal.classList.remove('hidden'); modal.classList.add('flex'); document.getElementById('contact-email').focus(); }
-                function hideModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); thanks.classList.add('hidden'); form.classList.remove('hidden'); form.reset(); submitBtn.disabled=false; }
-
-                openBtn && openBtn.addEventListener('click', function(e){ e.preventDefault(); showModal(); });
-                closeBtn && closeBtn.addEventListener('click', function(){ hideModal(); });
-                cancelBtn && cancelBtn.addEventListener('click', function(){ hideModal(); });
-                modal && modal.addEventListener('click', function(e){ if(e.target===modal) hideModal(); });
-
-                form && form.addEventListener('submit', async function(e){
-                    e.preventDefault();
-                    submitBtn.disabled = true;
-                    const email = document.getElementById('contact-email').value;
-                    const metadata = {
-                        url: window.location.href,
-                        ua: navigator.userAgent,
-                        ts: new Date().toISOString()
-                    };
-                    const payload = { email, metadata, cc: form.dataset.cc || '' };
-
-                    const endpoint = form.dataset.endpoint; // Formspree endpoint
-                    try{
-                        if(endpoint){
-                            const formData = new FormData();
-                            formData.append('email', email);
-                            formData.append('message', 'Requesting prelaunch demo');
-                            formData.append('metadata', JSON.stringify(metadata));
-                            if(form.dataset.cc) formData.append('cc', form.dataset.cc);
-
-                            const resp = await fetch(endpoint, {
-                                method: 'POST',
-                                body: formData,
-                                headers: { 'Accept': 'application/json' }
-                            });
-                            if(!resp.ok){
-                                const errBody = await resp.json().catch(()=>({error:'submission_failed'}));
-                                throw new Error(errBody.error || 'Submission failed');
-                            }
-                        } else {
-                            // fallback: open mail client prefilled to deliver details to nick.glezakos@gmail.com and CC jdarmen
-                            const cc = form.dataset.cc || '';
-                            const subject = encodeURIComponent('Jellin prelaunch demo request');
-                            const body = encodeURIComponent('Email: '+email+'\n\nMetadata:\n'+JSON.stringify(metadata,null,2));
-                            const ccParam = cc ? '&cc=' + encodeURIComponent(cc) : '';
-                            window.location.href = 'mailto:nick.glezakos@gmail.com?subject='+subject + ccParam + '&body='+body;
-                        }
-                        form.classList.add('hidden');
-                        thanks.classList.remove('hidden');
-                    }catch(err){
-                        alert('Failed to send. Please try again or email nick.glezakos@gmail.com directly.');
-                        submitBtn.disabled = false;
-                    }
-                });
-            })();
-            </script>
-            
-            <div class="grid md:grid-cols-4 gap-8 mb-12 text-sm">
-                <div>
-                    <h4 class="font-bold mb-4 text-purple-300">Product</h4>
-                    <ul class="space-y-2 text-slate-400">
-                        <li><a href="#" class="hover:text-purple-300 transition">Features</a></li>
-                        <li><a href="#" class="hover:text-purple-300 transition">Pricing</a></li>
-                        <li><a href="#" class="hover:text-purple-300 transition">Case Studies</a></li>
-                        <li><a href="#" class="hover:text-purple-300 transition">Demo</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-pink-300">Company</h4>
-                    <ul class="space-y-2 text-slate-400">
-                        <li><a href="#" class="hover:text-pink-300 transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-pink-300 transition">Careers</a></li>
-                        <li><a href="#" class="hover:text-pink-300 transition">Blog</a></li>
-                        <li><a href="#" class="hover:text-pink-300 transition">Press Kit</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-cyan-300">Resources</h4>
-                    <ul class="space-y-2 text-slate-400">
-                        <li><a href="#" class="hover:text-cyan-300 transition">Documentation</a></li>
-                        <li><a href="#" class="hover:text-cyan-300 transition">API</a></li>
-                        <li><a href="#" class="hover:text-cyan-300 transition">Support</a></li>
-                        <li><a href="#" class="hover:text-cyan-300 transition">FAQ</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-amber-300">Legal</h4>
-                    <ul class="space-y-2 text-slate-400">
-                        <li><a href="legal/privacy.html" class="hover:text-amber-300 transition">Privacy Policy</a></li>
-                        <li><a href="legal/terms.html" class="hover:text-amber-300 transition">Terms of Use</a></li>
-                        <li><a href="legal/delete-account.html" class="hover:text-amber-300 transition">Delete account</a></li>
-                        <li><a href="#contact-anchor" class="hover:text-amber-300 transition">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-slate-700 pt-8 text-center text-slate-400 text-sm">
-                <p class="flex items-center justify-center gap-2">© 2026 Jellin. All rights reserved. Made with 
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#a855f7" stroke="#a855f7" stroke-width="2">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                    for businesses that care about their customers.
-                </p>
-            </div>
-        </div>
-    </footer>
-
+  <script src="js/contact-modal.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 </html>

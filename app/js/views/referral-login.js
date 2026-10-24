@@ -8,6 +8,7 @@ const ReferralLoginView = {
       <div class="jell-gradient text-white py-10 px-4 text-center relative overflow-hidden">
         <div class="absolute inset-0 bg-white opacity-10"></div>
         <div class="relative z-10">
+          <a href="../index.html" style="display:inline-block; text-decoration:none; color:inherit;" aria-label="Back to Jellin site">
           <svg viewBox="0 0 200 80" style="width: 180px; height: auto; display: block; margin: 0 auto;">
             <g transform="translate(22, 0)">
               <path d="M50 5 L50 55 Q50 75 30 75 Q10 75 10 55 L10 48"
@@ -25,6 +26,7 @@ const ReferralLoginView = {
                     fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
+          </a>
           <h1 style="font-size:1.5rem; font-weight:800; margin-top:0.75rem;">Referral Sign In</h1>
           <p style="opacity:0.85; font-size:0.95rem;">Sign in to your Jellin referral account</p>
         </div>
