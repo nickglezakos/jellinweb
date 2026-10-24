@@ -32,7 +32,7 @@ const ReferralForgotPasswordView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="referral-forgot-error" class="error-message" style="display:none;"></div>
+          <div id="referral-forgot-error" class="notice-message" style="display:none;"></div>
           <div id="referral-forgot-success" class="success-message" style="display:none;"></div>
 
           <!-- Step 1: Request OTP -->
@@ -80,13 +80,12 @@ const ReferralForgotPasswordView = {
     // Step 1: Request OTP
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
       successEl.style.display = 'none';
 
       resetEmail = document.getElementById('referral-forgot-email').value.trim();
       if (!resetEmail) {
-        errorEl.textContent = 'Please enter your email address.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter your email address.');
         return;
       }
 
@@ -101,8 +100,7 @@ const ReferralForgotPasswordView = {
         otpSection.style.display = 'block';
         document.getElementById('referral-otp-input').focus();
       } catch (err) {
-        errorEl.textContent = err.message || 'Failed to send reset code. Please try again.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Failed to send reset code. Please try again.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Reset Code';
@@ -112,13 +110,12 @@ const ReferralForgotPasswordView = {
     // Step 2: Submit OTP
     otpForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
       successEl.style.display = 'none';
 
       const otp = parseInt(document.getElementById('referral-otp-input').value.trim(), 10);
       if (!otp || isNaN(otp)) {
-        errorEl.textContent = 'Please enter the reset code.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter the reset code.');
         return;
       }
 
@@ -132,8 +129,7 @@ const ReferralForgotPasswordView = {
           window.location.hash = '#referral-login';
         }, 1500);
       } catch (err) {
-        errorEl.textContent = err.message || 'Failed to reset password. Please check your code and try again.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Failed to reset password. Please check your code and try again.');
       } finally {
         otpSubmitBtn.disabled = false;
         otpSubmitBtn.innerHTML = 'Reset Password';

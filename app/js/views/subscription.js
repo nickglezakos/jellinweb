@@ -13,7 +13,7 @@ const SubscriptionView = {
           <p class="text-muted">Manage your Jellin subscription plan</p>
         </div>
 
-        <div id="sub-error" class="error-message" style="display:none;"></div>
+        <div id="sub-error" class="notice-message" style="display:none;"></div>
 
         <!-- Loading -->
         <div id="sub-loading" style="text-align:center; padding:3rem;">
@@ -78,7 +78,7 @@ const SubscriptionView = {
     const goBackBtn = document.getElementById('sub-go-back-btn');
 
     if (loadingEl) loadingEl.style.display = 'none';
-    if (errorEl) errorEl.style.display = 'none';
+    if (errorEl) Notice.hide(errorEl);
     if (noticeText) noticeText.textContent = message;
     if (noticeEl) noticeEl.style.display = 'block';
 
@@ -184,8 +184,9 @@ const SubscriptionView = {
 
       // Subscribe button
       subscribeBtn.addEventListener('click', async () => {
+        Notice.hide('sub-error');
         if (!selectedPriceId) {
-          Toast.error('Please select a plan first.');
+          Notice.show('sub-error', 'Please select a plan first.');
           return;
         }
 
@@ -203,9 +204,9 @@ const SubscriptionView = {
           }
         } catch (err) {
           if (SubscriptionView.isForbiddenError(err)) {
-            Toast.error('Checkout is not available for this account yet. Please try again later.');
+            Notice.show('sub-error', 'Checkout is not available for this account yet. Please try again later.');
           } else {
-            Toast.error(`Failed to create subscription: ${err.message}`);
+            Notice.show('sub-error', 'We could not start checkout right now. Please try again in a moment.');
           }
           subscribeBtn.disabled = false;
           subscribeBtn.innerHTML = 'Subscribe Now';
@@ -232,7 +233,8 @@ const SubscriptionView = {
           // Refresh the view
           window.location.hash = '#subscription';
         } catch (err) {
-          Toast.error(`Failed to cancel: ${err.message}`);
+          cancelModal.style.display = 'none';
+          Notice.show('sub-error', 'We could not cancel the subscription right now. Please try again in a moment.');
           confirmBtn.disabled = false;
           confirmBtn.innerHTML = 'Yes, Cancel';
         }

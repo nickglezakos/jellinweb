@@ -34,7 +34,7 @@ const LoginView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="login-error" class="error-message" style="display:none;"></div>
+          <div id="login-error" class="notice-message" style="display:none;"></div>
           <div id="multi-tenant-section" style="display:none;">
             <p class="text-muted" style="margin-bottom: 1rem; text-align: center;">Select a tenant to continue:</p>
             <div id="tenant-list" style="margin-bottom: 1rem;"></div>
@@ -114,7 +114,7 @@ const LoginView = {
       e.preventDefault();
       
       // Hide errors
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
       multiTenantSection.style.display = 'none';
 
       const email = document.getElementById('login-email').value.trim();
@@ -122,8 +122,7 @@ const LoginView = {
 
       // Basic validation
       if (!email || !password) {
-        errorEl.textContent = 'Please enter both email and password.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter both email and password.');
         return;
       }
 
@@ -177,8 +176,7 @@ const LoginView = {
                   window.location.hash = '#dashboard';
                 }
               } catch (err) {
-                errorEl.textContent = err.message;
-                errorEl.style.display = 'block';
+                Notice.show(errorEl, err.message);
               }
             });
           });
@@ -203,8 +201,7 @@ const LoginView = {
           window.location.hash = '#confirm-email';
         }
       } catch (err) {
-        errorEl.textContent = err.message || 'Login failed. Please check your credentials.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Login failed. Please check your credentials.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Sign In';
@@ -224,12 +221,8 @@ const LoginView = {
           emailInput.value = email;
         }
         // Show a message
-        errorEl.textContent = 'Please enter your password to complete email confirmation.';
-        errorEl.style.display = 'block';
-        errorEl.style.background = '#eff6ff';
-        errorEl.style.border = '1px solid #bfdbfe';
-        errorEl.style.color = '#1e40af';
-        
+        Notice.show(errorEl, 'Please enter your password to complete email confirmation.');
+
         // Store activation key for the login handler to process
         form.dataset.activationKey = activationKey;
       }

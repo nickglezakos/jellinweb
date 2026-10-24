@@ -33,7 +33,7 @@ const ReferralConfirmEmailView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="referral-confirm-error" class="error-message" style="display:none;"></div>
+          <div id="referral-confirm-error" class="notice-message" style="display:none;"></div>
           <div id="referral-confirm-success" class="success-message" style="display:none;"></div>
 
           <form id="referral-confirm-form">
@@ -113,8 +113,7 @@ const ReferralConfirmEmailView = {
       const password = document.getElementById('ref-confirm-password').value;
       
       if (!email || !password) {
-        errorEl.textContent = 'Please enter your email and password to resend the confirmation email.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter your email and password to resend the confirmation email.');
         return;
       }
 
@@ -125,8 +124,7 @@ const ReferralConfirmEmailView = {
         await API.Referral.resendConfirmationEmail(email, password);
         Toast.success('Confirmation email resent! Check your inbox.');
       } catch (err) {
-        errorEl.textContent = err.message || 'Failed to resend confirmation email.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Failed to resend confirmation email.');
       } finally {
         resendLink.style.pointerEvents = 'auto';
         resendLink.textContent = 'Resend confirmation email';
@@ -136,7 +134,7 @@ const ReferralConfirmEmailView = {
     // Submit confirmation
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
       successEl.style.display = 'none';
 
       const activationKey = document.getElementById('ref-confirm-activationKey').value.trim();
@@ -144,8 +142,7 @@ const ReferralConfirmEmailView = {
       const password = document.getElementById('ref-confirm-password').value;
 
       if (!activationKey || !email || !password) {
-        errorEl.textContent = 'Please fill in all fields.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please fill in all fields.');
         return;
       }
 
@@ -169,8 +166,7 @@ const ReferralConfirmEmailView = {
         // Pre-fill email for login
         sessionStorage.setItem('jellin_referral_registeredEmail', email);
       } catch (err) {
-        errorEl.textContent = err.message || 'Email confirmation failed. Please check your activation key and try again.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Email confirmation failed. Please check your activation key and try again.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Confirm Email';

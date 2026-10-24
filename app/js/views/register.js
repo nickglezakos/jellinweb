@@ -32,7 +32,7 @@ const RegisterView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="register-error" class="error-message" style="display:none;"></div>
+          <div id="register-error" class="notice-message" style="display:none;"></div>
 
           <form id="register-form">
             <div style="margin-bottom: 1rem;">
@@ -168,7 +168,7 @@ const RegisterView = {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
 
       const tenantName = document.getElementById('reg-tenantName').value.trim();
       const countryCode = document.getElementById('reg-countryCode').value;
@@ -180,20 +180,17 @@ const RegisterView = {
 
       // Basic validation
       if (!tenantName || !email || !password) {
-        errorEl.textContent = 'Please fill in all required fields.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please fill in all required fields.');
         return;
       }
 
       if (password.length < 6) {
-        errorEl.textContent = 'Password must be at least 6 characters.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Password must be at least 6 characters.');
         return;
       }
 
       if (password !== confirmPassword) {
-        errorEl.textContent = 'Passwords do not match. Please re-enter.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Passwords do not match. Please re-enter.');
         confirmInput.classList.add('error');
         return;
       }
@@ -219,8 +216,7 @@ const RegisterView = {
           sessionStorage.setItem('jellin_registeredEmail', email);
         }, 1500);
       } catch (err) {
-        errorEl.textContent = err.message || 'Registration failed. Please try again.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Registration failed. Please try again.');
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Create Account';
       }

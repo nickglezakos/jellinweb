@@ -32,7 +32,7 @@ const ReferralRegisterView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="referral-register-error" class="error-message" style="display:none;"></div>
+          <div id="referral-register-error" class="notice-message" style="display:none;"></div>
 
           <form id="referral-register-form">
             <div style="margin-bottom: 1rem;">
@@ -153,7 +153,7 @@ const ReferralRegisterView = {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
 
       const code = document.getElementById('ref-reg-code').value.trim();
       const firstName = document.getElementById('ref-reg-firstName').value.trim();
@@ -164,20 +164,17 @@ const ReferralRegisterView = {
 
       // Basic validation
       if (!code || !firstName || !lastName || !email || !password) {
-        errorEl.textContent = 'Please fill in all required fields.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please fill in all required fields.');
         return;
       }
 
       if (password.length < 6) {
-        errorEl.textContent = 'Password must be at least 6 characters.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Password must be at least 6 characters.');
         return;
       }
 
       if (password !== confirmPassword) {
-        errorEl.textContent = 'Passwords do not match. Please re-enter.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Passwords do not match. Please re-enter.');
         confirmInput.classList.add('error');
         return;
       }
@@ -200,8 +197,7 @@ const ReferralRegisterView = {
           sessionStorage.setItem('jellin_referral_registeredEmail', email);
         }, 1500);
       } catch (err) {
-        errorEl.textContent = err.message || 'Registration failed. Please try again.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Registration failed. Please try again.');
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Create Referral Account';
       }

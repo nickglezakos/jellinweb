@@ -12,7 +12,7 @@ const ReferralProfileView = {
           <p class="text-muted">Manage your referral account details</p>
         </div>
 
-        <div id="referral-profile-error" class="error-message" style="display:none;"></div>
+        <div id="referral-profile-error" class="notice-message" style="display:none;"></div>
 
         <!-- Profile Info Card -->
         <div class="card" style="padding:1.5rem; margin-bottom:1.5rem;" id="ref-profile-info-card">
@@ -37,7 +37,7 @@ const ReferralProfileView = {
             </div>
             <button type="submit" class="btn-primary" id="ref-prof-email-submit">Update Email</button>
           </form>
-          <div id="ref-prof-email-error" class="error-message" style="display:none; margin-top:0.75rem;"></div>
+          <div id="ref-prof-email-error" class="notice-message" style="display:none; margin-top:0.75rem;"></div>
         </div>
 
         <!-- Update Password -->
@@ -54,7 +54,7 @@ const ReferralProfileView = {
             </div>
             <button type="submit" class="btn-primary" id="ref-prof-password-submit">Update Password</button>
           </form>
-          <div id="ref-prof-password-error" class="error-message" style="display:none; margin-top:0.75rem;"></div>
+          <div id="ref-prof-password-error" class="notice-message" style="display:none; margin-top:0.75rem;"></div>
         </div>
 
         <!-- Danger Zone -->
@@ -109,14 +109,16 @@ const ReferralProfileView = {
 
       ReferralAuth.setUser(profile);
     } catch (err) {
-      errorEl.textContent = `Failed to load profile: ${err.message}`;
-      errorEl.style.display = 'block';
+      Notice.show(errorEl, 'We could not load your referral profile right now. Please go back and try again in a moment.', {
+        goBack: true,
+        fallbackHash: '#referral-dashboard',
+      });
     }
 
     // Update email
     emailForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      emailError.style.display = 'none';
+      Notice.hide(emailError);
       const newEmail = document.getElementById('ref-prof-newEmail').value.trim();
       if (!newEmail) return;
 
@@ -132,8 +134,7 @@ const ReferralProfileView = {
         document.getElementById('ref-prof-newEmail').value = '';
         ReferralAuth.setUser({ ...ReferralAuth.getUser(), email: newEmail });
       } catch (err) {
-        emailError.textContent = err.message || 'Failed to update email.';
-        emailError.style.display = 'block';
+        Notice.show(emailError, err.message || 'We could not update your email right now. Please try again.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Update Email';
@@ -143,13 +144,12 @@ const ReferralProfileView = {
     // Update password
     passwordForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      passwordError.style.display = 'none';
+      Notice.hide(passwordError);
       const currentPassword = document.getElementById('ref-prof-currentPassword').value;
       const newPassword = document.getElementById('ref-prof-newPassword').value;
 
       if (newPassword.length < 6) {
-        passwordError.textContent = 'New password must be at least 6 characters.';
-        passwordError.style.display = 'block';
+        Notice.show(passwordError, 'New password must be at least 6 characters.');
         return;
       }
 
@@ -162,8 +162,7 @@ const ReferralProfileView = {
         Toast.success('Password updated successfully!');
         passwordForm.reset();
       } catch (err) {
-        passwordError.textContent = err.message || 'Failed to update password.';
-        passwordError.style.display = 'block';
+        Notice.show(passwordError, err.message || 'We could not update your password right now. Please try again.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Update Password';
@@ -193,10 +192,10 @@ const ReferralProfileView = {
         ReferralAuth.clearSession();
         window.location.hash = '#referral-login';
       } catch (err) {
-        Toast.error(`Failed to delete account: ${err.message}`);
+        deleteModal.style.display = 'none';
+        Notice.show(errorEl, 'We could not delete your referral account right now. Please try again in a moment.');
         deleteConfirm.disabled = false;
         deleteConfirm.innerHTML = 'Yes, Delete';
-        deleteModal.style.display = 'none';
       }
     });
   },

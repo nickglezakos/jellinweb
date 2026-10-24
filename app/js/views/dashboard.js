@@ -12,7 +12,7 @@ const DashboardView = {
           <p class="text-muted">Welcome back to your Jellin dashboard</p>
         </div>
 
-        <div id="dashboard-error" class="error-message" style="display:none;"></div>
+        <div id="dashboard-error" class="notice-message" style="display:none;"></div>
 
         <!-- Loading -->
         <div id="dashboard-loading" style="text-align:center; padding:3rem;">
@@ -111,8 +111,10 @@ const DashboardView = {
       Auth.setUser(data);
     } catch (err) {
       loadingEl.style.display = 'none';
-      errorEl.textContent = `Failed to load account info: ${err.message}`;
-      errorEl.style.display = 'block';
+      Notice.show(errorEl, 'We could not load your account right now. Please go back and try again in a moment.', {
+        goBack: true,
+        fallbackHash: '#login',
+      });
     }
   },
 };

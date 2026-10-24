@@ -12,7 +12,7 @@ const ProfileView = {
           <p class="text-muted">Manage your account details</p>
         </div>
 
-        <div id="profile-error" class="error-message" style="display:none;"></div>
+        <div id="profile-error" class="notice-message" style="display:none;"></div>
 
         <!-- Connection Info Card -->
         <div class="card" style="padding:1.5rem; margin-bottom:1.5rem;" id="profile-info-card">
@@ -48,7 +48,7 @@ const ProfileView = {
             </div>
             <button type="submit" class="btn-primary" id="prof-email-submit">Update Email</button>
           </form>
-          <div id="prof-email-error" class="error-message" style="display:none; margin-top:0.75rem;"></div>
+          <div id="prof-email-error" class="notice-message" style="display:none; margin-top:0.75rem;"></div>
         </div>
 
         <!-- Update Password -->
@@ -65,7 +65,7 @@ const ProfileView = {
             </div>
             <button type="submit" class="btn-primary" id="prof-password-submit">Update Password</button>
           </form>
-          <div id="prof-password-error" class="error-message" style="display:none; margin-top:0.75rem;"></div>
+          <div id="prof-password-error" class="notice-message" style="display:none; margin-top:0.75rem;"></div>
         </div>
 
         <!-- Danger Zone -->
@@ -122,14 +122,16 @@ const ProfileView = {
         `;
       }
     } catch (err) {
-      document.getElementById('profile-error').textContent = `Failed to load account info: ${err.message}`;
-      document.getElementById('profile-error').style.display = 'block';
+      Notice.show('profile-error', 'We could not load your profile right now. Please go back and try again in a moment.', {
+        goBack: true,
+        fallbackHash: '#dashboard',
+      });
     }
 
     // Update email
     emailForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      emailError.style.display = 'none';
+      Notice.hide(emailError);
       const newEmail = document.getElementById('prof-newEmail').value.trim();
       if (!newEmail) return;
 
@@ -145,8 +147,7 @@ const ProfileView = {
         document.getElementById('prof-newEmail').value = '';
         Auth.setUser({ ...Auth.getUser(), email: newEmail });
       } catch (err) {
-        emailError.textContent = err.message || 'Failed to update email.';
-        emailError.style.display = 'block';
+        Notice.show(emailError, err.message || 'We could not update your email right now. Please try again.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Update Email';
@@ -156,13 +157,12 @@ const ProfileView = {
     // Update password
     passwordForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      passwordError.style.display = 'none';
+      Notice.hide(passwordError);
       const currentPassword = document.getElementById('prof-currentPassword').value;
       const newPassword = document.getElementById('prof-newPassword').value;
 
       if (newPassword.length < 6) {
-        passwordError.textContent = 'New password must be at least 6 characters.';
-        passwordError.style.display = 'block';
+        Notice.show(passwordError, 'New password must be at least 6 characters.');
         return;
       }
 
@@ -175,8 +175,7 @@ const ProfileView = {
         Toast.success('Password updated successfully!');
         passwordForm.reset();
       } catch (err) {
-        passwordError.textContent = err.message || 'Failed to update password.';
-        passwordError.style.display = 'block';
+        Notice.show(passwordError, err.message || 'We could not update your password right now. Please try again.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Update Password';
@@ -206,10 +205,10 @@ const ProfileView = {
         Auth.clearSession();
         window.location.hash = '#login';
       } catch (err) {
-        Toast.error(`Failed to delete account: ${err.message}`);
+        deleteModal.style.display = 'none';
+        Notice.show('profile-error', 'We could not delete your account right now. Please try again in a moment.');
         deleteConfirm.disabled = false;
         deleteConfirm.innerHTML = 'Yes, Delete My Account';
-        deleteModal.style.display = 'none';
       }
     });
   },

@@ -36,7 +36,7 @@ const ForgotPasswordView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="fp-error" class="error-message" style="display:none;"></div>
+          <div id="fp-error" class="notice-message" style="display:none;"></div>
 
           <!-- Step 1: Request OTP -->
           <form id="fp-request-form">
@@ -80,12 +80,11 @@ const ForgotPasswordView = {
     // Step 1: Request OTP
     requestForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
 
       const email = emailInput.value.trim();
       if (!email) {
-        errorEl.textContent = 'Please enter your email address.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter your email address.');
         return;
       }
 
@@ -102,8 +101,7 @@ const ForgotPasswordView = {
         resetForm.style.display = 'block';
         subtitleEl.textContent = `Enter the code sent to ${email}`;
       } catch (err) {
-        errorEl.textContent = err.message || 'Failed to send reset code. Please try again.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Failed to send reset code. Please try again.');
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Reset Code';
       }
@@ -112,13 +110,12 @@ const ForgotPasswordView = {
     // Step 2: Reset password with OTP
     resetForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
 
       const otp = parseInt(document.getElementById('fp-otp').value.trim(), 10);
 
       if (!otp || isNaN(otp)) {
-        errorEl.textContent = 'Please enter a valid numeric OTP code.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter a valid numeric OTP code.');
         return;
       }
 
@@ -131,8 +128,7 @@ const ForgotPasswordView = {
         Toast.success('Password reset successful! Check your email for your new password, then sign in.');
         window.location.hash = '#login';
       } catch (err) {
-        errorEl.textContent = err.message || 'Failed to reset password. Check your OTP code.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Failed to reset password. Check your OTP code.');
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Reset Password';
       }
@@ -143,7 +139,7 @@ const ForgotPasswordView = {
       resetForm.style.display = 'none';
       requestForm.style.display = 'block';
       subtitleEl.textContent = 'Enter your email to receive a reset code';
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
       document.getElementById('fp-request-submit').disabled = false;
       document.getElementById('fp-request-submit').innerHTML = 'Send Reset Code';
     });

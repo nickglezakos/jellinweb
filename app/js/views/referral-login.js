@@ -34,7 +34,7 @@ const ReferralLoginView = {
 
       <div class="app-container" style="padding-top: 1.5rem;">
         <div class="auth-card">
-          <div id="referral-login-error" class="error-message" style="display:none;"></div>
+          <div id="referral-login-error" class="notice-message" style="display:none;"></div>
 
           <form id="referral-login-form">
             <div style="margin-bottom: 1rem;">
@@ -107,14 +107,13 @@ const ReferralLoginView = {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      errorEl.style.display = 'none';
+      Notice.hide(errorEl);
 
       const email = document.getElementById('referral-login-email').value.trim();
       const password = document.getElementById('referral-login-password').value;
 
       if (!email || !password) {
-        errorEl.textContent = 'Please enter both email and password.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, 'Please enter both email and password.');
         return;
       }
 
@@ -133,8 +132,7 @@ const ReferralLoginView = {
           window.location.hash = '#referral-confirm-email';
         }
       } catch (err) {
-        errorEl.textContent = err.message || 'Login failed. Please check your credentials.';
-        errorEl.style.display = 'block';
+        Notice.show(errorEl, err.message || 'Login failed. Please check your credentials.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Sign In';

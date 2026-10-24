@@ -33,6 +33,7 @@ const Toast = {
   },
 
   error(message, duration) {
+    // Subtle slate toast — same calm tone as in-page notices
     this.show(message, 'error', duration);
   },
 
