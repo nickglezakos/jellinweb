@@ -49,14 +49,24 @@ const DashboardView = {
           <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1.25rem;">Quick Actions</h2>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
             <a href="#subscription" class="stat-card" style="text-decoration:none; cursor:pointer; text-align:center; padding:1.5rem;">
-              <div style="font-size:2rem; margin-bottom:0.5rem;">💳</div>
-              <div style="font-weight:700; color:#1e293b;">Manage Subscription</div>
-              <div class="text-muted">View plans & billing</div>
+              <div style="margin-bottom:0.75rem; color:#64748b;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:0 auto;">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/>
+                  <path d="M2 10h20"/>
+                </svg>
+              </div>
+              <div style="font-weight:600; color:#1e293b;">Subscription</div>
+              <div class="text-muted" style="font-size:0.875rem; margin-top:0.25rem;">Plans &amp; billing</div>
             </a>
             <a href="#profile" class="stat-card" style="text-decoration:none; cursor:pointer; text-align:center; padding:1.5rem;">
-              <div style="font-size:2rem; margin-bottom:0.5rem;">👤</div>
-              <div style="font-weight:700; color:#1e293b;">Profile Settings</div>
-              <div class="text-muted">Update your account</div>
+              <div style="margin-bottom:0.75rem; color:#64748b;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:0 auto;">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div style="font-weight:600; color:#1e293b;">Profile</div>
+              <div class="text-muted" style="font-size:0.875rem; margin-top:0.25rem;">Account settings</div>
             </a>
           </div>
         </div>

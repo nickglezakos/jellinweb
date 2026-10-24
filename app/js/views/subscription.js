@@ -23,12 +23,12 @@ const SubscriptionView = {
 
         <!-- Non-Administrator message -->
         <div id="sub-mobile-only" style="display:none;">
-          <div class="empty-state">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <h3>Business owner access required</h3>
-            <p>Web checkout is available to tenant Administrators. If you are staff or joined through another channel, please register and manage your account through the Jellin mobile app.</p>
+          <div style="text-align:center; padding:2.5rem 1rem 1.5rem;">
+            <p style="color:#64748b; font-size:1rem; line-height:1.6; margin:0 auto 1.5rem; max-width:26rem;">
+              Subscriptions on the web are managed by the business Administrator.
+              Please use the Jellin mobile app for your account, or ask your Administrator if you need plan access.
+            </p>
+            <button type="button" id="sub-go-back-btn" class="btn-secondary">Go back</button>
           </div>
         </div>
 
@@ -91,10 +91,20 @@ const SubscriptionView = {
     let selectedPlanName = null;
     let products = [];
 
-    // Non-Administrators: polite mobile-app message, no Stripe calls
+    // Non-Administrators: subtle message + go back, no Stripe calls
     if (!Auth.isAdministrator()) {
       loadingEl.style.display = 'none';
       mobileOnlyEl.style.display = 'block';
+      const goBackBtn = document.getElementById('sub-go-back-btn');
+      if (goBackBtn) {
+        goBackBtn.addEventListener('click', () => {
+          if (window.history.length > 1) {
+            window.history.back();
+          } else {
+            window.location.hash = '#dashboard';
+          }
+        });
+      }
       return;
     }
 
