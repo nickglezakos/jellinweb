@@ -647,6 +647,9 @@ h1, h2, h3, .hero__brand, .close__brand, .story__title {
 .story[data-accent="amber"] {
   background: linear-gradient(155deg, #b45309 0%, #c026d3 45%, #7c3aed 100%);
 }
+.story[data-accent="violet"] {
+  background: linear-gradient(155deg, #6d28d9 0%, #db2777 50%, #ea580c 100%);
+}
 
 .story__media {
   position: relative;
@@ -684,6 +687,7 @@ h1, h2, h3, .hero__brand, .close__brand, .story__title {
 .story[data-accent="green"] .story__label { color: #a7f3d0; }
 .story[data-accent="pink"] .story__label { color: #fbcfe8; }
 .story[data-accent="amber"] .story__label { color: #fde68a; }
+.story[data-accent="violet"] .story__label { color: #e9d5ff; }
 
 .story__title {
   margin: 0;
