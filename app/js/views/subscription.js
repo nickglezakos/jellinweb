@@ -21,13 +21,10 @@ const SubscriptionView = {
           <p class="text-muted" style="margin-top:1rem;">Loading plans...</p>
         </div>
 
-        <!-- Non-Administrator message -->
-        <div id="sub-mobile-only" style="display:none;">
+        <!-- Non-Administrator / unavailable message -->
+        <div id="sub-notice" style="display:none;">
           <div style="text-align:center; padding:2.5rem 1rem 1.5rem;">
-            <p style="color:#64748b; font-size:1rem; line-height:1.6; margin:0 auto 1.5rem; max-width:26rem;">
-              Subscriptions on the web are managed by the business Administrator.
-              Please use the Jellin mobile app for your account, or ask your Administrator if you need plan access.
-            </p>
+            <p id="sub-notice-text" style="color:#64748b; font-size:1rem; line-height:1.6; margin:0 auto 1.5rem; max-width:26rem;"></p>
             <button type="button" id="sub-go-back-btn" class="btn-secondary">Go back</button>
           </div>
         </div>
@@ -73,12 +70,39 @@ const SubscriptionView = {
     `;
   },
 
+  showNotice(message) {
+    const loadingEl = document.getElementById('sub-loading');
+    const errorEl = document.getElementById('sub-error');
+    const noticeEl = document.getElementById('sub-notice');
+    const noticeText = document.getElementById('sub-notice-text');
+    const goBackBtn = document.getElementById('sub-go-back-btn');
+
+    if (loadingEl) loadingEl.style.display = 'none';
+    if (errorEl) errorEl.style.display = 'none';
+    if (noticeText) noticeText.textContent = message;
+    if (noticeEl) noticeEl.style.display = 'block';
+
+    if (goBackBtn && !goBackBtn.dataset.bound) {
+      goBackBtn.dataset.bound = '1';
+      goBackBtn.addEventListener('click', () => {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.hash = '#dashboard';
+        }
+      });
+    }
+  },
+
+  isForbiddenError(err) {
+    const msg = (err && err.message) ? String(err.message) : '';
+    return /\b403\b/i.test(msg) || /forbidden/i.test(msg);
+  },
+
   async init() {
     Navbar.init();
 
     const loadingEl = document.getElementById('sub-loading');
-    const errorEl = document.getElementById('sub-error');
-    const mobileOnlyEl = document.getElementById('sub-mobile-only');
     const plansList = document.getElementById('sub-plans-list');
     const plansSection = document.getElementById('sub-plans');
     const emptyEl = document.getElementById('sub-empty');
@@ -88,31 +112,21 @@ const SubscriptionView = {
     const cancelModal = document.getElementById('sub-cancel-modal');
 
     let selectedPriceId = null;
-    let selectedPlanName = null;
     let products = [];
 
     // Non-Administrators: subtle message + go back, no Stripe calls
     if (!Auth.isAdministrator()) {
-      loadingEl.style.display = 'none';
-      mobileOnlyEl.style.display = 'block';
-      const goBackBtn = document.getElementById('sub-go-back-btn');
-      if (goBackBtn) {
-        goBackBtn.addEventListener('click', () => {
-          if (window.history.length > 1) {
-            window.history.back();
-          } else {
-            window.location.hash = '#dashboard';
-          }
-        });
-      }
+      this.showNotice(
+        'Subscriptions on the web are managed by the business Administrator. Please use the Jellin mobile app for your account, or ask your Administrator if you need plan access.'
+      );
       return;
     }
 
     const tenantId = Auth.getTenantId();
     if (!tenantId) {
-      loadingEl.style.display = 'none';
-      errorEl.textContent = 'Unable to determine your business account from the session. Please sign out and sign in again.';
-      errorEl.style.display = 'block';
+      this.showNotice(
+        'We could not confirm your business account from this session. Please sign out, sign in again, and try once more.'
+      );
       return;
     }
 
@@ -164,7 +178,6 @@ const SubscriptionView = {
           planCards.forEach(c => c.classList.remove('selected'));
           card.classList.add('selected');
           selectedPriceId = card.dataset.priceId;
-          selectedPlanName = card.dataset.planName;
           actionsDiv.style.display = 'block';
         });
       });
@@ -189,7 +202,11 @@ const SubscriptionView = {
             Toast.success('Subscription initiated! Check your email for details.');
           }
         } catch (err) {
-          Toast.error(`Failed to create subscription: ${err.message}`);
+          if (SubscriptionView.isForbiddenError(err)) {
+            Toast.error('Checkout is not available for this account yet. Please try again later.');
+          } else {
+            Toast.error(`Failed to create subscription: ${err.message}`);
+          }
           subscribeBtn.disabled = false;
           subscribeBtn.innerHTML = 'Subscribe Now';
         }
@@ -227,9 +244,15 @@ const SubscriptionView = {
       currentCard.style.display = 'none'; // Hide until we have a get-subscription endpoint
 
     } catch (err) {
-      loadingEl.style.display = 'none';
-      errorEl.textContent = `Failed to load plans: ${err.message}`;
-      errorEl.style.display = 'block';
+      if (SubscriptionView.isForbiddenError(err)) {
+        this.showNotice(
+          'Plans are not available to load for this account yet. Please go back for now, or try again later once billing access is enabled.'
+        );
+      } else {
+        this.showNotice(
+          'We could not load subscription plans right now. Please go back and try again in a moment.'
+        );
+      }
     }
   },
 };
