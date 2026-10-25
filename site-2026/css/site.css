@@ -719,10 +719,16 @@ h1, h2, h3, .hero__brand, .close__brand, .story__title {
 
 @media (min-width: 900px) {
   .story {
-    grid-template-columns: 1.15fr 0.85fr;
+    /* minmax(0, …) keeps fr columns stable so media panels meet at corners
+       even when copy text is long (hotel / mall were squeezing the image column). */
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   }
   .story--flip .story__media { order: 2; }
   .story--flip .story__copy { order: 1; }
+  .story__media,
+  .story__copy {
+    min-width: 0;
+  }
   .story__media,
   .story__media img {
     min-height: 100%;
