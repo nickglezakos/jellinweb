@@ -329,14 +329,22 @@ const API = (() => {
   };
 
   // ─── Stripe Endpoints ──────────────────────────────────
+  // Bodies match the Postman "Payments - Subscriptions / Stripe" requests (PascalCase).
 
   const Stripe = {
     /**
-     * Get all active Stripe products with prices
+     * Get Stripe products for a subscription type / billing cycle.
+     * Authorized Owner call — same contract as Postman GET /stripe/products with body.
+     * @param {{ subscriptionType?: string, billingCycle?: string, referenceId?: string|null }} [filters]
      */
-    getProducts() {
+    getProducts(filters = {}) {
       return request('/stripe/products', {
         method: 'GET',
+        body: JSON.stringify({
+          SubscriptionType: filters.subscriptionType || 'appUsage',
+          BillingCycle: filters.billingCycle || 'monthly',
+          ReferenceId: filters.referenceId != null ? filters.referenceId : null,
+        }),
       });
     },
 
@@ -347,7 +355,10 @@ const API = (() => {
     createSubscription(tenantId, externalPriceId) {
       return request('/stripe/subscriptions', {
         method: 'POST',
-        body: JSON.stringify({ tenantId, externalPriceId }),
+        body: JSON.stringify({
+          TenantId: tenantId,
+          ExternalPriceId: externalPriceId,
+        }),
       });
     },
 
@@ -357,7 +368,11 @@ const API = (() => {
     upgradeSubscription(tenantId, subscriptionExternalId, newExternalPriceId) {
       return request('/stripe/subscriptions', {
         method: 'PUT',
-        body: JSON.stringify({ tenantId, subscriptionExternalId, newExternalPriceId }),
+        body: JSON.stringify({
+          TenantId: tenantId,
+          SubscriptionExternalId: subscriptionExternalId,
+          NewExternalPriceId: newExternalPriceId,
+        }),
       });
     },
 
@@ -367,7 +382,10 @@ const API = (() => {
     cancelSubscription(tenantId, subscriptionExternalId) {
       return request('/stripe/subscriptions', {
         method: 'DELETE',
-        body: JSON.stringify({ tenantId, subscriptionExternalId }),
+        body: JSON.stringify({
+          TenantId: tenantId,
+          SubscriptionExternalId: subscriptionExternalId,
+        }),
       });
     },
   };

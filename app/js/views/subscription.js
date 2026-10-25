@@ -99,6 +99,77 @@ const SubscriptionView = {
     return /\b403\b/i.test(msg) || /forbidden/i.test(msg);
   },
 
+  /**
+   * Normalize products API payload (array, wrapped, or single product; camel or Pascal case).
+   */
+  normalizeProducts(data) {
+    if (!data) return [];
+    let list = data;
+    if (!Array.isArray(list)) {
+      if (Array.isArray(data.products)) list = data.products;
+      else if (Array.isArray(data.Products)) list = data.Products;
+      else if (data.id || data.Id || data.prices || data.Prices) list = [data];
+      else list = [];
+    }
+
+    return list.map((product) => {
+      const prices = product.prices || product.Prices || [];
+      return {
+        id: product.id || product.Id || '',
+        name: product.name || product.Name || 'Plan',
+        prices: (Array.isArray(prices) ? prices : []).map((price) => ({
+          id: price.id || price.Id || '',
+          amount: price.amount != null ? price.amount : price.Amount,
+          currency: (price.currency || price.Currency || 'eur').toString(),
+          interval: price.interval || price.Interval || '',
+        })).filter((p) => p.id),
+      };
+    }).filter((p) => p.prices.length > 0);
+  },
+
+  /**
+   * Load appUsage products for monthly + annually (Postman Products contract).
+   */
+  async loadOwnerProducts() {
+    const cycles = ['monthly', 'annually'];
+    const results = await Promise.all(
+      cycles.map(async (billingCycle) => {
+        try {
+          const data = await API.Stripe.getProducts({
+            subscriptionType: 'appUsage',
+            billingCycle,
+            referenceId: null,
+          });
+          return { ok: true, data };
+        } catch (err) {
+          return { ok: false, err };
+        }
+      })
+    );
+
+    const successes = results.filter((r) => r.ok);
+    if (successes.length === 0) {
+      throw results[0].err;
+    }
+
+    const merged = [];
+    const seenPriceIds = new Set();
+    successes.forEach((r) => {
+      SubscriptionView.normalizeProducts(r.data).forEach((product) => {
+        product.prices.forEach((price) => {
+          if (seenPriceIds.has(price.id)) return;
+          seenPriceIds.add(price.id);
+          merged.push({
+            id: product.id,
+            name: product.name,
+            prices: [price],
+          });
+        });
+      });
+    });
+    return merged;
+  },
+
   async init() {
     Navbar.init();
 
@@ -131,7 +202,7 @@ const SubscriptionView = {
     }
 
     try {
-      products = await API.Stripe.getProducts();
+      products = await this.loadOwnerProducts();
 
       loadingEl.style.display = 'none';
 
@@ -144,12 +215,12 @@ const SubscriptionView = {
 
       // Render plan cards
       plansList.innerHTML = products.map((product, idx) => {
-        // Take the first active price
-        const price = product.prices && product.prices.length > 0 ? product.prices[0] : null;
+        const price = product.prices[0];
         if (!price) return '';
 
-        const amount = (price.amount / 100).toFixed(2);
-        const currency = price.currency.toUpperCase();
+        const rawAmount = Number(price.amount);
+        const amount = Number.isFinite(rawAmount) ? (rawAmount / 100).toFixed(2) : '—';
+        const currency = String(price.currency || 'eur').toUpperCase();
         const interval = price.interval ? `/${price.interval}` : '';
 
         return `
@@ -157,15 +228,11 @@ const SubscriptionView = {
             <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:0.5rem;">
               <div>
                 <h3 style="font-weight:700; font-size:1.1rem; color:#1e293b;">${product.name}</h3>
-                <span class="badge badge-purple" style="margin-top:0.25rem;">${product.id}</span>
               </div>
               <div style="text-align:right;">
                 <div class="price">${currency} ${amount}</div>
                 <span class="text-muted">${interval}</span>
               </div>
-            </div>
-            <div style="margin-top:0.75rem;">
-              <span class="badge badge-info">Price ID: ${price.id}</span>
             </div>
           </div>
         `;
