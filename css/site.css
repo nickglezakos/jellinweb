@@ -719,9 +719,8 @@ h1, h2, h3, .hero__brand, .close__brand, .story__title {
 
 @media (min-width: 900px) {
   .story {
-    /* minmax(0, …) keeps fr columns stable so media panels meet at corners
-       even when copy text is long (hotel / mall were squeezing the image column). */
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    /* Equal columns so stacked media panels meet at the page center. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .story--flip .story__media { order: 2; }
   .story--flip .story__copy { order: 1; }
