@@ -334,17 +334,35 @@ const API = (() => {
   const Stripe = {
     /**
      * Get Stripe products for a subscription type / billing cycle.
-     * Authorized Owner call — same contract as Postman GET /stripe/products with body.
+     * Same JSON as Postman /stripe/products, but POST: browsers reject a body on GET
+     * (Postman allows GET+body; fetch does not).
      * @param {{ subscriptionType?: string, billingCycle?: string, referenceId?: string|null }} [filters]
      */
     getProducts(filters = {}) {
+      const body = {
+        SubscriptionType: filters.subscriptionType || 'appUsage',
+        BillingCycle: filters.billingCycle || 'monthly',
+        ReferenceId: filters.referenceId != null ? filters.referenceId : null,
+      };
+
+      // Prefer POST (browser-safe body). If API only allows GET, fall back to query string.
       return request('/stripe/products', {
-        method: 'GET',
-        body: JSON.stringify({
-          SubscriptionType: filters.subscriptionType || 'appUsage',
-          BillingCycle: filters.billingCycle || 'monthly',
-          ReferenceId: filters.referenceId != null ? filters.referenceId : null,
-        }),
+        method: 'POST',
+        body: JSON.stringify(body),
+      }).catch(async (err) => {
+        const msg = String(err && err.message ? err.message : err);
+        if (!/\b405\b/.test(msg) && !/method not allowed/i.test(msg)) {
+          throw err;
+        }
+        const params = new URLSearchParams();
+        params.set('SubscriptionType', body.SubscriptionType);
+        params.set('BillingCycle', body.BillingCycle);
+        if (body.ReferenceId != null) {
+          params.set('ReferenceId', String(body.ReferenceId));
+        }
+        return request(`/stripe/products?${params.toString()}`, {
+          method: 'GET',
+        });
       });
     },
 
