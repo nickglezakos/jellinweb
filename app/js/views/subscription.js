@@ -100,7 +100,9 @@ const SubscriptionView = {
   },
 
   /**
-   * Normalize products API payload (array, wrapped, or single product; camel or Pascal case).
+   * Normalize products API payload to selectable plan rows.
+   * Live API shape: { id, name, description, prices: [{ id, billingCycle, price, currency }] }
+   * `price` is major currency units (e.g. 20 = EUR 20), not Stripe cents.
    */
   normalizeProducts(data) {
     if (!data) return [];
@@ -112,62 +114,52 @@ const SubscriptionView = {
       else list = [];
     }
 
-    return list.map((product) => {
+    const rows = [];
+    list.forEach((product) => {
       const prices = product.prices || product.Prices || [];
-      return {
-        id: product.id || product.Id || '',
-        name: product.name || product.Name || 'Plan',
-        prices: (Array.isArray(prices) ? prices : []).map((price) => ({
-          id: price.id || price.Id || '',
-          amount: price.amount != null ? price.amount : price.Amount,
-          currency: (price.currency || price.Currency || 'eur').toString(),
-          interval: price.interval || price.Interval || '',
-        })).filter((p) => p.id),
-      };
-    }).filter((p) => p.prices.length > 0);
-  },
+      const name = product.name || product.Name || 'Plan';
+      const id = product.id || product.Id || '';
+      const description = product.description || product.Description || '';
 
-  /**
-   * Load appUsage products for monthly + annually (Postman Products contract).
-   */
-  async loadOwnerProducts() {
-    const cycles = ['monthly', 'annually'];
-    const results = await Promise.all(
-      cycles.map(async (billingCycle) => {
-        try {
-          const data = await API.Stripe.getProducts({
-            subscriptionType: 'appUsage',
-            billingCycle,
-            referenceId: null,
-          });
-          return { ok: true, data };
-        } catch (err) {
-          return { ok: false, err };
-        }
-      })
-    );
+      (Array.isArray(prices) ? prices : []).forEach((price) => {
+        const priceId = price.id || price.Id || '';
+        if (!priceId) return;
 
-    const successes = results.filter((r) => r.ok);
-    if (successes.length === 0) {
-      throw results[0].err;
-    }
+        const hasMajorPrice = price.price != null || price.Price != null;
+        const raw = hasMajorPrice
+          ? Number(price.price != null ? price.price : price.Price)
+          : Number(price.amount != null ? price.amount : price.Amount);
+        const displayAmount = Number.isFinite(raw)
+          ? (hasMajorPrice ? raw : raw / 100)
+          : null;
+        const interval = price.billingCycle || price.BillingCycle || price.interval || price.Interval || '';
 
-    const merged = [];
-    const seenPriceIds = new Set();
-    successes.forEach((r) => {
-      SubscriptionView.normalizeProducts(r.data).forEach((product) => {
-        product.prices.forEach((price) => {
-          if (seenPriceIds.has(price.id)) return;
-          seenPriceIds.add(price.id);
-          merged.push({
-            id: product.id,
-            name: product.name,
-            prices: [price],
-          });
+        rows.push({
+          id,
+          name,
+          description,
+          prices: [{
+            id: priceId,
+            amount: displayAmount,
+            currency: (price.currency || price.Currency || 'eur').toString(),
+            interval: String(interval),
+          }],
         });
       });
     });
-    return merged;
+    return rows;
+  },
+
+  /**
+   * Load products with the authorized Postman body (one call returns all cycles).
+   */
+  async loadOwnerProducts() {
+    const data = await API.Stripe.getProducts({
+      subscriptionType: 'appUsage',
+      billingCycle: 'monthly',
+      referenceId: null,
+    });
+    return SubscriptionView.normalizeProducts(data);
   },
 
   async init() {
@@ -213,23 +205,29 @@ const SubscriptionView = {
 
       plansSection.style.display = 'block';
 
-      // Render plan cards
+      // Render plan cards (one selectable row per product + billing cycle)
       plansList.innerHTML = products.map((product, idx) => {
         const price = product.prices[0];
         if (!price) return '';
 
-        const rawAmount = Number(price.amount);
-        const amount = Number.isFinite(rawAmount) ? (rawAmount / 100).toFixed(2) : '—';
+        const amount = Number.isFinite(Number(price.amount))
+          ? Number(price.amount).toFixed(2)
+          : '—';
         const currency = String(price.currency || 'eur').toUpperCase();
         const interval = price.interval ? `/${price.interval}` : '';
+        const safeName = Notice.escape(product.name);
+        const description = product.description
+          ? `<p class="text-muted" style="margin:0.35rem 0 0; font-size:0.875rem;">${Notice.escape(product.description)}</p>`
+          : '';
 
         return `
-          <div class="plan-card" data-price-id="${price.id}" data-plan-name="${product.name}" data-index="${idx}">
-            <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:0.5rem;">
-              <div>
-                <h3 style="font-weight:700; font-size:1.1rem; color:#1e293b;">${product.name}</h3>
+          <div class="plan-card" data-price-id="${price.id}" data-plan-name="${safeName}" data-index="${idx}">
+            <div style="display:flex; justify-content:space-between; align-items:start; gap:1rem;">
+              <div style="text-align:left;">
+                <h3 style="font-weight:700; font-size:1.1rem; color:#1e293b; margin:0;">${safeName}</h3>
+                ${description}
               </div>
-              <div style="text-align:right;">
+              <div style="text-align:right; flex-shrink:0;">
                 <div class="price">${currency} ${amount}</div>
                 <span class="text-muted">${interval}</span>
               </div>
