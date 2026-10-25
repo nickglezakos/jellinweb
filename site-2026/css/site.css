@@ -388,20 +388,20 @@ h1, h2, h3, .hero__brand, .close__brand, .story__title {
   align-items: center;
   padding: clamp(1.5rem, 3vw, 2.25rem);
   border-radius: 1.75rem;
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 22px 50px -32px rgba(15, 23, 42, 0.4);
   color: #6b21a8;
-  background: linear-gradient(165deg, #faf5ff 0%, #fff 60%);
+  background: linear-gradient(165deg, #f3e8ff 0%, #ede9fe 55%, #e9e0ff 100%);
 }
 
 .proof__row[data-tone="pink"] {
   color: #9d174d;
-  background: linear-gradient(165deg, #fff1f2 0%, #fff 60%);
+  background: linear-gradient(165deg, #ffe4e6 0%, #fecdd3 55%, #fbcfe8 100%);
 }
 
 .proof__row[data-tone="amber"] {
   color: #b45309;
-  background: linear-gradient(165deg, #fffbeb 0%, #fff 60%);
+  background: linear-gradient(165deg, #fef3c7 0%, #fde68a 55%, #fef08a 100%);
 }
 
 @media (min-width: 860px) {
