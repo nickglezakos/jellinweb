@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 32" fill="none">
+  <defs>
+    <linearGradient id="jg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a855f7"/>
+      <stop offset="0.5" stop-color="#ec4899"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="32" height="32" rx="8" fill="url(#jg)"/>
+  <path d="M11.2 8.2h9.6v3.1H17.4v12.5h-3.2V11.3h-3z" fill="#fff"/>
+  <text x="40" y="22" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#e8eef9" letter-spacing="-0.03em">Jellin</text>
+</svg>

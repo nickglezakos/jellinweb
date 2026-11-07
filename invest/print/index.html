@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jellin Investor Primer — PDF</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --soft: #64748b;
+      --line: #dbe3ee;
+      --band: #f5f3ff;
+      --band-alt: #fdf2f8;
+      --brand: #7c3aed;
+      --brand-dark: #4c1d95;
+      --cyan: #db2777;
+      --warn: #b45309;
+      --ok: #166534;
+      --danger: #b91c1c;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page { size: A4; margin: 16mm 14mm 18mm 14mm; }
+
+    .sheet { max-width: 190mm; margin: 0 auto; padding: 14mm 0 96px; }
+    @media print {
+      .sheet { max-width: none; padding: 0; margin: 0; }
+      .no-print { display: none !important; }
+    }
+
+    .no-print.toolbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 12px 16px; margin-bottom: 18px;
+      background: #fff; border-bottom: 1px solid var(--line);
+    }
+    .no-print.toolbar p { margin: 0; color: var(--soft); font-size: 12px; max-width: 48ch; }
+    .no-print.toolbar button {
+      flex: 0 0 auto;
+      border: 0; border-radius: 8px; padding: 10px 16px;
+      background: var(--brand); color: #fff; font: inherit; font-weight: 600; cursor: pointer;
+    }
+
+    .cover {
+      min-height: 250mm;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 18mm 14mm;
+      background: linear-gradient(165deg, #1e1033 0%, #4c1d95 50%, #9d174d 100%);
+      color: #fff;
+      break-after: page;
+      page-break-after: always;
+    }
+    .cover-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .cover-brand { display: flex; align-items: center; gap: 12px; }
+    .cover-brand img { height: 34px; width: auto; }
+    .cover-chip {
+      padding: 6px 10px; border: 1px solid rgba(255,255,255,0.22);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: #fce7f3;
+    }
+    .cover-eyebrow {
+      margin: 56px 0 18px;
+      color: #f9a8d4; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .cover h1 {
+      margin: 0 0 20px; font-size: 36px; line-height: 1.08;
+      letter-spacing: -0.03em; font-weight: 700; max-width: 16ch;
+    }
+    .cover-lead {
+      margin: 0; max-width: 48ch; color: #f3e8ff; font-size: 14px; line-height: 1.65;
+    }
+    .cover-meta {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+      margin-top: 52px; padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+    .cover-meta span {
+      display: block; margin-bottom: 4px;
+      color: #c4b5fd; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .cover-meta strong { font-size: 12px; font-weight: 600; color: #fff; }
+    .cover-foot {
+      display: flex; justify-content: space-between; gap: 16px;
+      color: #c4b5fd; font-size: 11px;
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h2 {
+      margin: 0 0 12px; font-size: 16pt; letter-spacing: -0.02em;
+      color: var(--brand-dark); break-after: avoid; page-break-after: avoid;
+    }
+    h3 {
+      margin: 18px 0 8px; font-size: 11.5pt; color: var(--ink);
+      break-after: avoid; page-break-after: avoid;
+    }
+    h4 { margin: 0 0 8px; font-size: 10.5pt; color: var(--ink); }
+    p { margin: 0 0 10px; color: var(--muted); }
+    ul { margin: 0 0 12px; padding-left: 16px; color: var(--muted); }
+    li + li { margin-top: 6px; }
+    strong { color: var(--ink); }
+
+    .sheet > section {
+      scroll-margin-top: 72px;
+      scroll-margin-bottom: 96px;
+    }
+    .section {
+      padding: 18px 0 22px;
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid-page;
+    }
+    .section.flow { break-inside: auto; }
+    .section.page-start {
+      break-before: page;
+      page-break-before: always;
+      border-top: 0;
+      padding-top: 4px;
+    }
+    .section-head {
+      display: flex; align-items: baseline; gap: 10px;
+      margin-bottom: 14px; break-after: avoid; page-break-after: avoid;
+    }
+    .section-num {
+      flex: 0 0 auto;
+      min-width: 22px;
+      color: var(--brand); font-size: 11px; font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .kicker {
+      margin: 0 0 16px; padding: 14px 16px;
+      background: var(--brand-dark); color: #f5fbff;
+      font-size: 10pt; font-weight: 600; line-height: 1.5;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    .cols-4, .cols-3, .cols-2 { display: grid; gap: 14px; margin: 14px 0; }
+    .cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .panel {
+      background: var(--band); padding: 14px 14px;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .panel.alt { background: var(--band-alt); }
+    .panel p, .panel li { font-size: 9.5pt; }
+    .stat {
+      display: block; margin-bottom: 4px;
+      font-size: 18pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+    }
+    .stat-label {
+      display: block; margin-bottom: 8px;
+      color: var(--soft); font-size: 8.5pt; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .stat.cyan { color: var(--cyan); }
+    .stat.danger { color: var(--danger); }
+    .stat.brand { color: var(--brand); }
+    .stat.ok { color: var(--ok); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag {
+      display: inline-block; padding: 3px 8px;
+      background: #fff; border: 1px solid var(--line);
+      color: var(--brand); font-size: 8.5pt; font-weight: 600;
+    }
+
+    .breaker-vs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;
+    }
+    .breaker-vs .panel h4 { margin-bottom: 8px; }
+    .breaker-vs ul { margin: 0; font-size: 9pt; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px;
+      font-size: 9pt;
+      color: var(--muted);
+      break-inside: auto;
+    }
+    thead { break-after: avoid; page-break-after: avoid; }
+    th {
+      text-align: left;
+      padding: 8px 10px;
+      background: var(--brand-dark);
+      color: #f5fbff;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) td { background: var(--band); }
+    tbody tr.row-accent td { background: var(--band-alt); }
+    td strong { color: var(--ink); }
+
+    .summary-panel { margin-top: 18px; padding: 14px 16px; }
+    .footer-note { margin-top: 18px; color: var(--soft); font-size: 9pt; }
+    .side-note { margin-top: 12px; font-size: 9pt; color: var(--soft); }
+
+    .addendum-list {
+      margin: 0; padding-left: 0; list-style: none; color: var(--muted); font-size: 9pt;
+    }
+    .addendum-list li {
+      display: grid; grid-template-columns: 28px 1fr; gap: 8px;
+      padding: 10px 0; border-bottom: 1px solid var(--line);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .addendum-list li:last-child { border-bottom: 0; }
+    .addendum-list .ref-num { color: var(--brand); font-weight: 800; font-size: 9pt; }
+    .addendum-list a { color: var(--brand-dark); word-break: break-all; }
+    .addendum-list .ref-label {
+      display: block; margin-bottom: 2px; color: var(--ink); font-weight: 600;
+    }
+    .addendum-list .ref-use {
+      display: block; margin-bottom: 4px; color: var(--soft); font-size: 8.5pt;
+    }
+
+    @media (max-width: 720px) {
+      .cols-4, .cols-3, .cols-2, .breaker-vs, .cover-meta { grid-template-columns: 1fr !important; }
+      table { font-size: 8pt; }
+    }
+  </style>
+</head>
+<body>
+    <div class="no-print toolbar">
+    <p style="margin:0"><a href="/">← Back to site</a></p>
+    <button type="button" onclick="window.print()">PDF</button>
+  </div>
+<div class="sheet">
+    <section class="cover" id="page-0" data-nav-label="Cover">
+      <div>
+        <div class="cover-top">
+          <div class="cover-brand">
+            <img src="/assets/jellin-logo-white.png" alt="Jellin" style="height:36px;width:auto;max-width:150px" />
+            <span style="width:1px;height:28px;background:rgba(255,255,255,0.28);display:inline-block"></span>
+            <img src="/assets/talos-group-logo.png" alt="Talos Group" style="height:40px;width:auto;max-width:210px" />
+            <span class="cover-chip">Investor Primer</span>
+          </div>
+        </div>
+        <p class="cover-eyebrow">Loyalty · Zero Friction · Cross-Business Rewards</p>
+        <h1>Jellin investor primer</h1>
+        <p class="cover-lead">Loyalty that sticks without an app download. Phone or email check-in, instant rewards, and partner ecosystems for cafés, gyms, hotels, malls, and sports — Zero-friction loyalty for cafés, gyms, hotels, malls, and sports — Greece first, then the United States. For investor discussion.</p>
+        <div class="cover-meta">
+          <div><span>Type</span><strong>Investor Primer</strong></div>
+          <div><span>Date</span><strong>7 November 2026</strong></div>
+          <div><span>Structure</span><strong>What · Wedges · Changes · Bet · Motions · Seed · Footprint · Market</strong></div>
+          <div><span>Seed ladder</span><strong>$150K → $350K</strong></div>
+        </div>
+      </div>
+      <div class="cover-foot">
+        <span>jellinapp.com · talosgroup.eu</span>
+        <span>nick@bootcorelabs.com</span>
+      </div>
+    </section>
+
+    
+    <!-- 01 WHAT IS JELLIN -->
+    <section class="section flow" id="page-1" data-nav-label="01 · What is Jellin">
+      <div class="section-head"><span class="section-num">01</span><h2>What is Jellin</h2></div>
+      <p>Jellin is loyalty software that turns a phone number or email into a working rewards program — no app download required. Businesses run counting, instant, and sweepstake coupons; customers redeem by SMS, email, QR, or the optional app. One platform serves a single café and a multi-partner hotel or mall network.</p>
+
+      <h3>Who buys — and why now</h3>
+      <p>Real buyers, real jobs: people today hit a friction wall with stamp cards and heavy loyalty apps — with Jellin they enroll in seconds and see value on the same visit.</p>
+      <div class="cols-2">
+        <div class="panel">
+          <p>An <strong>independent café owner</strong> can now replace a lost punch card with “Your number?” — free coffee on the 5th visit, measured repeats.</p>
+        </div>
+        <div class="panel alt">
+          <p>A <strong>gym chain ops lead</strong> can now let Jells accumulate across every branch — one identity, employee-level visibility.</p>
+        </div>
+        <div class="panel">
+          <p>A <strong>hotel manager</strong> can now Jell a guest at check-in and push partner café or boutique offers by SMS — without a custom build.</p>
+        </div>
+        <div class="panel alt">
+          <p>A <strong>mall or sports operator</strong> can now connect purchases to experience rewards — jacket → ticket, store → mall gift threshold.</p>
+        </div>
+      </div>
+
+      <h3>Platform reasons that cut across every persona</h3>
+      <div class="cols-3">
+        <div class="panel">
+          <span class="stat cyan">Zero barrier</span>
+          <span class="stat-label">Not app-first</span>
+          <p>Phone, email, or QR. Same reward path with or without the app.</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat brand">Immediate rewards</span>
+          <span class="stat-label">Not months of wait</span>
+          <p>Counting, instant, and sweepstake coupons — payoff on a short cycle.</p>
+        </div>
+        <div class="panel">
+          <span class="stat ok">Cross-business</span>
+          <span class="stat-label">Not siloed cards</span>
+          <p>Groups and partner operators — earn here, redeem there.</p>
+        </div>
+      </div>
+      <div class="cols-3">
+        <div class="panel alt">
+          <span class="stat">Privacy-light</span>
+          <span class="stat-label">Not data harvest</span>
+          <p>Phone/email only for loyalty customers. GDPR-oriented by design.</p>
+        </div>
+        <div class="panel">
+          <span class="stat cyan">Every channel</span>
+          <span class="stat-label">Not one inbox</span>
+          <p>SMS, email QR, in-app — meet the customer where they already are.</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat brand">Ops + analytics</span>
+          <span class="stat-label">Not vanity metrics</span>
+          <p>Owner / Manager / Employee roles; redemptions by program, site, staff.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 WHERE IT PAYS -->
+    <section class="section flow page-start" id="page-2" data-nav-label="02 · Where it pays">
+      <div class="section-head"><span class="section-num">02</span><h2>Where it pays</h2></div>
+      <p>Six wedges. Same platform. Incumbents force apps, plastic, or siloed chains — Jellin sells enrollment in one question and networks across partners.</p>
+
+      <table>
+        <thead>
+          <tr><th>Wedge</th><th>Buyer</th><th>The problem now</th><th>With Jellin</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Café / local retail</strong></td>
+            <td>Independent owner</td>
+            <td>Punch cards lost; Instagram is not a loyalty system</td>
+            <td><strong>“Your number?” → measurable repeats</strong></td>
+          </tr>
+          <tr class="row-accent">
+            <td><strong>Gym networks</strong></td>
+            <td>Multi-location operator</td>
+            <td>Progress resets per branch</td>
+            <td><strong>Jells stack across the estate</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Hotels</strong></td>
+            <td>Ecosystem builder</td>
+            <td>Paper partner flyers die in the bin</td>
+            <td><strong>Welcome SMS + partner offers at check-in</strong></td>
+          </tr>
+          <tr class="row-accent">
+            <td><strong>Sports / venues</strong></td>
+            <td>Team / promoter</td>
+            <td>Merch and tickets live in separate worlds</td>
+            <td><strong>Purchase triggers experience (QR ticket)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Shopping malls</strong></td>
+            <td>Center / tenants</td>
+            <td>Each store’s program (or none) fragments spend</td>
+            <td><strong>One number → mall-wide thresholds</strong></td>
+          </tr>
+          <tr class="row-accent">
+            <td><strong>Agencies</strong></td>
+            <td>Marketing professional</td>
+            <td>Cannot prove foot traffic or repeats</td>
+            <td><strong>Hard redemption and revisit numbers</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 03 WHAT CHANGES -->
+    <section class="section flow page-start" id="page-3" data-nav-label="03 · What changes">
+      <div class="section-head"><span class="section-num">03</span><h2>What changes</h2></div>
+      <p>Customers are not locked to an app wall. Staff ask one question; the platform tracks visits, issues coupons, and delivers rewards on the channel the customer already uses — including when they never install anything.</p>
+
+      <div class="cols-3">
+        <div class="panel">
+          <span class="stat cyan">Friction</span>
+          <span class="stat-label">Collapsed</span>
+          <p>Enrollment is phone or email. QR for app users. Same ledger either way.</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat brand">Action</span>
+          <span class="stat-label">Not passive points</span>
+          <p>Counting thresholds, instant staff offers, and dated sweepstakes that fire without a project.</p>
+        </div>
+        <div class="panel">
+          <span class="stat ok">Network</span>
+          <span class="stat-label">Not one store</span>
+          <p>Internal and partner groups — invite operators; redeem across the host program.</p>
+        </div>
+      </div>
+
+      <div class="breaker-vs">
+        <div class="panel">
+          <h4>Incumbents sell</h4>
+          <ul>
+            <li>App downloads &amp; plastic cards</li>
+            <li>Slow time-to-reward</li>
+            <li>Siloed brand wallets</li>
+            <li>Heavy CRM / data collection</li>
+          </ul>
+        </div>
+        <div class="panel alt">
+          <h4>Jellin ships</h4>
+          <ul>
+            <li>Number / email / QR first</li>
+            <li>Rewards on a short cycle</li>
+            <li>Partner groups on one identity</li>
+            <li>Minimal personal data by design</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 THE BET -->
+    <section class="section flow page-start" id="page-4" data-nav-label="04 · The bet">
+      <div class="section-head"><span class="section-num">04</span><h2>The bet</h2></div>
+      <p>Jellin’s differentiators are how you enter the loyalty TAM where incumbents can only sell another app or another plastic card — then expand café-to-network without a download ceiling.</p>
+      <p>Prove paid adoption in Greece at median 5% of core SAM; then deploy the same product into the U.S. venue base at 1.5%.</p>
+
+      <h3>Point-to-point differentiators</h3>
+      <table>
+        <thead>
+          <tr><th>Point</th><th>Incumbents</th><th>Jellin</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Product</strong></td><td>App installs, cards, heavy CRM</td><td><strong>Zero-barrier loyalty + partner networks</strong></td></tr>
+          <tr class="row-accent"><td><strong>Enrollment</strong></td><td>Forms, passwords, downloads</td><td><strong>Phone or email in seconds</strong></td></tr>
+          <tr><td><strong>Rewards</strong></td><td>Opaque point banks</td><td><strong>Counting · instant · sweepstake coupons</strong></td></tr>
+          <tr class="row-accent"><td><strong>Delivery</strong></td><td>App-only</td><td><strong>SMS · email QR · optional app</strong></td></tr>
+          <tr><td><strong>Scale</strong></td><td>One brand silo</td><td><strong>Groups + invited partner operators</strong></td></tr>
+          <tr class="row-accent"><td><strong>Data</strong></td><td>Profile harvesting</td><td><strong>Minimal fields — trust as wedge</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="cols-4">
+        <div class="panel">
+          <span class="stat cyan">~53K</span>
+          <span class="stat-label">Greece core SAM</span>
+          <p>Cite-backed venue pool — cafés, hotels, fitness, apparel, malls.</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat brand">~285K</span>
+          <span class="stat-label">U.S. core SAM</span>
+          <p>Coffee, hotels, fitness, apparel, malls — same product motion.</p>
+        </div>
+        <div class="panel">
+          <span class="stat">5% / 1.5%</span>
+          <span class="stat-label">Median penetration</span>
+          <p>Greece then United States — staged deployment thesis.</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat ok">$150K→$350K</span>
+          <span class="stat-label">Seed ladder</span>
+          <p>Preseed Greece · Seed U.S. — capital for distribution, not a rewrite.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 HOW IT IS SOLD -->
+    <section class="section flow page-start" id="page-5" data-nav-label="05 · How it is sold">
+      <div class="section-head"><span class="section-num">05</span><h2>How it is sold</h2></div>
+      <p>Three motions on one SKU surface: self-serve trial and Standard, contact-sales Enterprise, optional connectors. Stripe checkout. Founding team covers product and BD; capital buys GTM speed.</p>
+
+      <table>
+        <thead>
+          <tr><th>Plan</th><th>Price</th><th>Groups</th><th>Motion</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Trial</strong></td><td>Free · 1 month</td><td>Standard</td><td>Self-service</td></tr>
+          <tr class="row-accent"><td><strong>Standard</strong></td><td>$20 / month</td><td>Up to 5</td><td>Self-service</td></tr>
+          <tr><td><strong>Enterprise</strong></td><td>$150 – $2,500 / month</td><td>Unlimited</td><td>Contact sales</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Add-ons:</strong> CRM / ERP connectors at $70 per connector / year. Syncs Jellin with POS, CRM, ERP, and automation tools.</p>
+
+      <div class="cols-2">
+        <div class="panel">
+          <h4>Cost base</h4>
+          <ul>
+            <li>Azure hosting</li>
+            <li>Lean founding engineering / product &amp; BD</li>
+            <li>Variable SMS / email as volume grows</li>
+          </ul>
+        </div>
+        <div class="panel alt">
+          <h4>Revenue base</h4>
+          <ul>
+            <li>Standard + Enterprise subscriptions</li>
+            <li>Connector fees</li>
+            <li>Blended ARPU rises with Enterprise mix</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 SEED LADDER -->
+    <section class="section flow page-start" id="page-6" data-nav-label="06 · Seed ladder">
+      <div class="section-head"><span class="section-num">06</span><h2>Seed ladder — preseed &amp; seed</h2></div>
+      <p>$150K preseed funds Greek deployment and proof of paid adoption. $350K seed funds United States deployment once the Greece motion works. Sequential capital. Same product. Extra capital buys speed — it does not rewrite unit economics.</p>
+
+      <div class="cols-2">
+        <div class="panel">
+          <span class="stat brand">$150K</span>
+          <span class="stat-label">Preseed · Greece</span>
+          <p>Path to ~5% of Greece core SAM (~2,640 accounts) · ~$952K ARR.</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat ok">$350K</span>
+          <span class="stat-label">Seed · United States</span>
+          <p>Path to ~1.5% of U.S. core SAM (~4,270 accounts) · ~$2.31M ARR on top of Greece.</p>
+        </div>
+      </div>
+
+      <h3>ARR at median penetration</h3>
+      <div class="cols-3">
+        <div class="panel">
+          <span class="stat brand">~$952K</span>
+          <span class="stat-label">Greece ARR</span>
+          <p>~2,640 × $30 ARPU × 12</p>
+        </div>
+        <div class="panel alt">
+          <span class="stat cyan">~$2.31M</span>
+          <span class="stat-label">U.S. ARR</span>
+          <p>~4,270 × $45 ARPU × 12</p>
+        </div>
+        <div class="panel">
+          <span class="stat ok">~$3.26M</span>
+          <span class="stat-label">Combined ARR</span>
+          <p>Both markets at median penetration</p>
+        </div>
+      </div>
+
+      <h3>IRR — planned estimates based on market standards</h3>
+      <p>Illustrative 25% ownership. Preseed exit Y4 on Greece ARR; full $500K exit Y5 on combined ARR. SaaS multiples 5× / 7× / 10× ARR.</p>
+      <table>
+        <thead>
+          <tr><th>Case</th><th>Capital</th><th>5× ARR</th><th>7× ARR</th><th>10× ARR</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Preseed only</strong></td>
+            <td>$150K</td>
+            <td>Stake $1.19M · <strong>IRR ~68%</strong></td>
+            <td>Stake $1.67M · <strong>IRR ~83%</strong></td>
+            <td>Stake $2.38M · <strong>IRR ~100%</strong></td>
+          </tr>
+          <tr class="row-accent">
+            <td><strong>Preseed + seed</strong></td>
+            <td>$500K</td>
+            <td>Stake $4.07M · <strong>IRR ~62%</strong></td>
+            <td>Stake $5.70M · <strong>IRR ~75%</strong></td>
+            <td>Stake $8.15M · <strong>IRR ~89%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="side-note">IRR and MOIC are planned estimates based on market standards. Dilution from later rounds and actual ownership are not modeled.</p>
+    </section>
+
+    <!-- 07 FOOTPRINT -->
+    <section class="section flow page-start" id="page-7" data-nav-label="07 · Footprint">
+      <div class="section-head"><span class="section-num">07</span><h2>Footprint — use of funds</h2></div>
+      <p>Capital is deployment capital. Preseed buys Greece distribution; seed buys U.S. distribution. The loyalty engine, Android apps, Stripe, and legal pages already ship.</p>
+
+      <h3>Preseed — $150K (Greece)</h3>
+      <table>
+        <thead>
+          <tr><th>Use</th><th>Amount</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Greece sales &amp; marketing</td><td>$55,000</td><td>Local outreach, content, paid social, beachheads</td></tr>
+          <tr class="row-accent"><td>Customer success / onboarding</td><td>$25,000</td><td>Play/store support, demos, first Enterprise</td></tr>
+          <tr><td>Ops / messaging / infra buffer</td><td>$20,000</td><td>Variable cost as check-ins scale</td></tr>
+          <tr class="row-accent"><td>Cash runway</td><td>$50,000</td><td>Lean burn while revenue ramps</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>$150,000</strong></td><td></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Seed — $350K (United States)</h3>
+      <table>
+        <thead>
+          <tr><th>Use</th><th>Amount</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>U.S. GTM hire(s) &amp; sales ops</td><td>$140,000</td><td>First seller / BD; tools; beachhead travel</td></tr>
+          <tr class="row-accent"><td>U.S. marketing &amp; partnerships</td><td>$90,000</td><td>Coffee, fitness, hospitality campaigns</td></tr>
+          <tr><td>Localization / payments / support</td><td>$40,000</td><td>Billing polish, support hours, compliance hygiene</td></tr>
+          <tr class="row-accent"><td>Cash runway</td><td>$80,000</td><td>Bridge to U.S. ARR contribution</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>$350,000</strong></td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 08 MARKET VALIDATION -->
+    <section class="section flow page-start" id="page-8" data-nav-label="08 · Market validation">
+      <div class="section-head"><span class="section-num">08</span><h2>Market validation</h2></div>
+      <p>Core SAM is the venue pool Jellin can sell into. Median scenario: <strong>5% of Greece</strong> and <strong>1.5% of the United States</strong>. Counts rounded from public sources in Reference; planning estimates labeled.</p>
+
+      <h3>Greece — core SAM</h3>
+      <table>
+        <thead>
+          <tr><th>Vertical</th><th>Establishments</th><th>Basis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cafés &amp; coffee</strong></td><td>~25,000</td><td>Dashmote Greece outlet database</td></tr>
+          <tr class="row-accent"><td><strong>Hotels</strong></td><td>10,104</td><td>Hellenic Chamber of Hotels / ITEP 2024</td></tr>
+          <tr><td><strong>Fitness (planning)</strong></td><td>~2,500 – 3,000</td><td>Business overview band</td></tr>
+          <tr class="row-accent"><td><strong>Apparel (planning)</strong></td><td>~15,000</td><td>Business overview band; PwC retail context</td></tr>
+          <tr><td><strong>Shopping centres</strong></td><td>~17 – 30</td><td>PwC / Lamda organised retail</td></tr>
+          <tr class="row-accent"><td><strong>Core SAM (mid)</strong></td><td><strong>~52,900</strong></td><td>5% → ~2,640 paying accounts</td></tr>
+        </tbody>
+      </table>
+
+      <h3>United States — core SAM</h3>
+      <table>
+        <thead>
+          <tr><th>Vertical</th><th>Establishments</th><th>Basis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Branded coffee</strong></td><td>42,773</td><td>World Coffee Portal — Project Café USA 2025</td></tr>
+          <tr class="row-accent"><td><strong>Hotels</strong></td><td>~64,000</td><td>AHLA testimony, Feb 2025</td></tr>
+          <tr><td><strong>Health clubs &amp; studios</strong></td><td>55,294</td><td>Health &amp; Fitness Association, May 2024</td></tr>
+          <tr class="row-accent"><td><strong>Clothing stores</strong></td><td>121,610</td><td>U.S. Census Economic Census 2022</td></tr>
+          <tr><td><strong>Shopping malls</strong></td><td>~1,150</td><td>Industry mall counts (2024)</td></tr>
+          <tr class="row-accent"><td><strong>Core SAM</strong></td><td><strong>~284,800</strong></td><td>1.5% → ~4,270 paying accounts</td></tr>
+        </tbody>
+      </table>
+
+      <div class="panel summary-panel">
+        <h4>Software category context</h4>
+        <p>U.S. loyalty management ≈ <strong>$1.34B in 2025</strong> (IMARC). Global SMB loyalty software ≈ <strong>$2.8B in 2025</strong> (Dataintelo). Jellin list prices sit in the published SMB SaaS band.</p>
+      </div>
+      <p class="side-note">Venue counts ≠ buyers tomorrow. Penetration is a planning assumption. Primary links: <a href="/addendum-b/">Reference</a>.</p>
+    </section>
+
+    <!-- 09 PROJECT STATUS -->
+    <section class="section flow page-start" id="page-9" data-nav-label="09 · Project status">
+      <div class="section-head"><span class="section-num">09</span><h2>Project status</h2></div>
+      <p>Product, backend, and Android apps already cover the core loyalty loop. Capital maps to Greece launch first, then U.S. expansion — not a greenfield build.</p>
+
+      <div class="cols-2">
+        <div class="panel">
+          <h4>Shipped / ready</h4>
+          <ul>
+            <li>Accounts, operators, roles, groups</li>
+            <li>Loyalty programs + three coupon types</li>
+            <li>QR or phone/email check-in</li>
+            <li>SMS / email / app delivery</li>
+            <li>Analytics summaries</li>
+            <li>Stripe subscriptions</li>
+            <li>Public site + privacy / terms / deletion</li>
+            <li>Android business + customer builds</li>
+          </ul>
+        </div>
+        <div class="panel alt">
+          <h4>Funded milestones</h4>
+          <ul>
+            <li><strong>Preseed:</strong> Play live; paid Greece cohorts; path to 5% SAM</li>
+            <li>Hotel + café beachheads in Greece</li>
+            <li>Connector pilots (POS / CRM)</li>
+            <li><strong>Seed:</strong> U.S. beachheads; path to 1.5% U.S. SAM</li>
+            <li>Repeatable Enterprise motion in both markets</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 REFERENCE -->
+    <section class="section flow page-start" id="page-10" data-nav-label="10 · Reference">
+      <div class="section-head"><span class="section-num">10</span><h2>Reference</h2></div>
+      <p>Fact-checked public sources for market counts and category context. Planning estimates from the Jellin business overview are labeled. Prefer the primary link.</p>
+
+      <h3>Greece</h3>
+      <ol class="addendum-list">
+        <li>
+          <span class="ref-num">01</span>
+          <div>
+            <span class="ref-label">Hellenic Chamber of Hotels / ITEP — Annual Survey 2024</span>
+            <span class="ref-use">10,104 hotels.</span>
+            <a href="https://www.itep.gr/wp-content/uploads/2025/04/AS_2024_site_public_en.pdf">itep.gr PDF</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">02</span>
+          <div>
+            <span class="ref-label">ELSTAT — hotel capacity tables (2024)</span>
+            <span class="ref-use">Confirms 10,104 establishments.</span>
+            <a href="https://www.statistics.gr/documents/20181/fbab978e-900b-84bb-b2d7-889613d2d75e">statistics.gr</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">03</span>
+          <div>
+            <span class="ref-label">Dashmote — Greece on-premise outlet database</span>
+            <span class="ref-use">Cafés &amp; coffee shops 25,000+.</span>
+            <a href="https://dashmote.com/outlet-database/greece">dashmote.com</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">04</span>
+          <div>
+            <span class="ref-label">IBISWorld — Food &amp; Drink Service Activities in Greece</span>
+            <span class="ref-use">Broader F&amp;B cross-check (47,230 businesses, 2025).</span>
+            <a href="https://www.ibisworld.com/greece/industry/food-drink-service-activities/200071/">ibisworld.com</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">05</span>
+          <div>
+            <span class="ref-label">PwC Greece — Retail &amp; Shopping Centers</span>
+            <span class="ref-use">Organised retail / mall context.</span>
+            <a href="https://www.pwc.com/gr/en/The-Greek-Real-Estate-market_Retail-and-Shopping-Centers.pdf">pwc.com PDF</a>
+          </div>
+        </li>
+      </ol>
+
+      <h3>United States</h3>
+      <ol class="addendum-list" start="6">
+        <li>
+          <span class="ref-num">06</span>
+          <div>
+            <span class="ref-label">World Coffee Portal — Project Café USA 2025</span>
+            <span class="ref-use">42,773 branded coffee shops.</span>
+            <a href="https://www.worldcoffeeportal.com/news/value-becomes-competition-hot-spot-in-54bn-us-branded-coffee-shop-market/">worldcoffeeportal.com</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">07</span>
+          <div>
+            <span class="ref-label">AHLA — House testimony (26 Feb 2025)</span>
+            <span class="ref-use">~64,000 U.S. hotels.</span>
+            <a href="https://docs.house.gov/meetings/ED/ED00/20250226/117886/HHRG-119-ED00-Wstate-MaiettaR-20250226.pdf">docs.house.gov PDF</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">08</span>
+          <div>
+            <span class="ref-label">Health &amp; Fitness Association (formerly IHRSA)</span>
+            <span class="ref-use">55,294 health club and studio locations.</span>
+            <a href="https://www.healthandfitness.org/the-u-s-health-and-fitness-industry-is-a-22-4-billion-economic-powerhouse/">healthandfitness.org</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">09</span>
+          <div>
+            <span class="ref-label">U.S. Census — clothing retail (2022)</span>
+            <span class="ref-use">121,610 clothing &amp; accessories establishments.</span>
+            <a href="https://www.census.gov/library/stories/2025/07/clothing-retail-jobs.html">census.gov</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">10</span>
+          <div>
+            <span class="ref-label">U.S. mall stock (industry summaries, 2024)</span>
+            <span class="ref-use">≈1,150 enclosed/traditional malls (definitions vary).</span>
+            <a href="https://grabon.com/blog/us-shopping-mall-statistics/">grabon.com</a>
+          </div>
+        </li>
+      </ol>
+
+      <h3>Loyalty software</h3>
+      <ol class="addendum-list" start="11">
+        <li>
+          <span class="ref-num">11</span>
+          <div>
+            <span class="ref-label">IMARC — U.S. Loyalty Management Market</span>
+            <span class="ref-use">USD 1,336.1M in 2025.</span>
+            <a href="https://www.imarcgroup.com/united-states-loyalty-management-market">imarcgroup.com</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">12</span>
+          <div>
+            <span class="ref-label">Dataintelo — SMB loyalty program software</span>
+            <span class="ref-use">Global $2.8B in 2025.</span>
+            <a href="https://dataintelo.com/report/global-loyalty-program-software-for-small-businesses-market">dataintelo.com</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">13</span>
+          <div>
+            <span class="ref-label">TechTarget — loyalty software pricing examples</span>
+            <span class="ref-use">Published SMB list-price bands.</span>
+            <a href="https://www.techtarget.com/news/Top-10-loyalty-program-management-software-options/849204/">techtarget.com</a>
+          </div>
+        </li>
+      </ol>
+
+      <h3>Jellin materials</h3>
+      <ol class="addendum-list" start="14">
+        <li>
+          <span class="ref-num">14</span>
+          <div>
+            <span class="ref-label">Jellin — Business Overview</span>
+            <span class="ref-use">Product thesis, personas, modules; fitness/apparel planning bands.</span>
+            <span><code>business/Jellin — Business Overview.docx</code></span>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">15</span>
+          <div>
+            <span class="ref-label">jellinapp.com · talosgroup.eu</span>
+            <span class="ref-use">Public sites and brand.</span>
+            <a href="https://jellinapp.com/">jellinapp.com</a> · <a href="https://talosgroup.eu/">talosgroup.eu</a>
+          </div>
+        </li>
+        <li>
+          <span class="ref-num">16</span>
+          <div>
+            <span class="ref-label">Contact</span>
+            <span class="ref-use">Investor contact.</span>
+            <a href="mailto:nick@bootcorelabs.com">nick@bootcorelabs.com</a>
+          </div>
+        </li>
+      </ol>
+
+      <p class="footer-note">Confidential for investor discussion. Not an offer to sell securities. Market counts and penetration scenarios may change as better primary data appears.</p>
+    </section>
+
+  </div>
+</body>
+</html>
