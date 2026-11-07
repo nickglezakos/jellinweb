@@ -1,7 +1,7 @@
 {
+  // Workers Builds uses `npx wrangler deploy` — assets only (not Pages pages_build_output_dir).
   "name": "jellinweb",
   "compatibility_date": "2026-01-22",
-  "pages_build_output_dir": "invest",
   "assets": {
     "directory": "./invest"
   }
